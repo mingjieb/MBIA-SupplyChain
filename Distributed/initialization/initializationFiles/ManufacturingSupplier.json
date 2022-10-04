@@ -1,0 +1,122 @@
+{
+    "Part_01": {
+        "Production":{
+            "package_0": {
+                "Cost": 1.03,
+                "Maximum": 10000
+            }
+        },
+        "Inventory":{
+            "package_0": 0
+        },
+        "CommunicationNodes":[
+            "Manuf_01", "Manuf_02", "Manuf_03",
+            "Transportation"
+        ]
+    },
+    "Part_02": {
+        "Production":{
+            "rawBeef": {
+                "Cost": 14.52,
+                "Maximum": 5500
+            }
+        },
+        "Inventory":{
+            "rawBeef": 0
+        },
+        "CommunicationNodes":[
+            "Manuf_01", "Manuf_02", "Manuf_03",
+            "Transportation"
+        ]
+    },
+    "Part_03": {
+        "Production":{
+            "rawBeef": {
+                "Cost": 14.01,
+                "Maximum": 4500
+            }
+        },
+        "Inventory":{
+            "rawBeef": 0
+        },
+        "CommunicationNodes":[
+            "Manuf_01", "Manuf_02", "Manuf_03",
+            "Transportation"
+        ]
+    },
+    "Part_04": {
+        "Production":{
+            "rawBeef": {
+                "Cost": 13.01,
+                "Maximum": 4000
+            }
+        },
+        "Inventory":{
+            "rawBeef": 0
+        },
+        "CommunicationNodes":[
+            "Manuf_01", "Manuf_02", "Manuf_03",
+            "Transportation"
+        ]
+    },
+    "Part_05": {
+        "Production":{
+            "package_1": {
+                "Cost": 1.07,
+                "Maximum": 10000
+            }
+        },
+        "Inventory":{
+            "package_1": 0
+        },
+        "CommunicationNodes":[
+            "Manuf_01", "Manuf_02", "Manuf_03",
+            "Transportation"
+        ]
+    },
+    "Part_06": {
+        "Production":{
+            "seasoning": {
+                "Cost": 0.83,
+                "Maximum": 4000
+            }
+        },
+        "Inventory":{
+            "seasoning": 0
+        },
+        "CommunicationNodes":[
+            "Manuf_01", "Manuf_02", "Manuf_03",
+            "Transportation"
+        ]
+    },
+    "Part_07": {
+        "Production":{
+            "seasoning": {
+                "Cost": 0.88,
+                "Maximum": 6000
+            }
+        },
+        "Inventory":{
+            "seasoning": 0
+        },
+        "CommunicationNodes":[
+            "Manuf_01", "Manuf_02", "Manuf_03",
+            "Transportation"
+        ]
+    },
+    "Part_08": {
+        "Production":{
+            "seasoning": {
+                "Cost": 0.85,
+                "Maximum": 5000
+            }
+        },
+        "Inventory":{
+            "seasoning": 0
+        },
+        "CommunicationNodes":[
+            "Manuf_01", "Manuf_02", "Manuf_03",
+            "Transportation"
+        ]
+    }
+}

@@ -1,0 +1,98 @@
+{
+    "Manuf_01": {
+        "Production":{
+            "groundBeef": {
+                "Cost": 2.65,
+                "Maximum": 4500,
+                "Material":{
+                    "rawBeef": 1,
+                    "package_0": 1,
+                    "seasoning": 1
+                }
+            },
+            "marinatedBeef": {
+                "Cost": 2.50,
+                "Maximum": 4500,
+                "Material":{
+                    "rawBeef": 1,
+                    "package_1": 1,
+                    "seasoning": 1
+                }
+            }
+        },
+        "Inventory":{
+            "groundBeef": 0,
+            "marinatedBeef":0
+        },
+        "CommunicationNodes":{
+            "Upstream": ["Part_01", "Part_02", "Part_03", "Part_04", "Part_05",
+            "Part_06", "Part_07", "Part_08"],
+            "Downstream": ["Wholesale_01", "Wholesale_02", "Wholesale_03", "Wholesale_04"],
+            "Transportation": ["Transportation"]
+        }
+    },
+    "Manuf_02": {
+        "Production":{
+            "groundBeef": {
+                "Cost": 2.74,
+                "Maximum": 4500,
+                "Material":{
+                    "rawBeef": 1,
+                    "package_0": 1,
+                    "seasoning": 1
+                }
+            },
+            "marinatedBeef": {
+                "Cost": 2.39,
+                "Maximum": 4500,
+                "Material":{
+                    "rawBeef": 1,
+                    "package_1": 1,
+                    "seasoning": 1
+                }
+            }
+        },
+        "Inventory":{
+            "groundBeef": 0,
+            "marinatedBeef": 0
+        },
+        "CommunicationNodes":{
+            "Upstream": ["Part_01", "Part_02", "Part_03", "Part_04", "Part_05",
+            "Part_06", "Part_07", "Part_08"],
+            "Downstream": ["Wholesale_01", "Wholesale_02", "Wholesale_03", "Wholesale_04"],
+            "Transportation": ["Transportation"]
+        }
+    },
+    "Manuf_03": {
+        "Production":{
+            "groundBeef": {
+                "Cost": 2.80,
+                "Maximum": 5000,
+                "Material":{
+                    "rawBeef": 1,
+                    "package_0": 1,
+                    "seasoning": 1
+                }
+            },
+            "marinatedBeef": {
+                "Cost": 2.20,
+                "Maximum": 5000,
+                "Material":{
+                    "rawBeef": 1,
+                    "package_1": 1,
+                    "seasoning": 1
+                }
+            }
+        },
+        "Inventory":{
+            "groundBeef": 0,
+            "marinatedBeef": 0
+        },
+        "CommunicationNodes":{
+            "Upstream": ["Part_01", "Part_02", "Part_03", "Part_04", "Part_05",
+            "Part_06", "Part_07", "Part_08"],
+            "Downstream": ["Wholesale_01", "Wholesale_02", "Wholesale_03", "Wholesale_04"],
+            "Transportation": ["Transportation"]
+        }
+    }
+}

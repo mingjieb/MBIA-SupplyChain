@@ -1,0 +1,46 @@
+{
+    "Wholesale_01": {
+        "Inventory":{
+            "groundBeef": 0,
+            "marinatedBeef": 0
+        },
+        "CommunicationNodes":{
+            "Upstream": ["Manuf_01", "Manuf_02", "Manuf_03"],
+            "Downstream": ["Customer1", "Customer2"],
+            "Transportation": ["Transportation"]
+        }
+    },
+    "Wholesale_02": {
+        "Inventory":{
+            "groundBeef": 0,
+            "marinatedBeef": 0
+        },
+        "CommunicationNodes":{
+            "Upstream": ["Manuf_01", "Manuf_02", "Manuf_03"],
+            "Downstream": ["Customer3", "Customer4", "Customer3"],
+            "Transportation": ["Transportation"]
+        }
+    },
+    "Wholesale_03": {
+        "Inventory":{
+            "groundBeef": 0,
+            "marinatedBeef": 0
+        },
+        "CommunicationNodes":{
+            "Upstream": ["Manuf_01", "Manuf_02", "Manuf_03"],
+            "Downstream": ["Customer4", "Customer5", "Customer6"],
+            "Transportation": ["Transportation"]
+        }
+    },
+    "Wholesale_04": {
+        "Inventory":{
+            "groundBeef": 0,
+            "marinatedBeef": 0
+        },
+        "CommunicationNodes":{
+            "Upstream": ["Manuf_01", "Manuf_02", "Manuf_03"],
+            "Downstream": ["Customer7", "Customer8"],
+            "Transportation": ["Transportation"]
+        }
+    }
+}

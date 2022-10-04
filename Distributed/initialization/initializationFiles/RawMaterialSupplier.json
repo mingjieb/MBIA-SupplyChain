@@ -1,0 +1,17 @@
+{
+    "Raw Material Supplier1": {
+        "Inventory":{
+            "Raw Material": 0
+        }
+    },
+    "Raw Material Supplier2": {
+        "Inventory":{
+            "Raw Material": 0
+        }
+    },
+    "Raw Material Supplier3": {
+        "Inventory":{
+            "Raw Material": 0
+        }
+    }
+}

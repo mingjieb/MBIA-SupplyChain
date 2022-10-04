@@ -1,0 +1,74 @@
+{
+    "Retail_01": {
+        "Demand":{
+            "groundBeef": 247
+        },
+        "CommunicationNodes":{
+            "Upstream": ["Wholesale_01"],
+            "Transportation": ["Transportation"]
+        }
+    },
+    "Retail_02": {
+        "Demand":{
+            "groundBeef": 106
+        },
+        "CommunicationNodes":{
+            "Upstream": ["Wholesale_01"],
+            "Transportation": ["Transportation"]
+        }
+    },
+    "Retail_03": {
+        "Demand":{
+            "groundBeef": 193
+        },
+        "CommunicationNodes":{
+            "Upstream": ["Wholesale_02"],
+            "Transportation": ["Transportation"]
+        }
+    },
+    "Retail_04": {
+        "Demand":{
+            "marinatedBeef": 289
+        },
+        "CommunicationNodes":{
+            "Upstream": ["Wholesale_02", "Wholesale_03"],
+            "Transportation": ["Transportation"]
+        }
+    },
+    "Retail_05": {
+        "Demand":{
+            "groundBeef": 1688
+        },
+        "CommunicationNodes":{
+            "Upstream": ["Wholesale_02", "Wholesale_03"],
+            "Transportation": ["Transportation"]
+        }
+    },
+    "Retail_06": {
+        "Demand":{
+            "marinatedBeef": 2062
+        },
+        "CommunicationNodes":{
+            "Upstream": ["Wholesale_03"],
+            "Transportation": ["Transportation"]
+        }
+    },
+    "Retail_07": {
+        "Demand":{
+            "marinatedBeef": 2782
+        },
+        "CommunicationNodes":{
+            "Upstream": ["Wholesale_04"],
+            "Transportation": ["Transportation"]
+        }
+    },
+    "Retail_08": {
+        "Demand":{
+            "marinatedBeef": 1855
+        },
+        "CommunicationNodes":{
+            "Upstream": ["Wholesale_04"],
+            "Transportation": ["Transportation"]
+        }
+    }
+}
