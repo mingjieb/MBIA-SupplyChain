@@ -11,7 +11,7 @@ import sys
 sys.path.append("/agent")
 from agent import customer_agent, distributor_agent, inventory_agent, manufacturing_agent, oem_agent, \
     raw_material_agent, transportation_agent
-from initialization.params import Params
+# from initialization.params import Params
 import json
 import pandas as pd
 
@@ -146,6 +146,7 @@ def agent_initialization(self, Params):
     for agent_name in transportation.keys():
         ag = transportation_agent.TransportationAgent(agent_name)
         # ag.capability = {"Transport": transportation[agent_name]["Transport"].keys()}
+        ag.communication_nodes = {}
         ag.capability = read_transportation(self)
         self.agent_network["Transportation"].append(ag)
 
@@ -164,10 +165,9 @@ def build_environment_model(self):
 
 # Find the agents that have the certain name
 def add_environment_agent(self, agent, environment_list):
-    for key in self.agent_network:
-        for ag in self.agent_network[key]:
-            if ag.name in environment_list:
-                agent.environment.append(ag)
+    for attribute in environment_list.keys():
+        for name in environment_list[attribute]:
+            agent.environment.append(find_agent_by_name(self, name))
 
 
 # Build the initial capability model for each agent
@@ -211,3 +211,10 @@ def read_transportation(self):
         data["capacity"] = capacity[i]
         transport_attributes[(str(start_vertex[i]), str(end_vertex[i]))] = data
     return transport_attributes
+
+
+def find_agent_by_name(self, name):
+    for key in self.agent_network:
+        for ag in self.agent_network[key]:
+            if name == ag.name:
+                return ag

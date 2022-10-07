@@ -160,9 +160,9 @@ class Agent:
 
         selection_decision = self.decision_making_lose_node(bid_response, req)  # flatten the list
         # limit add edges hard code
-        selection_decision[2]["Agent"] = selection_decision[0]["Agent"]
-        selection_decision[0]["Unit"] = 200.0
-        selection_decision[1]["Unit"] = 1681.0
+        # selection_decision[2]["Agent"] = selection_decision[0]["Agent"]
+        # selection_decision[0]["Unit"] = 200.0
+        # selection_decision[1]["Unit"] = 1681.0
         self.inform_lose_node(selection_decision, lost_flow)
 
     def inform_lose_node(self, selected_decision, lost_flow):

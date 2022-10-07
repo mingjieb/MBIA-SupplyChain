@@ -7,38 +7,40 @@
 
 """
 
-def check_centralized_difference():
-    initial = {('Part_01', 'Manuf_01', 'package_0'): 2181.0,
-               ('Part_01', 'Manuf_02', 'package_0'): 53.0,
-               ('Manuf_01', 'Wholesale_02', 'groundBeef'): 1881.0,
-               ('Wholesale_01', 'Retail_01', 'groundBeef'): 247.0,
-               ('Wholesale_02', 'Retail_03', 'groundBeef'): 193.0,
-               ('Wholesale_02', 'Retail_05', 'groundBeef'): 1688.0,
+
+from termcolor import colored
+def check_centralized_difference(new_flows):
+    initial = {('Manuf_01', 'Wholesale_02', 'groundBeef'): 1881.0,
+               ('Wholesale_01', 'Retail_02', 'groundBeef'): 106.0,
                ('Manuf_02', 'Wholesale_01', 'groundBeef'): 53.0,
                ('Manuf_01', 'Wholesale_01', 'groundBeef'): 300.0,
-               ('Wholesale_01', 'Retail_02', 'groundBeef'): 106.0,
-               ('Part_08', 'Manuf_01', 'seasoning'): 2000.0,
-               ('Part_08', 'Manuf_03', 'seasoning'): 1137.0,
-               ('Part_06', 'Manuf_02', 'seasoning'): 2137.0,
-               ('Part_07', 'Manuf_01', 'seasoning'): 222.0,
-               ('Part_08', 'Manuf_02', 'seasoning'): 1863.0,
-               ('Part_06', 'Manuf_01', 'seasoning'): 1863.0,
-               ('Manuf_02', 'Wholesale_03', 'marinatedBeef'): 1447.0,
-               ('Manuf_01', 'Wholesale_03', 'marinatedBeef'): 904.0,
-               ('Wholesale_04', 'Retail_08', 'marinatedBeef'): 1855.0,
-               ('Manuf_03', 'Wholesale_04', 'marinatedBeef'): 1137.0,
-               ('Wholesale_03', 'Retail_04', 'marinatedBeef'): 289.0,
-               ('Manuf_02', 'Wholesale_04', 'marinatedBeef'): 2500.0,
-               ('Wholesale_04', 'Retail_07', 'marinatedBeef'): 2782.0,
-               ('Wholesale_03', 'Retail_06', 'marinatedBeef'): 2062.0,
-               ('Manuf_01', 'Wholesale_04', 'marinatedBeef'): 1000.0,
-               ('Part_05', 'Manuf_03', 'package_1'): 1137.0,
+               ('Wholesale_02', 'Retail_05', 'groundBeef'): 1688.0,
+               ('Wholesale_02', 'Retail_03', 'groundBeef'): 193.0,
+               ('Wholesale_01', 'Retail_01', 'groundBeef'): 247.0,
                ('Part_05', 'Manuf_02', 'package_1'): 3947.0,
+               ('Part_05', 'Manuf_03', 'package_1'): 1137.0,
                ('Part_05', 'Manuf_01', 'package_1'): 1904.0,
                ('Part_02', 'Manuf_01', 'rawBeef'): 722.0,
                ('Part_04', 'Manuf_02', 'rawBeef'): 4000.0,
+               ('Part_03', 'Manuf_03', 'rawBeef'): 1137.0,
                ('Part_03', 'Manuf_01', 'rawBeef'): 3363.0,
-               ('Part_03', 'Manuf_03', 'rawBeef'): 1137.0}
+               ('Manuf_03', 'Wholesale_04', 'marinatedBeef'): 1137.0,
+               ('Manuf_02', 'Wholesale_04', 'marinatedBeef'): 2500.0,
+               ('Wholesale_03', 'Retail_04', 'marinatedBeef'): 289.0,
+               ('Wholesale_04', 'Retail_07', 'marinatedBeef'): 2782.0,
+               ('Wholesale_03', 'Retail_06', 'marinatedBeef'): 2062.0,
+               ('Manuf_02', 'Wholesale_03', 'marinatedBeef'): 1447.0,
+               ('Wholesale_04', 'Retail_08', 'marinatedBeef'): 1855.0,
+               ('Manuf_01', 'Wholesale_04', 'marinatedBeef'): 1000.0,
+               ('Manuf_01', 'Wholesale_03', 'marinatedBeef'): 904.0,
+               ('Part_01', 'Manuf_01', 'package_0'): 2181.0,
+               ('Part_01', 'Manuf_02', 'package_0'): 53.0,
+               ('Part_08', 'Manuf_01', 'seasoning'): 2000.0,
+               ('Part_06', 'Manuf_01', 'seasoning'): 1863.0,
+               ('Part_08', 'Manuf_02', 'seasoning'): 1863.0,
+               ('Part_06', 'Manuf_02', 'seasoning'): 2137.0,
+               ('Part_07', 'Manuf_01', 'seasoning'): 222.0,
+               ('Part_08', 'Manuf_03', 'seasoning'): 1137.0}
 
     no_part4 = {('Part_01', 'Manuf_01', 'package_0'): 2181.0,
                 ('Part_01', 'Manuf_02', 'package_0'): 53.0,
@@ -186,20 +188,217 @@ def check_centralized_difference():
                ('Part_08', 'Manuf_03', 'seasoning'): 3000.0,
                ('Part_08', 'Manuf_02', 'seasoning'): 1700.0}
 
-    result = [retail5, no_part4, no_manuf1, no_m1_100, no_m1_4]
+    no_t4 = {('Wholesale_03', 'Retail_04', 'marinatedBeef'): 289.0,
+             ('Manuf_03', 'Wholesale_04', 'marinatedBeef'): 1137.0,
+             ('Manuf_01', 'Wholesale_03', 'marinatedBeef'): 1319.0,
+             ('Manuf_02', 'Wholesale_04', 'marinatedBeef'): 2500.0,
+             ('Wholesale_03', 'Retail_06', 'marinatedBeef'): 2062.0,
+             ('Manuf_03', 'Wholesale_03', 'marinatedBeef'): 1032.0,
+             ('Manuf_01', 'Wholesale_04', 'marinatedBeef'): 1000.0,
+             ('Wholesale_04', 'Retail_08', 'marinatedBeef'): 1855.0,
+             ('Wholesale_04', 'Retail_07', 'marinatedBeef'): 2782.0,
+             ('Part_05', 'Manuf_01', 'package_1'): 2319.0,
+             ('Part_05', 'Manuf_03', 'package_1'): 2169.0,
+             ('Part_05', 'Manuf_02', 'package_1'): 2500.0,
+             ('Part_01', 'Manuf_02', 'package_0'): 53.0,
+             ('Part_01', 'Manuf_01', 'package_0'): 2181.0,
+             ('Part_06', 'Manuf_01', 'seasoning'): 2278.0,
+             ('Part_08', 'Manuf_02', 'seasoning'): 831.0,
+             ('Part_07', 'Manuf_01', 'seasoning'): 222.0,
+             ('Part_06', 'Manuf_02', 'seasoning'): 1722.0,
+             ('Part_08', 'Manuf_01', 'seasoning'): 2000.0,
+             ('Part_08', 'Manuf_03', 'seasoning'): 2169.0,
+             ('Manuf_01', 'Wholesale_02', 'groundBeef'): 1881.0,
+             ('Manuf_01', 'Wholesale_01', 'groundBeef'): 300.0,
+             ('Wholesale_01', 'Retail_01', 'groundBeef'): 247.0,
+             ('Wholesale_02', 'Retail_05', 'groundBeef'): 1688.0,
+             ('Wholesale_02', 'Retail_03', 'groundBeef'): 193.0,
+             ('Manuf_02', 'Wholesale_01', 'groundBeef'): 53.0,
+             ('Wholesale_01', 'Retail_02', 'groundBeef'): 106.0,
+             ('Part_03', 'Manuf_02', 'rawBeef'): 2553.0,
+             ('Part_02', 'Manuf_03', 'rawBeef'): 222.0,
+             ('Part_02', 'Manuf_01', 'rawBeef'): 4500.0,
+             ('Part_03', 'Manuf_03', 'rawBeef'): 1947.0}
 
-    for flows in result:
-        print(colored("Disruption", 'red'))
-        print("added flows:")
-        for key in flows:
-            if key not in initial:
-                print(key, flows[key])
-        print("removed flows:")
-        for key in initial:
-            if key not in flows:
-                print(key, initial[key])
-        print("changed flows:")
-        for key in flows:
-            if key in flows and key in initial:
-                if flows[key] != initial[key]:
-                    print(key, initial[key], "to", flows[key])
+    no_t6 = {('Wholesale_03', 'Retail_04', 'marinatedBeef'): 289.0,
+             ('Manuf_03', 'Wholesale_04', 'marinatedBeef'): 1137.0,
+             ('Manuf_01', 'Wholesale_03', 'marinatedBeef'): 904.0,
+             ('Manuf_02', 'Wholesale_04', 'marinatedBeef'): 2500.0,
+             ('Wholesale_03', 'Retail_06', 'marinatedBeef'): 2062.0,
+             ('Manuf_01', 'Wholesale_04', 'marinatedBeef'): 1000.0,
+             ('Manuf_02', 'Wholesale_03', 'marinatedBeef'): 1447.0,
+             ('Wholesale_04', 'Retail_08', 'marinatedBeef'): 1855.0,
+             ('Wholesale_04', 'Retail_07', 'marinatedBeef'): 2782.0,
+             ('Part_05', 'Manuf_01', 'package_1'): 1904.0,
+             ('Part_05', 'Manuf_03', 'package_1'): 1137.0,
+             ('Part_05', 'Manuf_02', 'package_1'): 3947.0,
+             ('Part_01', 'Manuf_02', 'package_0'): 53.0,
+             ('Part_01', 'Manuf_01', 'package_0'): 2181.0,
+             ('Part_08', 'Manuf_02', 'seasoning'): 3863.0,
+             ('Part_07', 'Manuf_01', 'seasoning'): 4085.0,
+             ('Part_07', 'Manuf_02', 'seasoning'): 137.0,
+             ('Part_08', 'Manuf_03', 'seasoning'): 1137.0,
+             ('Manuf_01', 'Wholesale_02', 'groundBeef'): 1881.0,
+             ('Manuf_01', 'Wholesale_01', 'groundBeef'): 300.0,
+             ('Wholesale_01', 'Retail_01', 'groundBeef'): 247.0,
+             ('Wholesale_02', 'Retail_05', 'groundBeef'): 1688.0,
+             ('Wholesale_02', 'Retail_03', 'groundBeef'): 193.0,
+             ('Manuf_02', 'Wholesale_01', 'groundBeef'): 53.0,
+             ('Wholesale_01', 'Retail_02', 'groundBeef'): 106.0,
+             ('Part_02', 'Manuf_01', 'rawBeef'): 722.0,
+             ('Part_04', 'Manuf_02', 'rawBeef'): 4000.0,
+             ('Part_03', 'Manuf_03', 'rawBeef'): 1137.0,
+             ('Part_03', 'Manuf_01', 'rawBeef'): 3363.0}
+
+    no_t3 = {('Wholesale_03', 'Retail_04', 'marinatedBeef'): 289.0,
+             ('Manuf_03', 'Wholesale_04', 'marinatedBeef'): 1137.0,
+             ('Manuf_01', 'Wholesale_03', 'marinatedBeef'): 904.0,
+             ('Manuf_02', 'Wholesale_04', 'marinatedBeef'): 2500.0,
+             ('Wholesale_03', 'Retail_06', 'marinatedBeef'): 2062.0,
+             ('Manuf_01', 'Wholesale_04', 'marinatedBeef'): 1000.0,
+             ('Manuf_02', 'Wholesale_03', 'marinatedBeef'): 1447.0,
+             ('Wholesale_04', 'Retail_08', 'marinatedBeef'): 1855.0,
+             ('Wholesale_04', 'Retail_07', 'marinatedBeef'): 2782.0,
+             ('Part_05', 'Manuf_01', 'package_1'): 1904.0,
+             ('Part_05', 'Manuf_03', 'package_1'): 1137.0,
+             ('Part_05', 'Manuf_02', 'package_1'): 3947.0,
+             ('Part_01', 'Manuf_02', 'package_0'): 53.0,
+             ('Part_01', 'Manuf_01', 'package_0'): 2181.0,
+             ('Part_06', 'Manuf_01', 'seasoning'): 1863.0,
+             ('Part_08', 'Manuf_02', 'seasoning'): 1863.0,
+             ('Part_07', 'Manuf_01', 'seasoning'): 222.0,
+             ('Part_06', 'Manuf_02', 'seasoning'): 2137.0,
+             ('Part_08', 'Manuf_01', 'seasoning'): 2000.0,
+             ('Part_08', 'Manuf_03', 'seasoning'): 1137.0,
+             ('Manuf_01', 'Wholesale_02', 'groundBeef'): 1881.0,
+             ('Manuf_01', 'Wholesale_01', 'groundBeef'): 300.0,
+             ('Wholesale_01', 'Retail_01', 'groundBeef'): 247.0,
+             ('Wholesale_02', 'Retail_05', 'groundBeef'): 1688.0,
+             ('Wholesale_02', 'Retail_03', 'groundBeef'): 193.0,
+             ('Manuf_02', 'Wholesale_01', 'groundBeef'): 53.0,
+             ('Wholesale_01', 'Retail_02', 'groundBeef'): 106.0,
+             ('Part_02', 'Manuf_03', 'rawBeef'): 1137.0,
+             ('Part_02', 'Manuf_01', 'rawBeef'): 4085.0,
+             ('Part_04', 'Manuf_02', 'rawBeef'): 4000.0}
+
+    no_t8 = {('Wholesale_03', 'Retail_04', 'marinatedBeef'): 289.0,
+             ('Manuf_03', 'Wholesale_04', 'marinatedBeef'): 1137.0,
+             ('Manuf_01', 'Wholesale_03', 'marinatedBeef'): 904.0,
+             ('Manuf_02', 'Wholesale_04', 'marinatedBeef'): 2500.0,
+             ('Wholesale_03', 'Retail_06', 'marinatedBeef'): 2062.0,
+             ('Manuf_01', 'Wholesale_04', 'marinatedBeef'): 1000.0,
+             ('Manuf_02', 'Wholesale_03', 'marinatedBeef'): 1447.0,
+             ('Wholesale_04', 'Retail_08', 'marinatedBeef'): 1855.0,
+             ('Wholesale_04', 'Retail_07', 'marinatedBeef'): 2782.0,
+             ('Part_05', 'Manuf_01', 'package_1'): 1904.0,
+             ('Part_05', 'Manuf_03', 'package_1'): 1137.0,
+             ('Part_05', 'Manuf_02', 'package_1'): 3947.0,
+             ('Part_01', 'Manuf_02', 'package_0'): 53.0,
+             ('Part_01', 'Manuf_01', 'package_0'): 2181.0,
+             ('Part_06', 'Manuf_01', 'seasoning'): 300.0,
+             ('Part_06', 'Manuf_03', 'seasoning'): 900.0,
+             ('Part_07', 'Manuf_01', 'seasoning'): 3785.0,
+             ('Part_07', 'Manuf_03', 'seasoning'): 237.0,
+             ('Part_07', 'Manuf_02', 'seasoning'): 1200.0,
+             ('Part_06', 'Manuf_02', 'seasoning'): 2800.0,
+             ('Manuf_01', 'Wholesale_02', 'groundBeef'): 1881.0,
+             ('Manuf_01', 'Wholesale_01', 'groundBeef'): 300.0,
+             ('Wholesale_01', 'Retail_01', 'groundBeef'): 247.0,
+             ('Wholesale_02', 'Retail_05', 'groundBeef'): 1688.0,
+             ('Wholesale_02', 'Retail_03', 'groundBeef'): 193.0,
+             ('Manuf_02', 'Wholesale_01', 'groundBeef'): 53.0,
+             ('Wholesale_01', 'Retail_02', 'groundBeef'): 106.0,
+             ('Part_02', 'Manuf_01', 'rawBeef'): 722.0,
+             ('Part_04', 'Manuf_02', 'rawBeef'): 4000.0,
+             ('Part_03', 'Manuf_03', 'rawBeef'): 1137.0,
+             ('Part_03', 'Manuf_01', 'rawBeef'): 3363.0}
+
+    no_o2 = {('Manuf_01', 'Wholesale_02', 'groundBeef'): 1881.0,
+             ('Manuf_01', 'Wholesale_01', 'groundBeef'): 353.0,
+             ('Wholesale_01', 'Retail_02', 'groundBeef'): 106.0,
+             ('Wholesale_01', 'Retail_01', 'groundBeef'): 247.0,
+             ('Wholesale_02', 'Retail_03', 'groundBeef'): 193.0,
+             ('Wholesale_02', 'Retail_05', 'groundBeef'): 1688.0,
+             ('Part_07', 'Manuf_01', 'seasoning'): 222.0,
+             ('Part_06', 'Manuf_03', 'seasoning'): 4000.0,
+             ('Part_08', 'Manuf_01', 'seasoning'): 4278.0,
+             ('Part_08', 'Manuf_03', 'seasoning'): 722.0,
+             ('Part_05', 'Manuf_01', 'package_1'): 2266.0,
+             ('Part_05', 'Manuf_03', 'package_1'): 4722.0,
+             ('Wholesale_04', 'Retail_08', 'marinatedBeef'): 1855.0,
+             ('Manuf_03', 'Wholesale_04', 'marinatedBeef'): 2371.0,
+             ('Wholesale_03', 'Retail_04', 'marinatedBeef'): 289.0,
+             ('Manuf_01', 'Wholesale_04', 'marinatedBeef'): 2266.0,
+             ('Wholesale_03', 'Retail_06', 'marinatedBeef'): 2062.0,
+             ('Manuf_03', 'Wholesale_03', 'marinatedBeef'): 2351.0,
+             ('Wholesale_04', 'Retail_07', 'marinatedBeef'): 2782.0,
+             ('Part_03', 'Manuf_03', 'rawBeef'): 4500.0,
+             ('Part_02', 'Manuf_01', 'rawBeef'): 500.0,
+             ('Part_04', 'Manuf_01', 'rawBeef'): 4000.0,
+             ('Part_02', 'Manuf_03', 'rawBeef'): 222.0,
+             ('Part_01', 'Manuf_01', 'package_0'): 2234.0}
+
+    no_o1 = {('Part_01', 'Manuf_03', 'package_0'): 296.0,
+             ('Part_01', 'Manuf_02', 'package_0'): 1938.0,
+             ('Wholesale_02', 'Retail_03', 'groundBeef'): 193.0,
+             ('Wholesale_03', 'Retail_05', 'groundBeef'): 1688.0,
+             ('Wholesale_01', 'Retail_01', 'groundBeef'): 247.0,
+             ('Manuf_02', 'Wholesale_03', 'groundBeef'): 1688.0,
+             ('Manuf_03', 'Wholesale_01', 'groundBeef'): 296.0,
+             ('Wholesale_01', 'Retail_02', 'groundBeef'): 106.0,
+             ('Manuf_02', 'Wholesale_01', 'groundBeef'): 57.0,
+             ('Manuf_02', 'Wholesale_02', 'groundBeef'): 193.0,
+             ('Part_06', 'Manuf_03', 'seasoning'): 900.0,
+             ('Part_08', 'Manuf_03', 'seasoning'): 3000.0,
+             ('Part_06', 'Manuf_02', 'seasoning'): 2800.0,
+             ('Part_07', 'Manuf_03', 'seasoning'): 822.0,
+             ('Part_08', 'Manuf_02', 'seasoning'): 1700.0,
+             ('Part_05', 'Manuf_02', 'package_1'): 2562.0,
+             ('Part_05', 'Manuf_03', 'package_1'): 4426.0,
+             ('Wholesale_03', 'Retail_06', 'marinatedBeef'): 2062.0,
+             ('Wholesale_02', 'Retail_04', 'marinatedBeef'): 289.0,
+             ('Manuf_02', 'Wholesale_03', 'marinatedBeef'): 62.0,
+             ('Manuf_02', 'Wholesale_04', 'marinatedBeef'): 2500.0,
+             ('Wholesale_04', 'Retail_07', 'marinatedBeef'): 2782.0,
+             ('Wholesale_04', 'Retail_08', 'marinatedBeef'): 1855.0,
+             ('Manuf_03', 'Wholesale_04', 'marinatedBeef'): 2137.0,
+             ('Manuf_03', 'Wholesale_03', 'marinatedBeef'): 2000.0,
+             ('Manuf_03', 'Wholesale_02', 'marinatedBeef'): 289.0,
+             ('Part_03', 'Manuf_02', 'rawBeef'): 500.0,
+             ('Part_04', 'Manuf_02', 'rawBeef'): 4000.0,
+             ('Part_02', 'Manuf_03', 'rawBeef'): 722.0,
+             ('Part_03', 'Manuf_03', 'rawBeef'): 4000.0}
+
+    result = [no_part4, no_t6, no_t3, no_t8, no_manuf1]
+
+    # result = [retail5, no_part4, no_manuf1, no_m1_100, no_m1_4]
+
+    # for flows in result:
+    #     print(colored("Disruption", 'red'))
+    #     print("added flows:")
+    #     for key in flows:
+    #         if key not in initial:
+    #             print(key, flows[key])
+    #     print("removed flows:")
+    #     for key in initial:
+    #         if key not in flows:
+    #             print(key, initial[key])
+    #     print("changed flows:")
+    #     for key in flows:
+    #         if key in flows and key in initial:
+    #             if flows[key] != initial[key]:
+    #                 print(key, initial[key], "to", flows[key])
+
+    print("added flows:")
+    for key in new_flows:
+        if key not in initial:
+            print(key, new_flows[key])
+    print("removed flows:")
+    for key in initial:
+        if key not in new_flows:
+            print(key, initial[key])
+    print("changed flows:")
+    for key in new_flows:
+        if key in new_flows and key in initial:
+            if new_flows[key] != initial[key]:
+                print(key, initial[key], "to", new_flows[key])

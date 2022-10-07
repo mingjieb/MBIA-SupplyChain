@@ -9,10 +9,10 @@
         "Inventory":{
             "package_0": 0
         },
-        "CommunicationNodes":[
-            "Manuf_01", "Manuf_02", "Manuf_03",
-            "Transportation"
-        ]
+        "CommunicationNodes":{
+            "Downstream": ["Manuf_01", "Manuf_02", "Manuf_03"],
+            "Transportation": ["Transportation"]
+        }
     },
     "Part_02": {
         "Production":{
@@ -24,10 +24,10 @@
         "Inventory":{
             "rawBeef": 0
         },
-        "CommunicationNodes":[
-            "Manuf_01", "Manuf_02", "Manuf_03",
-            "Transportation"
-        ]
+        "CommunicationNodes":{
+            "Downstream": ["Manuf_01", "Manuf_02", "Manuf_03"],
+            "Transportation": ["Transportation"]
+        }
     },
     "Part_03": {
         "Production":{
@@ -39,10 +39,10 @@
         "Inventory":{
             "rawBeef": 0
         },
-        "CommunicationNodes":[
-            "Manuf_01", "Manuf_02", "Manuf_03",
-            "Transportation"
-        ]
+        "CommunicationNodes":{
+            "Downstream": ["Manuf_01", "Manuf_02", "Manuf_03"],
+            "Transportation": ["Transportation"]
+        }
     },
     "Part_04": {
         "Production":{
@@ -54,10 +54,10 @@
         "Inventory":{
             "rawBeef": 0
         },
-        "CommunicationNodes":[
-            "Manuf_01", "Manuf_02", "Manuf_03",
-            "Transportation"
-        ]
+        "CommunicationNodes":{
+            "Downstream": ["Manuf_01", "Manuf_02", "Manuf_03"],
+            "Transportation": ["Transportation"]
+        }
     },
     "Part_05": {
         "Production":{
@@ -69,10 +69,10 @@
         "Inventory":{
             "package_1": 0
         },
-        "CommunicationNodes":[
-            "Manuf_01", "Manuf_02", "Manuf_03",
-            "Transportation"
-        ]
+        "CommunicationNodes":{
+            "Downstream": ["Manuf_01", "Manuf_02", "Manuf_03"],
+            "Transportation": ["Transportation"]
+        }
     },
     "Part_06": {
         "Production":{
@@ -84,10 +84,10 @@
         "Inventory":{
             "seasoning": 0
         },
-        "CommunicationNodes":[
-            "Manuf_01", "Manuf_02", "Manuf_03",
-            "Transportation"
-        ]
+        "CommunicationNodes":{
+            "Downstream": ["Manuf_01", "Manuf_02", "Manuf_03"],
+            "Transportation": ["Transportation"]
+        }
     },
     "Part_07": {
         "Production":{
@@ -99,10 +99,10 @@
         "Inventory":{
             "seasoning": 0
         },
-        "CommunicationNodes":[
-            "Manuf_01", "Manuf_02", "Manuf_03",
-            "Transportation"
-        ]
+        "CommunicationNodes":{
+            "Downstream": ["Manuf_01", "Manuf_02", "Manuf_03"],
+            "Transportation": ["Transportation"]
+        }
     },
     "Part_08": {
         "Production":{
@@ -114,9 +114,9 @@
         "Inventory":{
             "seasoning": 0
         },
-        "CommunicationNodes":[
-            "Manuf_01", "Manuf_02", "Manuf_03",
-            "Transportation"
-        ]
+        "CommunicationNodes":{
+            "Downstream": ["Manuf_01", "Manuf_02", "Manuf_03"],
+            "Transportation": ["Transportation"]
+        }
     }
 }

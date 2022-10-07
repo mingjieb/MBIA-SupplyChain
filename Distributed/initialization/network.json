@@ -1,0 +1,334 @@
+{
+    "exist_z": [
+        {
+            "index": [
+                "Wholesale_03",
+                "Retail_06"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Wholesale_03",
+                "Retail_04"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Part_07",
+                "Manuf_02"
+            ],
+            "value": 0
+        },
+        {
+            "index": [
+                "Part_01",
+                "Manuf_03"
+            ],
+            "value": 0
+        },
+        {
+            "index": [
+                "Wholesale_02",
+                "Retail_05"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Wholesale_02",
+                "Retail_04"
+            ],
+            "value": 0
+        },
+        {
+            "index": [
+                "Wholesale_02",
+                "Retail_03"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Wholesale_03",
+                "Retail_05"
+            ],
+            "value": 0
+        },
+        {
+            "index": [
+                "Part_03",
+                "Manuf_02"
+            ],
+            "value": 0
+        },
+        {
+            "index": [
+                "Part_04",
+                "Manuf_02"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Part_06",
+                "Manuf_03"
+            ],
+            "value": 0
+        },
+        {
+            "index": [
+                "Wholesale_01",
+                "Retail_01"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Part_02",
+                "Manuf_03"
+            ],
+            "value": 0
+        },
+        {
+            "index": [
+                "Manuf_02",
+                "Wholesale_03"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Manuf_02",
+                "Wholesale_04"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Wholesale_04",
+                "Retail_07"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Manuf_03",
+                "Wholesale_01"
+            ],
+            "value": 0
+        },
+        {
+            "index": [
+                "Part_03",
+                "Manuf_03"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Wholesale_04",
+                "Retail_08"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Part_01",
+                "Manuf_02"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Part_05",
+                "Manuf_02"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Part_08",
+                "Manuf_03"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Part_06",
+                "Manuf_02"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Wholesale_01",
+                "Retail_02"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Manuf_03",
+                "Wholesale_04"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Part_04",
+                "Manuf_03"
+            ],
+            "value": 0
+        },
+        {
+            "index": [
+                "Manuf_03",
+                "Wholesale_03"
+            ],
+            "value": 0
+        },
+        {
+            "index": [
+                "Part_02",
+                "Manuf_02"
+            ],
+            "value": 0
+        },
+        {
+            "index": [
+                "Part_07",
+                "Manuf_03"
+            ],
+            "value": 0
+        },
+        {
+            "index": [
+                "Manuf_03",
+                "Wholesale_02"
+            ],
+            "value": 0
+        },
+        {
+            "index": [
+                "Manuf_02",
+                "Wholesale_01"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Part_05",
+                "Manuf_03"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Part_08",
+                "Manuf_02"
+            ],
+            "value": 1
+        },
+        {
+            "index": [
+                "Manuf_02",
+                "Wholesale_02"
+            ],
+            "value": 0
+        }
+    ],
+    "exist_zeta": [
+        {
+            "index": "Retail_04",
+            "value": 0
+        },
+        {
+            "index": "Wholesale_02",
+            "value": 0
+        },
+        {
+            "index": "Part_08",
+            "value": 1
+        },
+        {
+            "index": "Part_02",
+            "value": 1
+        },
+        {
+            "index": "Part_05",
+            "value": 1
+        },
+        {
+            "index": "Retail_02",
+            "value": 0
+        },
+        {
+            "index": "Retail_03",
+            "value": 0
+        },
+        {
+            "index": "Part_07",
+            "value": 1
+        },
+        {
+            "index": "Part_03",
+            "value": 1
+        },
+        {
+            "index": "Wholesale_01",
+            "value": 0
+        },
+        {
+            "index": "Retail_07",
+            "value": 0
+        },
+        {
+            "index": "Retail_05",
+            "value": 0
+        },
+        {
+            "index": "Retail_06",
+            "value": 0
+        },
+        {
+            "index": "Part_01",
+            "value": 1
+        },
+        {
+            "index": "Part_04",
+            "value": 1
+        },
+        {
+            "index": "Wholesale_03",
+            "value": 0
+        },
+        {
+            "index": "Retail_08",
+            "value": 0
+        },
+        {
+            "index": "Manuf_02",
+            "value": 1
+        },
+        {
+            "index": "Retail_01",
+            "value": 0
+        },
+        {
+            "index": "Wholesale_04",
+            "value": 0
+        },
+        {
+            "index": "Part_06",
+            "value": 1
+        },
+        {
+            "index": "Manuf_03",
+            "value": 1
+        }
+    ],
+    "Rho": 1,
+    "Emax": 0
+}
