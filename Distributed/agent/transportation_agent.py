@@ -7,7 +7,7 @@
 
 """
 
-from agent.agent import Agent
+from Distributed.agent.agent import Agent
 
 
 class TransportationAgent(Agent):
@@ -16,7 +16,13 @@ class TransportationAgent(Agent):
         self.flow = dict()
         self.flow_change = 0
         self.flow_added = 0
-
+    def update_flow(self, flow, change):
+        try:
+            self.flow[flow] += change
+        except:
+            self.flow[flow] = change
+        if self.flow[flow] - 0 < 0.1:
+            self.flow.pop(flow)
     # agent checks its current knowledge for response
     def check_request(self, requestingAgent, product, unit):
         # TODO: determine the amount of product it can provide
@@ -44,7 +50,7 @@ class TransportationAgent(Agent):
         return False
 
     def get_available_capacity(self, start, end):
-        capacity = self.capability[(start, end)]["capacity"]
+        capacity = self.capability.characteristics["Transportation"][(start, end)]["Capacity"][0]
         used_capacity = 0
         for key in self.flow.keys():
             if start == key[0] and end == key[1]:
@@ -52,6 +58,3 @@ class TransportationAgent(Agent):
 
         return capacity-used_capacity
 
-    # TODO: optimization model of transportation agent
-    def decision_making(self):
-        pass

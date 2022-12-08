@@ -9,7 +9,7 @@
 
 class EnvironmentModel():
 
-    def __init__(self, filename):
+    def __init__(self):
         # Initialize environment model from initialization file
         self.upstream_agent = {}
         self.downstream_agent = {}
@@ -21,13 +21,24 @@ class EnvironmentModel():
     # Functions for updating environment model
 
 
-    def add_environment(self, key, product, info):
-        # Add a product type to a capability 'key'
-        # info = {"char1": x1, "char2": x2}
-        if product not in self.knowledge[key]:
-            self.knowledge[key].append(product)
-        for char in info.keys():
-            self.characteristics[key][char][product] = info[char]
+    def add_environment(self, key, product, agent):
+        if key == 'upstream':
+            if product not in self.upstream_agent.keys():
+                self.upstream_agent[product] = [agent]
+            elif agent not in self.upstream_agent[product]:
+                self.upstream_agent[product].append(agent)
+
+        if key == 'downstream':
+            if product not in self.downstream_agent.keys():
+                self.downstream_agent[product] = [agent]
+            elif agent not in self.downstream_agent[product]:
+                self.downstream_agent[product].append(agent)
+
+        if key == 'clustering':
+            if product not in self.clustering_agent.keys():
+                self.clustering_agent[product] = [agent]
+            elif agent not in self.clustering_agent[product]:
+                self.clustering_agent[product].append(agent)
 
 
     def remove_environment(self, key, product):
@@ -46,10 +57,3 @@ class EnvironmentModel():
         if product in self.knowledge[key]:
             return True
         return False
-
-    def get_characteristic(self, key, product, char):
-        # Get the characteristic value for capability 'key' of 'product'
-        if char in self.characteristics[key].keys():
-            if product in self.characteristics[key][char].keys():
-                return self.characteristics[key][char][product]
-        return None

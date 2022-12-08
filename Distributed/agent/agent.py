@@ -8,209 +8,335 @@
 """
 
 # Super class for agents in the supply chain network
-from colorama import init
+from Distributed.initialization import network
+from Distributed.knowledgebase import capability_model, environment_model, state_model, communication_manager
 from termcolor import colored
+import gurobipy as gp
+from gurobipy import GRB
 
 
 class Agent:
 
     def __init__(self, name, type):
+        # knowledge base
         self.name = name
         self.type = type
         self.flow = dict()
-        self.cost = dict()
-        self.capability = dict()
-        self.environment = list()
-        self.communication_nodes = list()
+        self.capability = capability_model.CapabilityModel()
+        self.environment = environment_model.EnvironmentModel()
+        self.state = state_model.StateModel()
+        self.communication_manager = communication_manager.CommunicationManager()
+        self.down = False
         self.demand = dict()
-        self.due_date = 0
-        self.add_edge_limit = 4
-        self.flow_indicator = dict()
 
-    # agent sends request to other agents in its environment model
-    def request(self, product, unit, environment_agent, lost_flow):
-        # TODO: make decision of which agent it chooses to request
-        # Now it requests all the agents in environment model
-        bid_response = []  # each request should start with an empty bid
-        for requestedAgent in environment_agent:
-
-            if requestedAgent.check_product_capability(product):
-                if requestedAgent.type not in ["Inventory", "Transportation"]:
-                    print(colored("Requests:", 'red'), self.name, "to", requestedAgent.name, ":", unit, product)
-                    if requestedAgent.type == "OEM":
-                        bid_response.append(requestedAgent.check_request(self, product, unit, lost_flow))
-                    # limit add edges hard code
-                    elif self.name == "Manuf_03" and requestedAgent.name == "Part_06":
-                        pass
-                    else:
-                        bid_response.append(requestedAgent.check_request(self, product, unit))
-        selection_decision = self.decision_making(sum(bid_response, []))  # flatten the list
-        self.inform(selection_decision, lost_flow)
-
-    # agent send response to the requesting agent
-    # def response(self, requestingAgent, product, unit):
-    #     res = dict()
-    #     if self.find_transportation(requestingAgent, product, unit):
-    #         if product in self.inventory.keys():
-    #             self.inventory[product] -= unit
-    #             res["product"] = unit
-    #         return True
-    #     return False
-
-    # TODO: agent inform decision
-    def inform(self, selected_decision, lost_flow):
-        for decision in selected_decision:
-            requested_agent = decision["Agent"]
-            transport = decision["TA"]
-            product = decision["Product"]
-            unit = decision["Result"]
-            due_date = decision["Supply date"][int(unit) - 1]
-            self.demand[product] -= unit
-            if self.demand[product] == 0.0:
-                self.demand.pop(product)
-            # add production
-            if "Production" in requested_agent.capability.keys():
-                if (str(requested_agent.name), str(product)) in requested_agent.production.keys():
-                    requested_agent.production[(str(requested_agent.name), str(product))] += unit
-                else:
-                    requested_agent.production[(str(requested_agent.name), str(product))] = unit
-            # add flow
-            if requested_agent.type != self.type:
-                if (str(requested_agent.name), str(self.name), str(product)) in transport.flow.keys():
-                    transport.flow[(str(requested_agent.name), str(self.name), str(product))] += unit
-                    print("Change", (str(requested_agent.name), str(self.name), str(product)))
-                    transport.flow_change += 1
-                else:
-                    transport.flow[(str(requested_agent.name), str(self.name), str(product))] = unit
-                    print("Add", (str(requested_agent.name), str(self.name), str(product)))
-                    transport.flow_added += 1
-            else:
-                for f in lost_flow:
-                    if f[0][2] == product:
-                        if (str(requested_agent.name), str(f[0][1]), str(product)) in transport.flow.keys():
-                            transport.flow[(str(requested_agent.name), str(f[0][1]), str(product))] += f[1]
-                            print("Change", (str(requested_agent.name), str(f[0][1]), str(product)))
-                            transport.flow_change += 1
-                        else:
-                            transport.flow[(str(requested_agent.name), str(f[0][1]), str(product))] = f[1]
-                            print("Add", (str(requested_agent.name), str(f[0][1]), str(product)))
-                            transport.flow_added += 1
-            print(colored("Inform:", 'green'), self.name, "to", requested_agent.name, ":", unit, product)
-            # if requested_agent.type != "Raw Material Supplier":
-            if requested_agent.type != "Manufacturing Supplier":
-                requested_agent.propagate_request(product, unit, due_date, lost_flow)
-
-    # Check whether the agent can provide the product
-    def check_product_capability(self, product):
-        for key in self.capability:
-            if key in ["Production", "Inventory"] and product in self.capability[key]:
-                return True
-        return False
-
-    # Disruption adaptation
-    def adaptation(self, agent_list, lost_production, lost_flow):
-        print(self.name, "starts communication for adaptation")
-        # find alternative agent
-        alternative_agent = {}
-        products = []
-        product_amount = []
-        for production in lost_production:
-            for item in production.items():
-                products.append(item[0][1])
-                product_amount.append(item[1])
-        for key in agent_list.keys():
-            for ag in agent_list[key]:
-                if "Production" in ag.capability.keys() and ag.name != self.name:
-                    for production in lost_production:
-                        for item in production.items():
-                            if item[0][1] in ag.capability["Production"]:
-                                if item[0][1] in alternative_agent.keys():
-                                    alternative_agent[item[0][1]].append(ag)
-                                else:
-                                    alternative_agent[item[0][1]] = [ag]
-        for key in alternative_agent.keys():
-            print("For product", key, ", find alternative agent:", [ag.name for ag in alternative_agent[key]])
-
-        for i in range(len(products)):
-            self.demand[products[i]] = product_amount[i]
-
-        # reformat the request information
-        self.request_lose_node(products, product_amount, alternative_agent, lost_flow)
-
-    # agent sends request to adapt to disruption of losing node
-    def request_lose_node(self, products, units, alternative_agent, lost_flow):
-        # Now it requests all the agents in environment model
-        bid_response = {}  # each request should start with an empty bid
-        bid_request = {}
-        # determine the flow that will be sent to alternative agents
-        req = []
+    # disrupted agent identifies demand agents and their demands
+    def find_demand_agents(self, agent_network, lost_production, lost_flow):
+        # find demand agents
+        demand_agents = []
         for f in lost_flow:
             if f[0][0] == self.name:
-                product = f[0][2]
-                req.append((f[0][1],f[0][2],f[1]))
-                for ag in alternative_agent[product]:
-                    if ag in bid_request.keys():
-                        bid_request[ag].append((f[0][1],f[0][2],f[1]))
-                    else:
-                        bid_request[ag] = [(f[0][1],f[0][2],f[1])]
-        for key in bid_request.keys():
-            print(colored("Requests:", 'red'), self.name, "to", key.name, ":", bid_request[key])
-            bid_response[key] = key.determine_max_output(self, bid_request[key])
+                ag = agent_network.find_agent_by_name(agent_network, f[0][1])
+                if ag not in demand_agents:
+                    demand_agents.append(ag)
+                # identify demand
+                ag.demand[f[0][2]] = f[1]
+        # for ag in demand_agents:
+        #     for d in ag.demand.keys():
+        #         print(ag.name, "has demand for", d, ":", ag.demand[d])
+        return demand_agents
+
+    # demand agent explores supplier agents to request
+    def exploration(self, agent_network):
+        supplier_agents = {}
+        for product in self.demand.keys():
+            supplier_agents[product] = []
+            for upstream_agent in self.environment.upstream_agent[product]:
+                if not upstream_agent.down:
+                    supplier_agents[product].append(upstream_agent)
+        # TODO: explore other agent in network but not in environment
+        return supplier_agents
+
+    # demand agent sends request to supplier agents
+    def send_request(self, supplier_agents):
+        for product in supplier_agents.keys():
+            # req = {product: self.demand[product]}
+            for sup_ag in supplier_agents[product]:
+                # Store the request information
+                try:
+                    self.communication_manager.delivered_request[sup_ag.name].update({product: self.demand[product]})
+                    sup_ag.communication_manager.received_request[self.name].update({product: self.demand[product]})
+                except:
+                    self.communication_manager.delivered_request[sup_ag.name] = {product: self.demand[product],
+                                                                                 "reqToAgent": sup_ag}
+                    sup_ag.communication_manager.received_request[self.name] = {product: self.demand[product],
+                                                                                "reqFromAgent": self}
+
+                    # supplier agent determines its response to request
+    # supplier agent determine response
+    def response_optimizer(self, transportation):
+        demand_agents = self.communication_manager.received_request.keys()
+        product_set = {}
+        demands = {}
+        flow_limit = {}
+        for ag_name in demand_agents:
+            for product in self.communication_manager.received_request[ag_name].keys():
+                if product != "reqFromAgent":
+                    try:
+                        product_set[ag_name].append(product)
+                    except:
+                        product_set[ag_name] = [product]
+                    demands[(ag_name, product)] = self.communication_manager.received_request[ag_name][product]
+
+            flow_limit[ag_name] = transportation.get_available_capacity(self.name, ag_name)
+
+        current_production = 0
+        for key in self.state.production.keys():
+            current_production += self.state.production[key]
+        production_limit = self.capability.get_capacity() - current_production
+
+        overcapacity_multiplier = 1.3
 
 
-        selection_decision = self.decision_making_lose_node(bid_response, req)  # flatten the list
-        # limit add edges hard code
-        # selection_decision[2]["Agent"] = selection_decision[0]["Agent"]
-        # selection_decision[0]["Unit"] = 200.0
-        # selection_decision[1]["Unit"] = 1681.0
-        self.inform_lose_node(selection_decision, lost_flow)
+        model = gp.Model('response_optimizer')
+        model.Params.LogToConsole = 0
+        pairs = [(j, k) for j in demand_agents for k in product_set[j]]
+        y = model.addVars(pairs, vtype=GRB.INTEGER, name="max_flow")
 
-    def inform_lose_node(self, selected_decision, lost_flow):
-        info = {}
-        for decision in selected_decision:
-            requested_agent = decision["Agent"]
-            destination = decision["Destination"]
-            transport = decision["Transportation"]
-            product = decision["Product"]
-            unit = decision["Unit"]
-            due_date = 1
-            self.demand[product] -= unit
-            if self.demand[product] == 0.0:
+        obj = model.setObjective(gp.quicksum(demands[j, k] - y[j, k]
+                                             for j in demand_agents for k in product_set[j]), GRB.MINIMIZE)
+
+        tp_constrs = model.addConstrs((gp.quicksum(y[j, k] for k in product_set[j]) <= flow_limit[j] * overcapacity_multiplier
+                                       for j in demand_agents), name="tp_limit")
+        pd_constrs = model.addConstr(gp.quicksum(y[j, k] for j in demand_agents for k in product_set[j])
+                                      <= production_limit * overcapacity_multiplier, name="pd_limit")
+        demand_constrs = model.addConstrs((y[j, k] <= demands[j, k] for j in demand_agents for k in product_set[j]),
+                                          name="demand_limit")
+
+        model.optimize()
+        xsol = model.getAttr('x', y)
+        response_decisions = {}
+        for j in demand_agents:
+            response = {}
+            for k in product_set[j]:
+                if xsol[j, k] > 0.1:
+                    cost = self.capability.characteristics["Production"][k]["Cost"] \
+                           + transportation.capability.characteristics["Transportation"][(self.name, j)]["Cost"][0]
+                    response.update({k: {"amount": xsol[j, k],
+                                         "unit_cost": cost}})
+            response_decisions[j] = {"demandAgent": self.communication_manager.received_request[j]["reqFromAgent"],
+                                     "response": response}
+
+        # response_decisions["agentname"] = {"demandAgent": 1,
+        #                                    "response":
+        #                                        {"k1": {"amount": 1, "unit_cost": 1},
+        #                                         "k2": {"amount": 1, "unit_cost": 1}}}
+        return response_decisions
+
+    # supplier agent sends response to demand agents
+    def send_response(self, response_decision):
+        for name in response_decision.keys():
+            ag_dm = response_decision[name]["demandAgent"]
+            resp = response_decision[name]["response"]
+            self.communication_manager.delivered_response[ag_dm.name] = {"response": resp, "respToAgent": ag_dm}
+            ag_dm.communication_manager.received_response[self.name] = {"response": resp,  "reqFromAgent": self}
+
+    # demand agent selects suppliers
+    def supplier_selector(self):
+        model = gp.Model('Supplier_selector')
+        model.Params.LogToConsole = 0
+        supplier_agents = self.communication_manager.received_response.keys()
+        response = {}
+        for ag_name in supplier_agents:
+            response[ag_name] = self.communication_manager.received_response[ag_name]["response"]
+
+        pairs = [(i, k) for i in supplier_agents for k in response[i].keys()]
+        x = model.addVars(pairs, vtype=GRB.INTEGER, name="flow")
+
+        obj = model.setObjective(gp.quicksum(response[i][k]["unit_cost"] * x[i, k] - 1e8*x[i, k]
+                                             for i in supplier_agents for k in response[i].keys()), GRB.MINIMIZE)
+
+        resp_constrs = model.addConstrs((x[i, k] <= response[i][k]["amount"]
+                                       for i in supplier_agents for k in response[i].keys()), name="resp_limit")
+
+        demand_constrs = model.addConstrs((gp.quicksum(x[i, k] for i in supplier_agents if k in response[i]) <= self.demand[k]
+                                           for k in self.demand.keys()), name="demand_limit")
+
+        model.optimize()
+        xsol = model.getAttr('x', x)
+        selection_decision = {}
+        for i in supplier_agents:
+            selection_decision[i] = {}
+            for k in response[i].keys():
+                if xsol[i, k] > 0.1:
+                    selection_decision[i].update({k: xsol[i, k]})
+            if len(selection_decision[i].keys()) == 0:
+                selection_decision.pop(i)
+
+        # selection_decision["supplier_name"] = {"k1": 1, "k2": 1}
+        new_flows = {}
+        for sup_name in selection_decision.keys():
+            for product in selection_decision[sup_name]:
+                new_flows[(sup_name, self.name, product)] = selection_decision[sup_name][product]
+        
+        return selection_decision, new_flows
+
+    # demand agent check demand
+    def check_demand(self, new_flows):
+        flag = True
+        for product in list(self.demand.keys()):
+            actual_get = 0
+            for flow in new_flows.items():
+                if self.name == flow[0][1] and product == flow[0][2]:
+                    actual_get += flow[1]
+            if actual_get >= self.demand[product]:
                 self.demand.pop(product)
-            if requested_agent in info.keys():
-                info[requested_agent]["Flow"].append((destination, product, unit))
-                if str(product) in info[requested_agent]["Product"].keys():
-                    info[requested_agent]["Product"][str(product)] += unit
-                else:
-                    info[requested_agent]["Product"][str(product)] = unit
             else:
-                info[requested_agent] = {"Flow": [(destination, product, unit)], "Product": {str(product): unit}}
-            # add production
-            if (str(requested_agent.name), str(product)) in requested_agent.production.keys():
-                requested_agent.production[(str(requested_agent.name), str(product))] += unit
-            else:
-                requested_agent.production[(str(requested_agent.name), str(product))] = unit
-            # add flow
-            if (str(requested_agent.name), destination, str(product)) in transport.flow.keys():
-                transport.flow[(str(requested_agent.name), destination, str(product))] += unit
-                transport.flow_change += 1
-                print("Change", (str(requested_agent.name), destination, str(product)))
-            else:
-                transport.flow[(str(requested_agent.name), destination, str(product))] = unit
-                transport.flow_added += 1
-                print("Add", (str(requested_agent.name), destination, str(product)))
-        for key in info.keys():
-            print(colored("Inform:", 'green'), self.name, "to", key.name, ":", info[key]["Flow"])
+                self.demand[product] -= actual_get
+                flag = False
+        return flag
 
-        for key in info.keys():
-            if key.type != "Manufacturing Supplier":
-                key.propagate_request_lose_node(info[key]["Product"], due_date, lost_flow)
+    # supplier agent find needed materials
+    def find_needed_materials(self, needed_production):
+        needed_materials = {}
+        for product in needed_production.keys():
+            product_structure = self.capability.characteristics["Production"][product]["Material"]
+            amount = needed_production[product]
+            for material in product_structure.keys():
+                try:
+                    needed_materials[material] += product_structure[material] * amount
+                except:
+                    needed_materials[material] = product_structure[material] * amount
 
-        # limit add edges hard code
-        # for key in info.keys():
-        #     if key.type != "Manufacturing Supplier" and key.name == "Manuf_03":
-        #         key.propagate_request_lose_node(info[key]["Product"], due_date, lost_flow)
-        #
-        # for key in info.keys():
-        #     if key.type != "Manufacturing Supplier" and key.name == "Manuf_02":
-        #         key.propagate_request_lose_node(info[key]["Product"], due_date, lost_flow)
+        return needed_materials
+
+    def get_transportaion_amount(self, source, dest):
+        amount = 0
+        for flow in self.flow.keys():
+            if flow[0] == source and flow[1] == dest:
+                amount += self.flow[flow]
+        return amount
+
+    def check_possible_iteration(self, agent_network):
+        flag = False
+        supplier_agents = self.exploration(agent_network)
+        for product in self.demand.keys():
+            if len(supplier_agents[product]) != 0:
+                for ag_sup in supplier_agents[product]:
+                    if ag_sup.have_remaining_capacity():
+                        flag = True
+                        break
+        return flag
+
+    def have_remaining_capacity(self):
+        if len(self.capability.knowledge["Production"]) == 0:
+            return False
+        total_production = 0
+        for product in self.state.production.keys():
+            total_production += self.state.production[product]
+        if self.capability.get_capacity() - total_production > 0:
+            return True
+        else:
+            return False
+
+    def cancel_downstream_production(self):
+        model = gp.Model('Cancel_downstream_production')
+        model.Params.LogToConsole = 0
+        potential_affected_product = set()
+        potential_affected_outflow = set()
+        for outflow in self.state.outflow.keys():
+            for component in self.demand.keys():
+                if component in self.capability.characteristics["Production"][outflow[1]]["Material"].keys():
+                    potential_affected_outflow.add(outflow)
+                    potential_affected_product.add(outflow[1])
+        
+        K = potential_affected_product
+        product_structure = {}
+        for component in self.demand.keys():
+            product_structure[component] = []
+            for final_prod in K:
+                if component in self.capability.characteristics["Production"][final_prod]["Material"].keys():
+                    product_structure[component].append(final_prod)
+        
+        downstream = {}
+        for final_prod in K:
+            downstream[final_prod] = []
+            for flow in potential_affected_outflow:
+                if flow[1] == final_prod:
+                    downstream[final_prod].append(flow[0])
+
+        pairs = [(j, k) for k in K for j in downstream[k]]
+        x = model.addVars(pairs, vtype=GRB.INTEGER, name="cancelled_production")
+
+        obj = model.setObjective(gp.quicksum(x[j, k] for k in K for j in downstream[k]), GRB.MINIMIZE)
+
+        demand_constrs = model.addConstrs((gp.quicksum(gp.quicksum(x[j, k] for j in downstream[k]) * self.capability.characteristics["Production"][k]["Material"][c] for k in product_structure[c]) >= self.demand[c]
+                                           for c in self.demand.keys()), name="demand_limit")
+
+        model.optimize()
+        xsol = model.getAttr('x', x)
+
+        reduced_outflow = {}
+        for k in K:
+            for j in downstream[k]:
+                if xsol[j, k] > 0.1:
+                    reduced_outflow[(j, k)] = xsol[j, k]
+
+        reduced_production = {}
+        for flow in reduced_outflow:
+            try:
+                reduced_production[flow[1]] += reduced_outflow[flow]
+            except:
+                reduced_production[flow[1]] = reduced_outflow[flow]
+
+        return reduced_production, reduced_outflow
+
+    def cancel_upstream_production(self, agent_network):
+        model = gp.Model('Cancel_upstream_production')
+        model.Params.LogToConsole = 0
+
+        upstream = {}
+        up_agent = set()
+        for flow in self.state.inflow.keys():
+            up_agent.add(flow[0])
+            try:
+                upstream[flow[1]].append(flow[0])
+            except:
+                upstream[flow[1]] = [flow[0]]
+
+        product_structure = {}
+        for component in upstream.keys():
+            product_structure[component] = []
+            for final_prod in self.state.production.keys():
+                if component in self.capability.characteristics["Production"][final_prod]["Material"].keys():
+                    product_structure[component].append(final_prod)
+
+        total_need = {}
+        for component in upstream.keys():
+            total_need[component] = 0
+            for prod in product_structure[component]:
+                total_need[component] += self.state.production[prod] * \
+                                         self.capability.characteristics["Production"][prod]["Material"][component]
+
+        pairs = [(i, k) for k in upstream.keys() for i in upstream[k]]
+        x = model.addVars(pairs, vtype=GRB.INTEGER, name="remaining_production")
+
+        obj = model.setObjective(gp.quicksum(self.state.inflow[(i, k)] - x[i, k] for k in upstream.keys() for i in upstream[k]), GRB.MINIMIZE)
+
+        demand_constrs = model.addConstrs((gp.quicksum(x[i, k] for i in upstream[k]) <= total_need[k] for k in upstream.keys()), name="demand_limit")
+
+        model.optimize()
+        xsol = model.getAttr('x', x)
+
+        transportation = network.find_agent_by_name(agent_network, "Transportation")
+        for k in upstream.keys():
+            for i in upstream[k]:
+                initial_flow = self.state.inflow[(i, k)]
+                self.state.update_flow("inflow", i, k, xsol[i, k] - initial_flow)
+                transportation.update_flow((i, self.name, k), xsol[i, k] - initial_flow)
+                ag = network.find_agent_by_name(agent_network, i)
+                ag.state.update_prod_inv("production", k, xsol[i, k] - initial_flow)
+                ag.state.update_flow("outflow", self.name, k, xsol[i, k] - initial_flow)
+                if len(ag.state.inflow.keys()) != 0:
+                    ag.cancel_upstream_production(agent_network)
+
+        agent_network.occurred_communication += len(up_agent)

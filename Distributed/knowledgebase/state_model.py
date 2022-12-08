@@ -7,13 +7,46 @@
 
 """
 
-import info
 class StateModel():
 
     def __init__(self):
-        self.Y = []
-        self.E = []
-        self.Tr = []
-        self.y0 = type(info)
-        self.Y_m = []
-        self.attribute = None
+        self.inflow = {}
+        self.outflow = {}
+        self.inventory = {}
+        self.production = {}
+
+    def update_prod_inv(self, key, product, change):
+        # if key == "inventory":
+        #     self.inventory[product] = amount
+        #     if amount - 0 < 0.01:
+        #         self.inventory.pop(product)
+        if key == "production":
+            try:
+                self.production[product] += change
+            except:
+                self.production[product] = change
+            if self.production[product] - 0 < 0.1:
+                self.production.pop(product)
+
+    def update_flow(self, key, agent, product, change):
+        if key == "inflow":
+            try:
+                self.inflow[(agent, product)] += change
+            except:
+                self.inflow[(agent, product)] = change
+            if self.inflow[(agent, product)] - 0 < 0.1:
+                self.inflow.pop((agent, product))
+        if key == "outflow":
+            try:
+                self.outflow[(agent, product)] += change
+            except:
+                self.outflow[(agent, product)] = change
+            if self.outflow[(agent, product)] - 0 < 0.1:
+                self.outflow.pop((agent, product))
+
+
+    def clear_state(self):
+        self.inflow.clear()
+        self.outflow.clear()
+        self.inventory.clear()
+        self.production.clear()

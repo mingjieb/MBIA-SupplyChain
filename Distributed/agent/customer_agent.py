@@ -9,7 +9,7 @@
 
 import gurobipy as gp
 from gurobipy import GRB
-from agent.agent import Agent
+from Distributed.agent.agent import Agent
 from colorama import init
 from termcolor import colored
 
@@ -18,7 +18,6 @@ class CustomerAgent(Agent):
     def __init__(self, name):
         Agent.__init__(self, name, "Customer")
         self.demand = dict()
-        self.due_date = 0
 
     # TODO: optimization model of customer agent
     def decision_making(self, bid_response):

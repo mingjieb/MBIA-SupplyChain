@@ -9,7 +9,7 @@
 
 import gurobipy as gp
 from gurobipy import GRB
-from agent.agent import Agent
+from Distributed.agent.agent import Agent
 from colorama import init
 from termcolor import colored
 
@@ -17,8 +17,6 @@ from termcolor import colored
 class OEMAgent(Agent):
     def __init__(self, name):
         Agent.__init__(self, name, "OEM")
-        self.production = dict()
-        self.inventory = dict()
 
     # agent checks its current knowledge for response
     def check_request(self, requestingAgent, product, unit, lost_flow):

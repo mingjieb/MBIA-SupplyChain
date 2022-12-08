@@ -1,0 +1,2130 @@
+{
+    "compressor_sup_3": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 4,
+            "l_max": 39,
+            "P": {
+                "compressor_2": 1,
+                "compressor_3": 1
+            },
+            "Q": {
+                "compressor_2": 0.5,
+                "compressor_3": 0.5
+            },
+            "F": {
+                "compressor_3": 1.0,
+                "compressor_2": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 1,
+            "N_p": 1,
+            "H_f": 1,
+            "H_p": 1,
+            "M_e": 5,
+            "T_e": 4.484487295150757
+        }
+    },
+    "substrate_sup_1": {
+        "attributes": {
+            "g_in": 2,
+            "g_out": 3,
+            "g_com": 12,
+            "l_max": 40,
+            "P": {
+                "substrate_1": 0,
+                "substrate_2": 1,
+                "substrate_3": 1
+            },
+            "Q": {
+                "substrate_1": 1,
+                "substrate_2": 0.5,
+                "substrate_3": 0.5
+            },
+            "F": {
+                "substrate_1": 1.0,
+                "substrate_3": 1.0,
+                "substrate_2": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 10.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1111.0900000000001,
+            "C_p": -1110.67,
+            "N_f": 49,
+            "N_p": 35,
+            "H_f": 4,
+            "H_p": 3,
+            "M_e": 84,
+            "T_e": 0.029137611389160156
+        }
+    },
+    "HVAC_sup_3": {
+        "attributes": {
+            "g_in": 10,
+            "g_out": 2,
+            "g_com": 22,
+            "l_max": 39,
+            "P": {
+                "HVAC_2": 1,
+                "HVAC_3": 2
+            },
+            "Q": {
+                "HVAC_2": 0.5,
+                "HVAC_3": 0.3333333333333333
+            },
+            "F": {
+                "HVAC_2": 1.0,
+                "HVAC_3": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 14,
+            "N_p": 4,
+            "H_f": 16,
+            "H_p": 7,
+            "M_e": 90,
+            "T_e": 2.559079885482788
+        }
+    },
+    "cover_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 2,
+            "g_com": 5,
+            "l_max": 40,
+            "P": {
+                "cover": 1
+            },
+            "Q": {
+                "cover": 0.5
+            },
+            "F": {
+                "cover": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 2,
+            "N_p": 1,
+            "H_f": 2,
+            "H_p": 1,
+            "M_e": 10,
+            "T_e": 0.0
+        }
+    },
+    "bezel_sup_3": {
+        "attributes": {
+            "g_in": 2,
+            "g_out": 3,
+            "g_com": 12,
+            "l_max": 40,
+            "P": {
+                "bezel_1": 1,
+                "bezel_2": 2,
+                "bezel_3": 2,
+                "bezel_4": 1
+            },
+            "Q": {
+                "bezel_1": 0.5,
+                "bezel_2": 0.3333333333333333,
+                "bezel_3": 0.3333333333333333,
+                "bezel_4": 0.5
+            },
+            "F": {
+                "bezel_3": 1.0,
+                "bezel_2": 1.0,
+                "bezel_1": 1.0,
+                "bezel_4": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 5,
+            "N_p": 3,
+            "H_f": 8,
+            "H_p": 4,
+            "M_e": 61,
+            "T_e": 0.015631914138793945
+        }
+    },
+    "faceplate_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 2,
+            "g_com": 5,
+            "l_max": 40,
+            "P": {
+                "faceplate_1": 1,
+                "faceplate_2": 1
+            },
+            "Q": {
+                "faceplate_1": 0.5,
+                "faceplate_2": 0.5
+            },
+            "F": {
+                "faceplate_2": 1.0,
+                "faceplate_1": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 2,
+            "N_p": 1,
+            "H_f": 2,
+            "H_p": 1,
+            "M_e": 10,
+            "T_e": 0.015621662139892578
+        }
+    },
+    "screen_sup_4": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 5,
+            "l_max": 39,
+            "P": {
+                "touch_screen_2B": 1,
+                "touch_screen_3A": 0,
+                "touch_screen_3B": 1
+            },
+            "Q": {
+                "touch_screen_2B": 0.5,
+                "touch_screen_3A": 1,
+                "touch_screen_3B": 0.5
+            },
+            "F": {
+                "touch_screen_3B": 1.0,
+                "touch_screen_3A": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -51.090000000000146,
+            "C_p": -50.67000000000007,
+            "N_f": 5,
+            "N_p": 5,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 10,
+            "T_e": 0.0
+        }
+    },
+    "wheel_sup_2": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 3,
+            "l_max": 39,
+            "P": {
+                "wheel_2": 0,
+                "wheel_3": 1
+            },
+            "Q": {
+                "wheel_2": 1,
+                "wheel_3": 0.5
+            },
+            "F": {
+                "wheel_3": 1.0,
+                "wheel_2": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -241.09000000000015,
+            "C_p": -240.67000000000007,
+            "N_f": 3,
+            "N_p": 2,
+            "H_f": 1,
+            "H_p": 1,
+            "M_e": 11,
+            "T_e": 0.0
+        }
+    },
+    "cluster_sup_3": {
+        "attributes": {
+            "g_in": 4,
+            "g_out": 2,
+            "g_com": 14,
+            "l_max": 39,
+            "P": {
+                "cluster_2": 1,
+                "cluster_3": 2
+            },
+            "Q": {
+                "cluster_2": 0.5,
+                "cluster_3": 0.3333333333333333
+            },
+            "F": {
+                "cluster_2": 1.0,
+                "cluster_3": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 6,
+            "N_p": 5,
+            "H_f": 7,
+            "H_p": 3,
+            "M_e": 41,
+            "T_e": 0.006542682647705078
+        }
+    },
+    "LED_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 6,
+            "l_max": 40,
+            "P": {
+                "LED": 2
+            },
+            "Q": {
+                "LED": 0.3333333333333333
+            },
+            "F": {
+                "LED": 0.19047619047619047
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 1,
+            "N_p": 2,
+            "H_f": 1,
+            "H_p": 0,
+            "M_e": 9,
+            "T_e": 0.0
+        }
+    },
+    "LED_sup_2": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 6,
+            "l_max": 40,
+            "P": {
+                "LED": 2
+            },
+            "Q": {
+                "LED": 0.3333333333333333
+            },
+            "F": {
+                "LED": 0.8095238095238095
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 1,
+            "N_p": 2,
+            "H_f": 1,
+            "H_p": 0,
+            "M_e": 9,
+            "T_e": 0.01562190055847168
+        }
+    },
+    "glovebox_sup_1": {
+        "attributes": {
+            "g_in": 2,
+            "g_out": 3,
+            "g_com": 11,
+            "l_max": 40,
+            "P": {
+                "glove_box_1": 1,
+                "glove_box_2": 1,
+                "glove_box_3": 1
+            },
+            "Q": {
+                "glove_box_1": 0.5,
+                "glove_box_2": 0.5,
+                "glove_box_3": 0.5
+            },
+            "F": {
+                "glove_box_3": 1.0,
+                "glove_box_1": 1.0,
+                "glove_box_2": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 5,
+            "N_p": 2,
+            "H_f": 5,
+            "H_p": 2,
+            "M_e": 45,
+            "T_e": 0.015618324279785156
+        }
+    },
+    "wire_sup_3": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 6,
+            "l_max": 40,
+            "P": {
+                "wire": 2
+            },
+            "Q": {
+                "wire": 0.3333333333333333
+            },
+            "F": {
+                "wire": 0.5245901639344263
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 1,
+            "N_p": 2,
+            "H_f": 1,
+            "H_p": 0,
+            "M_e": 7,
+            "T_e": 0.0
+        }
+    },
+    "wire_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 6,
+            "l_max": 40,
+            "P": {
+                "wire": 2
+            },
+            "Q": {
+                "wire": 0.3333333333333333
+            },
+            "F": {
+                "wire": 0.47540983606557374
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 1,
+            "N_p": 1,
+            "H_f": 1,
+            "H_p": 1,
+            "M_e": 8,
+            "T_e": 0.015613317489624023
+        }
+    },
+    "column_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 3,
+            "l_max": 40,
+            "P": {
+                "column": 1
+            },
+            "Q": {
+                "column": 0.5
+            },
+            "F": {
+                "column": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 1,
+            "N_p": 1,
+            "H_f": 1,
+            "H_p": 1,
+            "M_e": 5,
+            "T_e": 0.0
+        }
+    },
+    "wiring_sup_3": {
+        "attributes": {
+            "g_in": 3,
+            "g_out": 1,
+            "g_com": 9,
+            "l_max": 39,
+            "P": {
+                "wiring_3A": 1,
+                "wiring_3B": 1,
+                "wiring_3C": 1
+            },
+            "Q": {
+                "wiring_3A": 0.5,
+                "wiring_3B": 0.5,
+                "wiring_3C": 0.5
+            },
+            "F": {
+                "wiring_3A": 1.0,
+                "wiring_3B": 1.0,
+                "wiring_3C": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 4,
+            "N_p": 3,
+            "H_f": 4,
+            "H_p": 3,
+            "M_e": 26,
+            "T_e": 0.015626907348632812
+        }
+    },
+    "fanvent_sup_3": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 2,
+            "g_com": 7,
+            "l_max": 40,
+            "P": {
+                "fan_vent_1": 1,
+                "fan_vent_2": 1,
+                "fan_vent_3": 1
+            },
+            "Q": {
+                "fan_vent_1": 0.5,
+                "fan_vent_2": 0.5,
+                "fan_vent_3": 0.5
+            },
+            "F": {
+                "fan_vent_3": 1.0,
+                "fan_vent_2": 1.0,
+                "fan_vent_1": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 2,
+            "N_p": 1,
+            "H_f": 3,
+            "H_p": 3,
+            "M_e": 13,
+            "T_e": 0.0
+        }
+    },
+    "infortainment_sup_3": {
+        "attributes": {
+            "g_in": 5,
+            "g_out": 1,
+            "g_com": 9,
+            "l_max": 39,
+            "P": {
+                "infotainment_3A": 0,
+                "infotainment_3B": 1,
+                "infotainment_3C": 0
+            },
+            "Q": {
+                "infotainment_3A": 1,
+                "infotainment_3B": 0.5,
+                "infotainment_3C": 1
+            },
+            "F": {
+                "infotainment_3A": 1.0,
+                "infotainment_3C": 1.0,
+                "infotainment_3B": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 20.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1941.0900000000001,
+            "C_p": -1940.67,
+            "N_f": 46,
+            "N_p": 42,
+            "H_f": 2,
+            "H_p": 0,
+            "M_e": 91,
+            "T_e": 0.015626907348632812
+        }
+    },
+    "button_sup_5": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 2,
+            "g_com": 8,
+            "l_max": 40,
+            "P": {
+                "button_2": 1,
+                "button_4": 1
+            },
+            "Q": {
+                "button_2": 0.5,
+                "button_4": 0.5
+            },
+            "F": {
+                "button_4": 1.0,
+                "button_2": 0.11764705882352941
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 2,
+            "N_p": 3,
+            "H_f": 2,
+            "H_p": 0,
+            "M_e": 11,
+            "T_e": 0.0
+        }
+    },
+    "beam_sup_1": {
+        "attributes": {
+            "g_in": 2,
+            "g_out": 2,
+            "g_com": 5,
+            "l_max": 40,
+            "P": {
+                "cross_car_beam_1": 0,
+                "cross_car_beam_2": 1
+            },
+            "Q": {
+                "cross_car_beam_1": 1,
+                "cross_car_beam_2": 0.5
+            },
+            "F": {
+                "cross_car_beam_1": 1.0,
+                "cross_car_beam_2": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 10.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1111.0900000000001,
+            "C_p": -1110.67,
+            "N_f": 49,
+            "N_p": 35,
+            "H_f": 2,
+            "H_p": 1,
+            "M_e": 64,
+            "T_e": 0.015661001205444336
+        }
+    },
+    "plastic_sup_3": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 3,
+            "g_com": 16,
+            "l_max": 40,
+            "P": {
+                "plastic": 4
+            },
+            "Q": {
+                "plastic": 0.2
+            },
+            "F": {
+                "plastic": 0.2857142857142857
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": 238.90999999999985,
+            "C_p": 239.32999999999993,
+            "N_f": 4,
+            "N_p": 3,
+            "H_f": 3,
+            "H_p": 0,
+            "M_e": 43,
+            "T_e": 0.021677732467651367
+        }
+    },
+    "plastic_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 2,
+            "g_com": 16,
+            "l_max": 40,
+            "P": {
+                "plastic": 4
+            },
+            "Q": {
+                "plastic": 0.2
+            },
+            "F": {
+                "plastic": 0.23809523809523808
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 2,
+            "N_p": 1,
+            "H_f": 2,
+            "H_p": 1,
+            "M_e": 44,
+            "T_e": 0.009300947189331055
+        }
+    },
+    "plastic_sup_5": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 3,
+            "g_com": 16,
+            "l_max": 40,
+            "P": {
+                "plastic": 4
+            },
+            "Q": {
+                "plastic": 0.2
+            },
+            "F": {
+                "plastic": 0.47619047619047616
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 3,
+            "N_p": 2,
+            "H_f": 3,
+            "H_p": 0,
+            "M_e": 49,
+            "T_e": 0.0
+        }
+    },
+    "bezel_sup_5": {
+        "attributes": {
+            "g_in": 2,
+            "g_out": 2,
+            "g_com": 11,
+            "l_max": 40,
+            "P": {
+                "bezel_6": 0,
+                "bezel_7": 0
+            },
+            "Q": {
+                "bezel_6": 1,
+                "bezel_7": 1
+            },
+            "F": {
+                "bezel_6": 1.0,
+                "bezel_7": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -2181.09,
+            "C_p": -2180.67,
+            "N_f": 23,
+            "N_p": 17,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 25,
+            "T_e": 0.0
+        }
+    },
+    "screen_sup_2": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 2,
+            "g_com": 7,
+            "l_max": 39,
+            "P": {
+                "screen_2": 1,
+                "screen_3": 1,
+                "touch_screen_2A": 1
+            },
+            "Q": {
+                "screen_2": 0.5,
+                "screen_3": 0.5,
+                "touch_screen_2A": 0.5
+            },
+            "F": {
+                "screen_2": 1.0,
+                "screen_3": 1.0,
+                "touch_screen_2A": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 2,
+            "N_p": 2,
+            "H_f": 2,
+            "H_p": 1,
+            "M_e": 10,
+            "T_e": 0.0
+        }
+    },
+    "beam_sup_3": {
+        "attributes": {
+            "g_in": 1,
+            "g_out": 1,
+            "g_com": 3,
+            "l_max": 39,
+            "P": {
+                "cross_car_beam_3": 0
+            },
+            "Q": {
+                "cross_car_beam_3": 1
+            },
+            "F": {
+                "cross_car_beam_3": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 10.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1031.0900000000001,
+            "C_p": -1030.67,
+            "N_f": 40,
+            "N_p": 38,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 71,
+            "T_e": 0.022128582000732422
+        }
+    },
+    "steering_sup_1": {
+        "attributes": {
+            "g_in": 5,
+            "g_out": 3,
+            "g_com": 14,
+            "l_max": 40,
+            "P": {
+                "steering_column_1": 1,
+                "steering_column_2": 1,
+                "steering_column_3": 1
+            },
+            "Q": {
+                "steering_column_1": 0.5,
+                "steering_column_2": 0.5,
+                "steering_column_3": 0.5
+            },
+            "F": {
+                "steering_column_1": 1.0,
+                "steering_column_2": 1.0,
+                "steering_column_3": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 8,
+            "N_p": 2,
+            "H_f": 8,
+            "H_p": 2,
+            "M_e": 43,
+            "T_e": 0.015661001205444336
+        }
+    },
+    "shaft_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 1,
+            "l_max": 40,
+            "P": {
+                "shaft_1": 0
+            },
+            "Q": {
+                "shaft_1": 1
+            },
+            "F": {
+                "shaft_1": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -21.090000000000146,
+            "C_p": -20.670000000000073,
+            "N_f": 2,
+            "N_p": 1,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 4,
+            "T_e": 0.0019958019256591797
+        }
+    },
+    "leather_sup_2": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 3,
+            "l_max": 40,
+            "P": {
+                "leather": 1
+            },
+            "Q": {
+                "leather": 0.5
+            },
+            "F": {
+                "leather": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": 218.90999999999985,
+            "C_p": 219.32999999999993,
+            "N_f": 1,
+            "N_p": 1,
+            "H_f": 3,
+            "H_p": 3,
+            "M_e": 8,
+            "T_e": 0.0029947757720947266
+        }
+    },
+    "infortainment_sup_4": {
+        "attributes": {
+            "g_in": 4,
+            "g_out": 1,
+            "g_com": 13,
+            "l_max": 39,
+            "P": {
+                "infotainment_2A": 1,
+                "infotainment_3B": 1
+            },
+            "Q": {
+                "infotainment_2A": 0.5,
+                "infotainment_3B": 0.5
+            },
+            "F": {
+                "infotainment_2A": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 8,
+            "N_p": 3,
+            "H_f": 2,
+            "H_p": 1,
+            "M_e": 29,
+            "T_e": 0.010072946548461914
+        }
+    },
+    "cockpit_assy_3": {
+        "attributes": {
+            "g_in": 10,
+            "g_out": 2,
+            "g_com": 24,
+            "l_max": 39,
+            "P": {
+                "cockpit_3A": 0,
+                "cockpit_3B": 0,
+                "cockpit_3C": 0
+            },
+            "Q": {
+                "cockpit_3A": 1,
+                "cockpit_3B": 1,
+                "cockpit_3C": 1
+            },
+            "F": {
+                "cockpit_3C": 1.0,
+                "cockpit_3A": 1.0,
+                "cockpit_3B": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 40.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -3881.09,
+            "C_p": -3880.67,
+            "N_f": 39,
+            "N_p": 30,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 14,
+            "T_e": 0.015620231628417969
+        }
+    },
+    "wiring_sup_1": {
+        "attributes": {
+            "g_in": 3,
+            "g_out": 2,
+            "g_com": 10,
+            "l_max": 40,
+            "P": {
+                "wiring_1": 0,
+                "wiring_2A": 1,
+                "wiring_2B": 1
+            },
+            "Q": {
+                "wiring_1": 1,
+                "wiring_2A": 0.5,
+                "wiring_2B": 0.5
+            },
+            "F": {
+                "wiring_1": 1.0,
+                "wiring_2B": 1.0,
+                "wiring_2A": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 10.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1111.0900000000001,
+            "C_p": -1110.67,
+            "N_f": 48,
+            "N_p": 35,
+            "H_f": 4,
+            "H_p": 3,
+            "M_e": 83,
+            "T_e": 0.015588521957397461
+        }
+    },
+    "infortainment_sup_1": {
+        "attributes": {
+            "g_in": 5,
+            "g_out": 1,
+            "g_com": 10,
+            "l_max": 40,
+            "P": {
+                "infotainment_1": 0
+            },
+            "Q": {
+                "infotainment_1": 1
+            },
+            "F": {
+                "infotainment_1": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 10.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1111.0900000000001,
+            "C_p": -1110.67,
+            "N_f": 47,
+            "N_p": 34,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 55,
+            "T_e": 0.015621185302734375
+        }
+    },
+    "bezel_sup_4": {
+        "attributes": {
+            "g_in": 1,
+            "g_out": 1,
+            "g_com": 6,
+            "l_max": 40,
+            "P": {
+                "bezel_5": 0
+            },
+            "Q": {
+                "bezel_5": 1
+            },
+            "F": {
+                "bezel_5": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -131.09000000000015,
+            "C_p": -130.67000000000007,
+            "N_f": 7,
+            "N_p": 6,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 10,
+            "T_e": 0.0
+        }
+    },
+    "infortainment_sup_2": {
+        "attributes": {
+            "g_in": 4,
+            "g_out": 1,
+            "g_com": 10,
+            "l_max": 38,
+            "P": {
+                "infotainment_2A": 1,
+                "infotainment_2B": 0
+            },
+            "Q": {
+                "infotainment_2A": 0.5,
+                "infotainment_2B": 1
+            },
+            "F": {
+                "infotainment_2B": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 10.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1011.0900000000001,
+            "C_p": -1010.6700000000001,
+            "N_f": 40,
+            "N_p": 39,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 64,
+            "T_e": 0.015659332275390625
+        }
+    },
+    "navi_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 4,
+            "g_com": 5,
+            "l_max": 40,
+            "P": {
+                "navi": 1
+            },
+            "Q": {
+                "navi": 0.5
+            },
+            "F": {
+                "navi": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": 18.909999999999854,
+            "C_p": 19.329999999999927,
+            "N_f": 5,
+            "N_p": 2,
+            "H_f": 4,
+            "H_p": 1,
+            "M_e": 21,
+            "T_e": 0.0
+        }
+    },
+    "fabric_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 2,
+            "g_com": 3,
+            "l_max": 40,
+            "P": {
+                "fabric": 1
+            },
+            "Q": {
+                "fabric": 0.5
+            },
+            "F": {
+                "fabric": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 2,
+            "N_p": 1,
+            "H_f": 2,
+            "H_p": 1,
+            "M_e": 10,
+            "T_e": 0.0
+        }
+    },
+    "screen_sup_5": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 3,
+            "l_max": 39,
+            "P": {
+                "touch_screen_3B": 1,
+                "touch_screen_3C": 0
+            },
+            "Q": {
+                "touch_screen_3B": 0.5,
+                "touch_screen_3C": 1
+            },
+            "F": {
+                "touch_screen_3C": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -51.090000000000146,
+            "C_p": -50.67000000000007,
+            "N_f": 4,
+            "N_p": 4,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 7,
+            "T_e": 0.0
+        }
+    },
+    "shaft_sup_2": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 2,
+            "g_com": 4,
+            "l_max": 39,
+            "P": {
+                "shaft_2": 0,
+                "shaft_3": 1
+            },
+            "Q": {
+                "shaft_2": 1,
+                "shaft_3": 0.5
+            },
+            "F": {
+                "shaft_2": 1.0,
+                "shaft_3": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -61.090000000000146,
+            "C_p": -60.67000000000007,
+            "N_f": 3,
+            "N_p": 1,
+            "H_f": 1,
+            "H_p": 1,
+            "M_e": 9,
+            "T_e": 0.015620946884155273
+        }
+    },
+    "switch_sup_3": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 3,
+            "l_max": 39,
+            "P": {
+                "switch_2": 0
+            },
+            "Q": {
+                "switch_2": 1
+            },
+            "F": {
+                "switch_2": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1161.0900000000001,
+            "C_p": -1160.67,
+            "N_f": 7,
+            "N_p": 5,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 16,
+            "T_e": 0.0
+        }
+    },
+    "gauge_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 6,
+            "l_max": 40,
+            "P": {
+                "analog_gauge": 1,
+                "digital_gauge": 2
+            },
+            "Q": {
+                "analog_gauge": 0.5,
+                "digital_gauge": 0.3333333333333333
+            },
+            "F": {
+                "analog_gauge": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 1,
+            "N_p": 2,
+            "H_f": 1,
+            "H_p": 0,
+            "M_e": 6,
+            "T_e": 0.0
+        }
+    },
+    "compressor_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 1,
+            "l_max": 40,
+            "P": {
+                "compressor_1": 0
+            },
+            "Q": {
+                "compressor_1": 1
+            },
+            "F": {
+                "compressor_1": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -241.09000000000015,
+            "C_p": -240.67000000000007,
+            "N_f": 10,
+            "N_p": 8,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 12,
+            "T_e": 0.0
+        }
+    },
+    "controlunit_sup_2": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 2,
+            "g_com": 5,
+            "l_max": 40,
+            "P": {
+                "control_unit": 1
+            },
+            "Q": {
+                "control_unit": 0.5
+            },
+            "F": {
+                "control_unit": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 2,
+            "N_p": 1,
+            "H_f": 2,
+            "H_p": 1,
+            "M_e": 11,
+            "T_e": 0.0
+        }
+    },
+    "HVAC_sup_1": {
+        "attributes": {
+            "g_in": 8,
+            "g_out": 1,
+            "g_com": 15,
+            "l_max": 40,
+            "P": {
+                "HVAC_1": 0
+            },
+            "Q": {
+                "HVAC_1": 1
+            },
+            "F": {
+                "HVAC_1": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 10.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1111.0900000000001,
+            "C_p": -1110.67,
+            "N_f": 47,
+            "N_p": 34,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 54,
+            "T_e": 0.0
+        }
+    },
+    "button_sup_4": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 2,
+            "g_com": 8,
+            "l_max": 40,
+            "P": {
+                "button_1": 1,
+                "button_4": 1
+            },
+            "Q": {
+                "button_1": 0.5,
+                "button_4": 0.5
+            },
+            "F": {
+                "button_1": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 2,
+            "N_p": 1,
+            "H_f": 2,
+            "H_p": 1,
+            "M_e": 10,
+            "T_e": 0.015622615814208984
+        }
+    },
+    "airbag_sup_1": {
+        "attributes": {
+            "g_in": 2,
+            "g_out": 1,
+            "g_com": 11,
+            "l_max": 40,
+            "P": {
+                "airbag": 1
+            },
+            "Q": {
+                "airbag": 0.5
+            },
+            "F": {
+                "airbag": 0.5
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 3,
+            "N_p": 5,
+            "H_f": 3,
+            "H_p": 1,
+            "M_e": 41,
+            "T_e": 0.022126197814941406
+        }
+    },
+    "airbag_sup_2": {
+        "attributes": {
+            "g_in": 2,
+            "g_out": 2,
+            "g_com": 11,
+            "l_max": 40,
+            "P": {
+                "airbag": 1
+            },
+            "Q": {
+                "airbag": 0.5
+            },
+            "F": {
+                "airbag": 0.5
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 4,
+            "N_p": 5,
+            "H_f": 4,
+            "H_p": 1,
+            "M_e": 50,
+            "T_e": 0.015621423721313477
+        }
+    },
+    "connector_sup_2": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 2,
+            "g_com": 5,
+            "l_max": 40,
+            "P": {
+                "connector": 1
+            },
+            "Q": {
+                "connector": 0.5
+            },
+            "F": {
+                "connector": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": 608.9099999999999,
+            "C_p": 609.3299999999999,
+            "N_f": 2,
+            "N_p": 2,
+            "H_f": 4,
+            "H_p": 2,
+            "M_e": 14,
+            "T_e": 0.015621662139892578
+        }
+    },
+    "radio_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 4,
+            "g_com": 5,
+            "l_max": 40,
+            "P": {
+                "radio": 1
+            },
+            "Q": {
+                "radio": 0.5
+            },
+            "F": {
+                "radio": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 4,
+            "N_p": 1,
+            "H_f": 4,
+            "H_p": 1,
+            "M_e": 20,
+            "T_e": 0.0
+        }
+    },
+    "cluster_sup_1": {
+        "attributes": {
+            "g_in": 5,
+            "g_out": 1,
+            "g_com": 11,
+            "l_max": 40,
+            "P": {
+                "cluster_1": 0
+            },
+            "Q": {
+                "cluster_1": 1
+            },
+            "F": {
+                "cluster_1": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 10.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1111.0900000000001,
+            "C_p": -1110.67,
+            "N_f": 47,
+            "N_p": 34,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 55,
+            "T_e": 0.01562190055847168
+        }
+    },
+    "wheel_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 2,
+            "l_max": 40,
+            "P": {
+                "wheel_1": 0
+            },
+            "Q": {
+                "wheel_1": 1
+            },
+            "F": {
+                "wheel_1": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -71.09000000000015,
+            "C_p": -70.67000000000007,
+            "N_f": 4,
+            "N_p": 3,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 7,
+            "T_e": 0.0
+        }
+    },
+    "al_sup_3": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 4,
+            "l_max": 40,
+            "P": {
+                "aluminum": 2
+            },
+            "Q": {
+                "aluminum": 0.3333333333333333
+            },
+            "F": {
+                "aluminum": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": 238.90999999999985,
+            "C_p": 239.32999999999993,
+            "N_f": 1,
+            "N_p": 2,
+            "H_f": 2,
+            "H_p": 1,
+            "M_e": 9,
+            "T_e": 0.0
+        }
+    },
+    "chip_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 3,
+            "g_com": 3,
+            "l_max": 39,
+            "P": {
+                "chip_2": 0,
+                "chip_3": 0
+            },
+            "Q": {
+                "chip_2": 1,
+                "chip_3": 1
+            },
+            "F": {
+                "chip_3": 1.0,
+                "chip_2": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -271.09000000000015,
+            "C_p": -270.6700000000001,
+            "N_f": 13,
+            "N_p": 6,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 19,
+            "T_e": 0.015625715255737305
+        }
+    },
+    "button_sup_2": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 5,
+            "l_max": 40,
+            "P": {
+                "button_2": 1,
+                "button_3": 1
+            },
+            "Q": {
+                "button_2": 0.5,
+                "button_3": 0.5
+            },
+            "F": {
+                "button_3": 0.5714285714285714,
+                "button_2": 0.8823529411764706
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 1,
+            "N_p": 3,
+            "H_f": 2,
+            "H_p": 0,
+            "M_e": 9,
+            "T_e": 0.0
+        }
+    },
+    "button_sup_3": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 4,
+            "l_max": 39,
+            "P": {
+                "button_3": 1
+            },
+            "Q": {
+                "button_3": 0.5
+            },
+            "F": {
+                "button_3": 0.42857142857142855
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -781.0900000000001,
+            "C_p": -780.6700000000001,
+            "N_f": 7,
+            "N_p": 7,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 16,
+            "T_e": 0.006542205810546875
+        }
+    },
+    "gauge_sup_2": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 6,
+            "l_max": 40,
+            "P": {
+                "analog_gauge": 1,
+                "digital_gauge": 2
+            },
+            "Q": {
+                "analog_gauge": 0.5,
+                "digital_gauge": 0.3333333333333333
+            },
+            "F": {
+                "digital_gauge": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 1,
+            "N_p": 2,
+            "H_f": 1,
+            "H_p": 0,
+            "M_e": 8,
+            "T_e": 0.0
+        }
+    },
+    "bezel_sup_6": {
+        "attributes": {
+            "g_in": 1,
+            "g_out": 1,
+            "g_com": 6,
+            "l_max": 40,
+            "P": {
+                "bezel_8": 0
+            },
+            "Q": {
+                "bezel_8": 1
+            },
+            "F": {
+                "bezel_8": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -181.09000000000015,
+            "C_p": -180.67000000000007,
+            "N_f": 7,
+            "N_p": 7,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 8,
+            "T_e": 0.0
+        }
+    },
+    "cockpit_assy_1": {
+        "attributes": {
+            "g_in": 10,
+            "g_out": 1,
+            "g_com": 16,
+            "l_max": 40,
+            "P": {
+                "cockpit_1": 0
+            },
+            "Q": {
+                "cockpit_1": 1
+            },
+            "F": {
+                "cockpit_1": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 10.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1111.0900000000001,
+            "C_p": -1110.67,
+            "N_f": 47,
+            "N_p": 34,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 12,
+            "T_e": 0.0
+        }
+    },
+    "cockpit_assy_2": {
+        "attributes": {
+            "g_in": 11,
+            "g_out": 2,
+            "g_com": 23,
+            "l_max": 38,
+            "P": {
+                "cockpit_2A": 0,
+                "cockpit_2B": 0
+            },
+            "Q": {
+                "cockpit_2A": 1,
+                "cockpit_2B": 1
+            },
+            "F": {
+                "cockpit_2B": 1.0,
+                "cockpit_2A": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 30.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -2991.09,
+            "C_p": -2990.67,
+            "N_f": 42,
+            "N_p": 29,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 15,
+            "T_e": 0.0
+        }
+    },
+    "duct_sup_2": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 5,
+            "l_max": 40,
+            "P": {
+                "duct": 1
+            },
+            "Q": {
+                "duct": 0.5
+            },
+            "F": {
+                "duct": 0.875
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 1,
+            "N_p": 2,
+            "H_f": 1,
+            "H_p": 0,
+            "M_e": 6,
+            "T_e": 0.0
+        }
+    },
+    "duct_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 5,
+            "l_max": 40,
+            "P": {
+                "duct": 1
+            },
+            "Q": {
+                "duct": 0.5
+            },
+            "F": {
+                "duct": 0.125
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 1,
+            "N_p": 2,
+            "H_f": 1,
+            "H_p": 0,
+            "M_e": 5,
+            "T_e": 0.0
+        }
+    },
+    "wood_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 2,
+            "g_com": 5,
+            "l_max": 40,
+            "P": {
+                "wood": 1
+            },
+            "Q": {
+                "wood": 0.5
+            },
+            "F": {
+                "wood": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": 928.9099999999999,
+            "C_p": 929.3299999999999,
+            "N_f": 3,
+            "N_p": 3,
+            "H_f": 8,
+            "H_p": 3,
+            "M_e": 17,
+            "T_e": 0.015623331069946289
+        }
+    },
+    "screen_sup_3": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 4,
+            "l_max": 38,
+            "P": {
+                "touch_screen_2A": 1,
+                "touch_screen_2B": 1
+            },
+            "Q": {
+                "touch_screen_2A": 0.5,
+                "touch_screen_2B": 0.5
+            },
+            "F": {
+                "touch_screen_2B": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 1,
+            "N_p": 2,
+            "H_f": 1,
+            "H_p": 0,
+            "M_e": 5,
+            "T_e": 0.0
+        }
+    },
+    "valve_sup_2": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 5,
+            "l_max": 40,
+            "P": {
+                "valve": 1
+            },
+            "Q": {
+                "valve": 0.5
+            },
+            "F": {
+                "valve": 0.0967741935483871
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 1,
+            "N_p": 2,
+            "H_f": 1,
+            "H_p": 0,
+            "M_e": 5,
+            "T_e": 0.0
+        }
+    },
+    "valve_sup_1": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 5,
+            "l_max": 40,
+            "P": {
+                "valve": 1
+            },
+            "Q": {
+                "valve": 0.5
+            },
+            "F": {
+                "valve": 0.9032258064516129
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 1,
+            "N_p": 2,
+            "H_f": 1,
+            "H_p": 0,
+            "M_e": 6,
+            "T_e": 0.0
+        }
+    },
+    "glass_sup_2": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 1,
+            "g_com": 2,
+            "l_max": 40,
+            "P": {
+                "glass": 1
+            },
+            "Q": {
+                "glass": 0.5
+            },
+            "F": {
+                "glass": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 1,
+            "N_p": 1,
+            "H_f": 1,
+            "H_p": 1,
+            "M_e": 5,
+            "T_e": 0.0029571056365966797
+        }
+    },
+    "switch_sup_2": {
+        "attributes": {
+            "g_in": 0,
+            "g_out": 3,
+            "g_com": 5,
+            "l_max": 40,
+            "P": {
+                "switch_1": 1
+            },
+            "Q": {
+                "switch_1": 0.5
+            },
+            "F": {
+                "switch_1": 1.0
+            }
+        },
+        "results": {
+            "delta_d": 0.0,
+            "O_c_flow": 0.0,
+            "O_c_production": 0,
+            "C_f": -1.0900000000001455,
+            "C_p": -0.6700000000000728,
+            "N_f": 3,
+            "N_p": 1,
+            "H_f": 3,
+            "H_p": 1,
+            "M_e": 15,
+            "T_e": 0.0
+        }
+    }
+}

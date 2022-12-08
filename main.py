@@ -11,8 +11,8 @@ import matplotlib.lines as mlines
 import json
 
 # %%
-SCID = 00
-filename = 'ConferenceCase.xlsx'
+SCID = 21
+filename = './Distributed/Summer Case - Copy.xlsx'
 data = pd.read_excel(filename, sheet_name=str(SCID).zfill(2) + '_SD', index_col=[0, 1])
 
 V = set(data.index.get_level_values('StageName'))
@@ -29,8 +29,10 @@ E = set(link.index)
 
 # %%
 G = nx.DiGraph()
+# G.graph["graph"] = dict(rankdir="LR")
 G.add_nodes_from(V)
 G.add_edges_from(E)
+
 nx.set_node_attributes(G, info['V_type'], name='type')
 nx.set_node_attributes(G, info['depth'], name='subset')
 
@@ -67,11 +69,17 @@ for node in final_manuf:
 #%%
 # fig, ax = plt.subplots(dpi=1200)
 cmap = plt.get_cmap()
+# ColorLegend = {
+#     'Dist': 1,
+#     'Manuf': 2,
+#     'Part': 3,
+#     'Retail': 4
+# }
+
 ColorLegend = {
-    'Dist': 1,
-    'Manuf': 2,
-    'Part': 3,
-    'Retail': 4
+    'raw material': 1,
+    'tier supplier': 2,
+    'assembly': 3
 }
 
 values = [ColorLegend[type] for type in nx.get_node_attributes(G, 'type').values()]
@@ -86,6 +94,23 @@ for label in ColorLegend:
                       label=label))
 
 
+fig, ax = plt.subplots(dpi=400)
+values = [ColorLegend[type] for type in nx.get_node_attributes(G, 'type').values()]
+nx.draw_networkx(G,
+                         cmap=cmap, vmin=0, vmax=max(values), node_color=values,
+                         arrows=True,
+                         with_labels=True,
+                         # labels={v: "" for v in V},
+                         node_size=30,
+                         font_size=4,
+                         pos=nx.multipartite_layout(G),
+                         # pos=nx.spectral_layout(G),
+                         ax=ax)
+plt.axis('off')
+plt.legend(handles=handler, loc="lower left", ncol=len(handler))
+fig.tight_layout()
+plt.show()
+
 # %%
 for key, subgraph in subgraphs.items():
     if key == 'Manuf_0047':
@@ -96,7 +121,7 @@ for key, subgraph in subgraphs.items():
                          arrows=True,
                          with_labels=True,
                          # labels={v: "" for v in V},
-                         node_size=50,
+                         node_size=30,
                          font_size=4,
                          pos=nx.multipartite_layout(G),
                          # pos=nx.spectral_layout(G),

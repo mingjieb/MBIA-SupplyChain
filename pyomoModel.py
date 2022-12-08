@@ -1,9 +1,11 @@
+import json
+
 import numpy as np
 # import gurobipy as gp
 # from gurobipy import GRB
 import networkx as nx
 import matplotlib.pyplot as plt
-from Params import *
+# from Params import *
 import pyomo.environ as pyo
 from pyomo.opt import SolverStatus, TerminationCondition
 
@@ -41,7 +43,7 @@ def create_model():
     model.rho_I = pyo.Param(model.V, model.K)  # penalty cost for unsatisfied inventory target
 
     # Define Variables
-    # network flow
+    # network flow*[
     model.y = pyo.Var(model.E, model.K, within=pyo.NonNegativeReals)  # flow
     model.z = pyo.Var(model.E, within=pyo.Binary, initialize=0)  # link usage
     model.x = pyo.Var(model.V, model.K, within=pyo.Reals)  # demand satisfied
@@ -201,6 +203,8 @@ class SinglePeriod:
     def solve(self, solver='gurobi', tee=True):
         opt = pyo.SolverFactory(solver)
         # opt.options['Presolve'] = 0
+        results = {}
+
         if self.instance is None:
             print("Error: Model has not been instantiated. Call create_instance()")
         else:
@@ -223,6 +227,8 @@ class SinglePeriod:
 
                 print("The production cost is: " + str(prodCost))
                 print("The transportation cost is: " + str(transCost))
+                results['Production cost'] = float(prodCost)
+                results['Flow cost'] = float(transCost)
 
                 if abs(penalty_demand) < 1e-5:
                     print("All demands are satisfied.")
@@ -259,21 +265,35 @@ class SinglePeriod:
                                     print(str((i, j)) + ": Removed")
 
                 print("Productions:")
+                production = []
                 for k in self.instance.K:
                     for v in self.instance.V:
                         if abs(pyo.value(self.instance.L[v, k])) > 1e-8:
                             print(str((v, k)) + ": " + str(pyo.value(self.instance.L[v, k])))
+                            prod = {'Agent': v, "Product": k, "Value": float(pyo.value(self.instance.L[v, k]))}
+                            production.append(prod)
+                results['Productions'] = production
+
                 print("Flows:")
+                flows = []
                 for k in self.instance.K:
                     for link in self.instance.E:
                         if abs(pyo.value(self.instance.y[link, k])) > 1e-8:
                             print(str(link + (k,)) + ": " + str(pyo.value(self.instance.y[link, k])))
+                            fl = {'Source': link[0], "Dest": link[1], "Product": k, "Value": float(pyo.value(self.instance.y[link, k]))}
+                            flows.append(fl)
+                results['Flows'] = flows
+
+                with open('result.json', 'w', encoding='utf-8') as f:
+                    json.dump(results, f, ensure_ascii=False, indent=4)
+
                 print("")
             elif self.results.solver.termination_condition == TerminationCondition.infeasible:
                 print("The instance is infeasible?")
             else:
                 # something else is wrong
                 print(str(self.results.solver))
+
 
     # TODO: update function for disruption inputs, scenario results storage and comparisons
     def update(self):

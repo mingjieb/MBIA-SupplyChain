@@ -9,7 +9,7 @@
 
 class CapabilityModel():
 
-    def __init__(self, filename):
+    def __init__(self):
         # Initialize capability model from initialization file
         self.knowledge = {
             "Production": [],
@@ -31,9 +31,29 @@ class CapabilityModel():
         # info = {"char1": x1, "char2": x2}
         if product not in self.knowledge[key]:
             self.knowledge[key].append(product)
+            self.characteristics[key][product] = {}
         for char in info.keys():
-            self.characteristics[key][char][product] = info[char]
+            self.characteristics[key][product][char] = info[char]
 
+    def does_need_materials(self):
+        # assume all the products that the agent can make need (or do not need) materials
+        for product in self.characteristics["Production"].keys():
+            if len(self.characteristics["Production"][product]["Material"].keys()) != 0:
+                return True
+        return False
+
+    def need_materials(self, product, component):
+
+        for product in self.characteristics["Production"].keys():
+            if len(self.characteristics["Production"][product]["Material"].keys()) != 0:
+                return True
+        return False
+
+    def get_capacity(self):
+        if len(self.knowledge["Production"]) == 0:
+            return 0
+        for product in self.characteristics["Production"].keys():
+            return self.characteristics["Production"][product]["Capacity"]
 
     def remove_capability(self, key, product):
         # Remove a product type to a capability 'key'
@@ -60,8 +80,9 @@ class CapabilityModel():
 
     def get_characteristic(self, key, product, char):
         # Get the characteristic value for capability 'key' of 'product'
+        self.characteristics[key][product][char] = info[char]
         if char in self.characteristics[key].keys():
             if product in self.characteristics[key][char].keys():
-                return self.characteristics[key][char][product]
+                return self.characteristics[key][product][char]
         return None
 
