@@ -238,7 +238,7 @@ class Agent:
         else:
             return False
 
-    def cancel_downstream_production(self):
+    def cancel_downstream_production(self, agent_network):
         model = gp.Model('Cancel_downstream_production')
         model.Params.LogToConsole = 0
         potential_affected_product = set()
@@ -271,6 +271,7 @@ class Agent:
 
         demand_constrs = model.addConstrs((gp.quicksum(gp.quicksum(x[j, k] for j in downstream[k]) * self.capability.characteristics["Production"][k]["Material"][c] for k in product_structure[c]) >= self.demand[c]
                                            for c in self.demand.keys()), name="demand_limit")
+        flow_constrs = model.addConstrs((x[j, k] <= self.state.outflow[(j, k)] for k in K for j in downstream[k]), name="downflow_limit")
 
         model.optimize()
         xsol = model.getAttr('x', x)
@@ -288,7 +289,24 @@ class Agent:
             except:
                 reduced_production[flow[1]] = reduced_outflow[flow]
 
-        return reduced_production, reduced_outflow
+        transportation = network.find_agent_by_name(agent_network, "Transportation")
+        for prod in reduced_production:
+            self.state.update_prod_inv("production", prod, -reduced_production[prod])
+            self.cancel_upstream_production(agent_network)
+            self.demand.clear()
+        outflow_agents = set()
+        for flow in reduced_outflow.keys():
+            self.state.update_flow("outflow", flow[0], flow[1], -reduced_outflow[flow])
+
+            downstream_agent = network.find_agent_by_name(agent_network, flow[0])
+            downstream_agent.state.update_flow("inflow", self.name, flow[1], -reduced_outflow[flow])
+            transportation.update_flow((self.name, flow[0], flow[1]), -reduced_outflow[flow])
+            agent_network.occurred_communication += 1
+            if "Customer" not in downstream_agent.name:
+                downstream_agent.demand[flow[1]] = reduced_outflow[flow]
+                outflow_agents.add(downstream_agent)
+        for downstream_agent in outflow_agents:
+            downstream_agent.cancel_downstream_production(agent_network)
 
     def cancel_upstream_production(self, agent_network):
         model = gp.Model('Cancel_upstream_production')

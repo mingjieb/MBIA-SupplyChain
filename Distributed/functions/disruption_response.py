@@ -137,10 +137,14 @@ def supplier_reselection(agent_network, demand_agents, transportation, find_solu
                 dest_ag = network.find_agent_by_name(agent_network, flow[1])
                 source_ag.state.update_flow("outflow", flow[1], flow[2], new_flows[flow])
                 dest_ag.state.update_flow("inflow", flow[0], flow[2], new_flows[flow])
-                source_ag.communication_manager.clear_message()
-                dest_ag.communication_manager.clear_message()
-
+                # source_ag.communication_manager.clear_message()
+                # dest_ag.communication_manager.clear_message()
+            ag_dm.communication_manager.clear_message()
+            for prod in total_supplier_agents[ag_dm.name]:
+                for ag in total_supplier_agents[ag_dm.name][prod]:
+                    ag.communication_manager.clear_message()
         # demand_agents = [ag_dm for ag_dm in demand_agents if not ag_dm.check_demand(ag_dm_flows)]
+
         for ag_dm in demand_agents[:]:
             if ag_dm.check_demand(new_flows):
                 demand_agents.remove(ag_dm)
@@ -183,18 +187,19 @@ def check_unbalanced_agent(agent_network):
         # if flag == 1: over_input_agent.append(ag)
     transportation = network.find_agent_by_name(agent_network, "Transportation")
     for ag in unmet_agent:
-        reduced_production, reduced_outflow = ag.cancel_downstream_production()
-        for prod in reduced_production:
-            ag.state.update_prod_inv("production", prod, -reduced_production[prod])
-        for flow in reduced_outflow.keys():
-            ag.state.update_flow("outflow", flow[0], flow[1], -reduced_outflow[flow])
-            downstream_agent = network.find_agent_by_name(agent_network, flow[0])
-            downstream_agent.state.update_flow("inflow", ag.name, flow[1], -reduced_outflow[flow])
-            transportation.update_flow((ag.name, flow[0], flow[1]), -reduced_outflow[flow])
-            agent_network.occurred_communication += 1
-            if "Customer" not in downstream_agent.name:
-                downstream_agent.demand[flow[1]] = reduced_outflow[flow]
-                downstream_agent.cancel_downstream_production()
+        ag.cancel_downstream_production(agent_network)
+        # reduced_production, reduced_outflow = ag.cancel_downstream_production()
+        # for prod in reduced_production:
+        #     ag.state.update_prod_inv("production", prod, -reduced_production[prod])
+        # for flow in reduced_outflow.keys():
+        #     ag.state.update_flow("outflow", flow[0], flow[1], -reduced_outflow[flow])
+        #     downstream_agent = network.find_agent_by_name(agent_network, flow[0])
+        #     downstream_agent.state.update_flow("inflow", ag.name, flow[1], -reduced_outflow[flow])
+        #     transportation.update_flow((ag.name, flow[0], flow[1]), -reduced_outflow[flow])
+        #     agent_network.occurred_communication += 1
+        #     if "Customer" not in downstream_agent.name:
+        #         downstream_agent.demand[flow[1]] = reduced_outflow[flow]
+        #         downstream_agent.cancel_downstream_production()
         ag.cancel_upstream_production(agent_network)
         # print("debugging")
     # for ag in over_input_agent:

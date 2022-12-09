@@ -13,7 +13,8 @@ from functions.disruption_response import disruption_adaptation
 from functions.metrics_output import calculate_metrics, calculate_cost
 
 from initialization import network
-import time, json
+import time
+import json
 from colorama import init
 from termcolor import colored
 import matplotlib.pyplot as plt
@@ -34,7 +35,7 @@ if __name__ == '__main__':
     unsatisfied = 0
     data_summary = {}
     for ag_name in agent_with_productions:
-        # if ag_name == 'screen_sup_4':
+        # if ag_name == 'plastic_sup_1':
         #     print('debug')
         attributes = calculate_attributes(agent_network, ag_name, initial_flows, initial_productions)
         # Disruption scenario
@@ -61,11 +62,18 @@ if __name__ == '__main__':
     print("Success:", satisfied)
     print("Failure:", unsatisfied)
 
-    # for filename in centralized_results:
-    #     re_initilize_network(agent_network, filename)
-    #     results = calculate_metrics(ag_name, agent_network, initial_flows, initial_productions,
-    #                                 run_time, initial_flow_cost, initial_production_cost)
-    #     centralized_data[ag_name] = {"attributes": attributes, "results": results}
-    #
-    # with open('results/Centralized_results.json', 'w', encoding='utf-8') as f:
-    #     json.dump(centralized_data, f, ensure_ascii=False, indent=4)
+    centralized_data = {}
+    centralized_communication = {}
+    agent_amount = sum(len(agent_network.agent_list[key]) for key in agent_network.agent_list.keys())
+    for case_name in agent_with_productions:
+        re_initilize_network(agent_network, '../CentralizedResults/%s.json' % case_name)
+        results = calculate_metrics(ag_name, agent_network, initial_flows, initial_productions,
+                                    0, initial_flow_cost, initial_production_cost)
+        centralized_data[case_name] = {"results": results}
+        centralized_communication[case_name] = agent_amount + results['N_p'] + results['H_p']
+
+    with open("../CentralizedResults/communication.json", 'w', encoding='utf-8') as f:
+        json.dump(centralized_communication, f, ensure_ascii=False, indent=4)
+
+    with open('../CentralizedResults/Centralized_results.json', 'w', encoding='utf-8') as f:
+        json.dump(centralized_data, f, ensure_ascii=False, indent=4)

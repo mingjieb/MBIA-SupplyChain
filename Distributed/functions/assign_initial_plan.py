@@ -47,9 +47,11 @@ def re_initilize_network(ag_network, file_name):
         for ag in ag_network.agent_list[ag_type]:
             ag.down = False
             ag.state.clear_state()
+            # ag.communication_manager.clear_message()
             if ag.name == "Transportation":
                 ag.flow.clear()
             if "Customer" not in ag.name:
                 ag.demand.clear()
+    ag_network.occurred_communication = 0
     initial_flows, initial_productions, agent_with_productions = assign_initial_flow(ag_network, file_name)
 
