@@ -56,6 +56,7 @@ def agent_initialization(self, info):
 
     self.agent_list["Transportation"].append(transportation_agent.TransportationAgent("Transportation"))
 
+    # Initialize capability model
     build_capability_model(self, info)
 
     # Initialize communication network
@@ -67,10 +68,13 @@ def agent_initialization(self, info):
 def build_environment_model(self, info):
     transport_link = info["Link"].set_index(['Source', 'Destination'])
     product_type = info["Agent"].set_index(['ProductType'])
+
+    # initialize mapping functions for upstream and downstream environment
     for link in transport_link.index:
         source_ag = find_agent_by_name(self, link[0])
         dest_ag = find_agent_by_name(self, link[1])
 
+        # customers' environment are based on demand
         if 'Customer' in dest_ag.name:
             for product in dest_ag.demand.keys():
                 if source_ag.capability.have_capability("Production", product):
@@ -83,6 +87,7 @@ def build_environment_model(self, info):
                         source_ag.environment.add_environment('downstream', need, dest_ag)
                         dest_ag.environment.add_environment('upstream', need, source_ag)
 
+    # initialize mapping functions for clustering environment
     product_set = set(product_type.index)
     for product in product_set:
         try:
@@ -106,6 +111,7 @@ def build_capability_model(self, info):
     agent_product = info["Agent"].set_index(['AgentName', 'ProductType'])
     transport_link = info["Link"].set_index(['Source', 'Destination'])
     product_structure = info["ProductStructure"].set_index(['Product', 'Needed'])
+    # initialize production capability
     for idx in agent_product.index:
         ag = find_agent_by_name(self, idx[0])
         if 'Customer' in ag.name:
@@ -122,6 +128,7 @@ def build_capability_model(self, info):
             ag.capability.add_capability("Production", idx[1], prod_char)
             ag.capability.add_capability("Inventory", idx[1], {'Cost': 0, 'Capacity': 0})
 
+    # initialize transportation capability
     tp = find_agent_by_name(self, "Transportation")
     for link in transport_link.index:
         tp.capability.knowledge["Transportation"].append((link[0], link[1]))

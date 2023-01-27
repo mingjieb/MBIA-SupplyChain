@@ -10,7 +10,7 @@
 from Distributed.initialization import network
 from termcolor import colored
 
-
+# Identify disruption and update the network based on the disruption
 def disruption_adaptation(agent_network, disrupted_agent):
     find_solution = True
     # identify disruption
@@ -81,7 +81,7 @@ def disruption_adaptation(agent_network, disrupted_agent):
     # print(final_new_productions)
     return find_solution
 
-
+# demand agents select new suppliers
 def supplier_reselection(agent_network, demand_agents, transportation, find_solution):
     new_flows = {}
     new_productions = {}
@@ -145,6 +145,7 @@ def supplier_reselection(agent_network, demand_agents, transportation, find_solu
                     ag.communication_manager.clear_message()
         # demand_agents = [ag_dm for ag_dm in demand_agents if not ag_dm.check_demand(ag_dm_flows)]
 
+        # demand agents check whether their demands are satisfied
         for ag_dm in demand_agents[:]:
             if ag_dm.check_demand(new_flows):
                 demand_agents.remove(ag_dm)
@@ -173,7 +174,9 @@ def supplier_reselection(agent_network, demand_agents, transportation, find_solu
 
     return new_productions, new_flows, find_solution
 
-
+# check whether the agent has flow balance:
+# When agents cannot recover the whole production, they will inform downstream agents to consider cancelling production
+# and upstream agents to cancel transportation and then production
 def check_unbalanced_agent(agent_network):
     unmet_agent = []
     # over_input_agent = []

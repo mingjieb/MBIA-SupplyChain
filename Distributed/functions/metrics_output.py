@@ -10,7 +10,7 @@ from Distributed.initialization import network
 import json
 
 
-def calculate_metrics(ag_name, agent_network, initial_flows, initial_productions, run_time, initial_flow_cost, initial_production_cost):
+def calculate_metrics(agent_network, initial_flows, initial_productions, run_time, initial_flow_cost, initial_production_cost):
     unmet_demand = get_unmet_demand(agent_network)
     flow_over_capacity_cost, production_over_capacity_cost = over_capacity_cost(agent_network)
     number_of_communications = agent_network.occurred_communication
@@ -26,7 +26,7 @@ def calculate_metrics(ag_name, agent_network, initial_flows, initial_productions
     flow_cost_difference, production_cost_difference = get_cost_difference(agent_network, current_flows,
                                                                            current_productions, initial_flow_cost, initial_production_cost)
 
-    result = result_summary(ag_name, unmet_demand, flow_over_capacity_cost, production_over_capacity_cost,
+    result = result_summary(unmet_demand, flow_over_capacity_cost, production_over_capacity_cost,
                             changed_flows, added_edge, removed_edge, changed_productions, added_agent, removed_agent,
                             flow_cost_difference, production_cost_difference, number_of_communications, run_time)
     return result
@@ -47,25 +47,29 @@ def get_unmet_demand(agent_network):
 def over_capacity_cost(agent_network):
     flow_over_cap_cost = 0
     prod_over_cap_cost = 0
-    overcapacity_multiplier = 1.5
+    overcapacity_multiplier = 2
     transportation = network.find_agent_by_name(agent_network, "Transportation")
     for flow in transportation.flow.keys():
-        cap = transportation.capability.characteristics["Transportation"][(flow[0], flow[1])]["Capacity"][0]
+        cap = transportation.capability.characteristics["Transportation"][(flow[0], flow[1])]["Capacity"]
         unit_over_cost = overcapacity_multiplier * \
-                         transportation.capability.characteristics["Transportation"][(flow[0], flow[1])]["Cost"][0]
+                         transportation.capability.characteristics["Transportation"][(flow[0], flow[1])]["Cost"]
         amount = transportation.get_transportaion_amount(flow[0], flow[1])
         over_cap = max(0, amount - cap)
         flow_over_cap_cost += over_cap * unit_over_cost
+        if over_cap > 0:
+            print(flow)
 
-    for ag_type in agent_network.agent_list.keys():
-        for ag in agent_network.agent_list[ag_type]:
-            cap = ag.capability.get_capacity()
-            unit_over_cost = 1  # overcapacity_multiplier * ag.capability.characteristics["Production"][product]["Cost"][0]
-            prod = 0
-            for product in ag.state.production.keys():
-                prod += ag.state.production[product]
-            over_cap = max(0, prod - cap)
-            prod_over_cap_cost += over_cap * unit_over_cost
+
+    for ag in agent_network.agent_list["Assembly"] + agent_network.agent_list["TierSupplier"]:
+        cap = ag.capability.get_capacity()
+        unit_over_cost = overcapacity_multiplier * ag.capability.get_ave_cost()
+        prod = 0
+        for product in ag.state.production.keys():
+            prod += ag.state.production[product]
+        over_cap = max(0, prod - cap)
+        prod_over_cap_cost += over_cap * unit_over_cost
+        # if over_cap > 0:
+        #     print(ag)
 
     return flow_over_cap_cost, prod_over_cap_cost
 
@@ -101,11 +105,11 @@ def flow_difference(agent_network, initial_flows, current_flows):
         current_edge.add((flow[0], flow[1]))
 
     for new in new_in_current:
-        if (new[0][0], new[0][1]) not in initial_edge:
-            # added_edge[new[0]] = new[1]
-            pass
-        else:
-            changed_flows[new[0]] = new[1]
+        if (new[0][0], new[0][1]) in initial_edge:
+            if new[0] not in initial_flows.keys():
+                changed_flows[new[0]] = new[1]
+            elif abs(new[1] - initial_flows[new[0]]) > 0.1:
+                changed_flows[new[0]] = new[1]
     added_edge = current_edge - initial_edge
     # for lost in lost_from_initial:
     #     if (lost[0][0], lost[0][1]) not in current_edge:
@@ -133,11 +137,15 @@ def production_difference(agent_network, initial_productions, current_production
         current_agent.add(pd[0])
 
     for new in new_in_current:
-        if new[0][0] not in initial_agent:
+        if new[0][0] in initial_agent:
+            if new[0] not in initial_productions.keys():
+                changed_productions[new[0]] = new[1]
+            elif abs(new[1] - initial_productions[new[0]]) > 0.1:
+                changed_productions[new[0]] = new[1]
             # added_agent[new[0]] = new[1]
-            pass
-        else:
-            changed_productions[new[0]] = new[1]
+        #     pass
+        # else:
+        #     changed_productions[new[0]] = new[1]
 
     # for lost in lost_from_initial:
     #     if lost[0][0] not in current_agent:
@@ -151,13 +159,19 @@ def calculate_cost(ag_network, flows, productions):
     production_cost = 0
     transportation = network.find_agent_by_name(ag_network, "Transportation")
     for flow in flows:
-        cost = transportation.capability.characteristics["Transportation"][(flow[0], flow[1])]["Cost"][0]
-        flow_cost += flows[flow] * cost
+        cost = transportation.capability.characteristics["Transportation"][(flow[0], flow[1])]["Cost"]
+        cap = transportation.capability.characteristics["Transportation"][(flow[0], flow[1])]["Capacity"]
+        flow_cost += min(flows[flow], cap) * cost
 
     for prod in productions:
         ag = network.find_agent_by_name(ag_network, prod[0])
         cost = ag.capability.characteristics["Production"][prod[1]]["Cost"]
-        production_cost += productions[prod] * cost
+        cap = ag.capability.get_capacity()
+        production_cost += min(productions[prod], cap) * cost
+
+    flow_over_cap_cost, prod_over_cap_cost = over_capacity_cost(ag_network)
+    flow_cost += flow_over_cap_cost
+    production_cost += prod_over_cap_cost
 
     return flow_cost, production_cost
 
@@ -168,7 +182,7 @@ def get_cost_difference(agent_network, current_flows, current_productions, initi
     return current_flow_cost - initial_flow_cost, current_production_cost - initial_production_cost
 
 
-def result_summary(ag_name, unmet_demand, flow_over_capacity_cost, production_over_capacity_cost, changed_flows,
+def result_summary(unmet_demand, flow_over_capacity_cost, production_over_capacity_cost, changed_flows,
                    added_edge, removed_edge, changed_productions, added_agent, removed_agent, flow_cost_difference,
                    production_cost_difference, number_of_communications, run_time):
     result = {

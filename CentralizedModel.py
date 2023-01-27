@@ -16,6 +16,7 @@ import os
 class Params:
     def __init__(self, scid=0):
         self.V, self.E, self.K = (set() for i in range(3))
+        self.V_customer = set()
         self.c, self.due_date = (type(None)() for i in range(2))
         self.info = {}
         self.read_msom(scid=scid)
@@ -42,6 +43,7 @@ class Params:
         # self.K = list(set(self.info['depth']))
 
         self.V = set(data.index.get_level_values('AgentName'))
+        self.V_customer = set(v for v in self.V if "Customer" in v)
         self.K = set(data.index.get_level_values('ProductType'))
         self.info['demand'] = data.loc[pd.notna(data['Demand'])]
         # self.info['d_dist'] = data.loc[pd.notna(data['avgDemand']), ['avgDemand', 'stdDevDemand']]
@@ -53,8 +55,8 @@ class Params:
         # self.E = self.link[['sourceStage', 'destinationStage']].to_records(index=False).tolist()
         self.E = set(self.link.index)
         self.e = {(v, k): stageCost.loc[v, k][0] for v, k in self.info['prodLine']}
-        self.c = {link: self.link.loc[link, 'TransportCost'][0] for link in self.E}
-        self.u = {link: self.link.loc[link, 'TransportCapacity'][0] for link in self.E}
+        self.c = {link: self.link.loc[link, 'TransportCost'] for link in self.E}
+        self.u = {link: self.link.loc[link, 'TransportCapacity'] for link in self.E}
         self.Lmax = {v: data.loc[v, 'ProductionCapacity'].values[0] for v in self.V}
 
         conversion = pd.read_excel(filename, sheet_name='ProductStructure', index_col=[1, 0])
@@ -239,14 +241,15 @@ class Params:
     def to_json(self):
         data = {
             'V': [v for v in self.V - self._disabled_V],
+            'V_mfg': [v for v in self.V - self.V_customer - self._disabled_V],
             'K': [k for k in self.K],
             'E': [[i, j] for i, j in self.E - self._disabled_E],
             # 'u': [{'index': [i, j], 'value': 1e6} for i, j in self.E - self._disabled_E],
             'u': [{'index': [i, j], 'value': float(self.u[i, j])} for i, j in self.E - self._disabled_E],
-            'f': [{'index': [i, j], 'value': 1e-2} for i, j in self.E - self._disabled_E],
+            'f': [{'index': [i, j], 'value': 0} for i, j in self.E - self._disabled_E],
             # 'c': [{'index': [i, j, k], 'value': float(self.sample_cost((i, j)))} for i, j in self.E for k in self.K],
             'c': [{'index': [i, j, k], 'value': float(self.c[i, j])} for i, j in self.E - self._disabled_E for k in self.K],
-            'phi': [{'index': v, 'value': 1e-2} for v in self.V - self._disabled_V],
+            'phi': [{'index': v, 'value': 0} for v in self.V - self._disabled_V],
             'p': [{'index': [v, k], 'value': 1 if (v, k) in self.info['prodLine'] else 0} for v in self.V - self._disabled_V for k in
                   self.K],
             # 'Lmax': [{'index': v, 'value': 1e6 if self.info['V_type'][v] in self.stageTypes else 0} for v in self.V - self._disabled_V],
@@ -254,7 +257,7 @@ class Params:
             'e': [{'index': [v, k], 'value': float(self.get('e', (v, k)))} for v in self.V - self._disabled_V for k in self.K],
             'r': [{'index': [k1, k2], 'value': float(self.get('r', (k1, k2)))} for k1 in self.K for k2 in self.K],
             'd': [{'index': [v, k], 'value': -self.d[v, k]} for v in self.V - self._disabled_V for k in self.K],
-            'h': [{'index': [v, k], 'value': 1} for v in self.V - self._disabled_V for k in self.K],
+            'h': [{'index': [v, k], 'value': 0} for v in self.V - self._disabled_V for k in self.K],
             'I_0': [{'index': [v, k], 'value': 0} for v in self.V - self._disabled_V for k in self.K],
             'I_s': [{'index': [v, k], 'value': 0} for v in self.V - self._disabled_V for k in self.K],
             'rho_d': [{'index': [v, k], 'value': 1e8} for v in self.V - self._disabled_V for k in self.K],
@@ -282,6 +285,7 @@ if __name__ == "__main__":
     # comment it when running when enabling disruptions
     # my_params = Params(scid=0)
     # my_params.create_instance(sample=False)
+    # my_params.enable_all()
     # my_params.to_json()
     # model = pyomoModel.SinglePeriod()
     # model.create_instance(filenames=['data.json'])
@@ -295,10 +299,11 @@ if __name__ == "__main__":
         agent_with_productions.add(prod['Agent'])
 
     # invoke disable function to run cases with agent loss
+    my_params = Params(scid=0)
+    my_params.create_instance(sample=False)
     centralized_run_time = {}
     for agent in agent_with_productions:
-        my_params = Params(scid=0)
-        my_params.create_instance(sample=False)
+        my_params.enable_all()
         my_params.disable(vertex_list=[agent])
         my_params.to_json()
         model = pyomoModel.SinglePeriod()

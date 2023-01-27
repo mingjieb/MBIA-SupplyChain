@@ -72,12 +72,16 @@ class Agent:
                                                                                 "reqFromAgent": self}
 
                     # supplier agent determines its response to request
+
     # supplier agent determine response
     def response_optimizer(self, transportation):
         demand_agents = self.communication_manager.received_request.keys()
         product_set = {}
         demands = {}
         flow_limit = {}
+        overcapacity_multiplier = 1.3
+
+        # Computes the flow limit and production limit
         for ag_name in demand_agents:
             for product in self.communication_manager.received_request[ag_name].keys():
                 if product != "reqFromAgent":
@@ -87,16 +91,14 @@ class Agent:
                         product_set[ag_name] = [product]
                     demands[(ag_name, product)] = self.communication_manager.received_request[ag_name][product]
 
-            flow_limit[ag_name] = transportation.get_available_capacity(self.name, ag_name)
+            flow_limit[ag_name] = transportation.get_available_capacity(self.name, ag_name, overcapacity_multiplier)
 
         current_production = 0
         for key in self.state.production.keys():
             current_production += self.state.production[key]
-        production_limit = self.capability.get_capacity() - current_production
+        production_limit = self.capability.get_capacity() * overcapacity_multiplier - current_production
 
-        overcapacity_multiplier = 1.3
-
-
+        # MILP gurobi model
         model = gp.Model('response_optimizer')
         model.Params.LogToConsole = 0
         pairs = [(j, k) for j in demand_agents for k in product_set[j]]
@@ -105,10 +107,10 @@ class Agent:
         obj = model.setObjective(gp.quicksum(demands[j, k] - y[j, k]
                                              for j in demand_agents for k in product_set[j]), GRB.MINIMIZE)
 
-        tp_constrs = model.addConstrs((gp.quicksum(y[j, k] for k in product_set[j]) <= flow_limit[j] * overcapacity_multiplier
+        tp_constrs = model.addConstrs((gp.quicksum(y[j, k] for k in product_set[j]) <= flow_limit[j]
                                        for j in demand_agents), name="tp_limit")
         pd_constrs = model.addConstr(gp.quicksum(y[j, k] for j in demand_agents for k in product_set[j])
-                                      <= production_limit * overcapacity_multiplier, name="pd_limit")
+                                      <= production_limit, name="pd_limit")
         demand_constrs = model.addConstrs((y[j, k] <= demands[j, k] for j in demand_agents for k in product_set[j]),
                                           name="demand_limit")
 
@@ -119,10 +121,13 @@ class Agent:
             response = {}
             for k in product_set[j]:
                 if xsol[j, k] > 0.1:
-                    cost = self.capability.characteristics["Production"][k]["Cost"] \
-                           + transportation.capability.characteristics["Transportation"][(self.name, j)]["Cost"][0]
+                    cost_pd = self.capability.characteristics["Production"][k]["Cost"]
+                    cost_tp = transportation.capability.characteristics["Transportation"][(self.name, j)]["Cost"]
                     response.update({k: {"amount": xsol[j, k],
-                                         "unit_cost": cost}})
+                                         "cost_pd": cost_pd,
+                                         "remaining_cap_pd": self.get_normal_remaining_capacity(),
+                                         "cost_tp": cost_tp,
+                                         "remaining_cap_tp": transportation.get_normal_available_capacity(self.name, ag_name)}})
             response_decisions[j] = {"demandAgent": self.communication_manager.received_request[j]["reqFromAgent"],
                                      "response": response}
 
@@ -150,25 +155,45 @@ class Agent:
             response[ag_name] = self.communication_manager.received_response[ag_name]["response"]
 
         pairs = [(i, k) for i in supplier_agents for k in response[i].keys()]
-        x = model.addVars(pairs, vtype=GRB.INTEGER, name="flow")
+        # separate the production and flow that are within capacity and over capacity
+        x_pd = model.addVars(pairs, vtype=GRB.INTEGER, name="pd")
+        x_tp = model.addVars(pairs, vtype=GRB.INTEGER, name="flow")
+        x_over_pd = model.addVars(pairs, vtype=GRB.INTEGER, name="over_pd")
+        x_over_tp = model.addVars(pairs, vtype=GRB.INTEGER, name="over_tp")
 
-        obj = model.setObjective(gp.quicksum(response[i][k]["unit_cost"] * x[i, k] - 1e8*x[i, k]
+        obj = model.setObjective(gp.quicksum(response[i][k]["cost_pd"] * x_pd[i, k] + 2 * response[i][k]["cost_pd"] * x_over_pd[i, k]
+                                             + response[i][k]["cost_tp"] * x_tp[i, k] + 2 * response[i][k]["cost_tp"] * x_over_tp[i, k]
+                                             - 1e8*(x_pd[i, k]+x_over_pd[i, k])
                                              for i in supplier_agents for k in response[i].keys()), GRB.MINIMIZE)
 
-        resp_constrs = model.addConstrs((x[i, k] <= response[i][k]["amount"]
-                                       for i in supplier_agents for k in response[i].keys()), name="resp_limit")
+        resp_constrs_pd = model.addConstrs((x_pd[i, k]+x_over_pd[i, k] <= response[i][k]["amount"]
+                                       for i in supplier_agents for k in response[i].keys()), name="resp_limit_pd")
 
-        demand_constrs = model.addConstrs((gp.quicksum(x[i, k] for i in supplier_agents if k in response[i]) <= self.demand[k]
+        resp_constrs_tp = model.addConstrs((x_tp[i, k] + x_over_tp[i, k] <= response[i][k]["amount"]
+                                         for i in supplier_agents for k in response[i].keys()), name="resp_limit_tp")
+
+        capacity_constrs_pd = model.addConstrs((gp.quicksum(x_pd[i, k] for k in response[i].keys()) <= response[i][k]["remaining_cap_pd"]
+                                         for i in supplier_agents for k in response[i].keys()), name="capacity_limit_pd")
+
+        capacity_constrs_tp = model.addConstrs(
+            (gp.quicksum(x_tp[i, k] for k in response[i].keys()) <= response[i][k]["remaining_cap_tp"]
+             for i in supplier_agents for k in response[i].keys()), name="capacity_limit_tp")
+
+        balance = model.addConstrs((x_tp[i, k] + x_over_tp[i, k] == x_pd[i, k] + x_over_pd[i, k]
+             for i in supplier_agents for k in response[i].keys()), name="capacity_limit_tp")
+
+        demand_constrs = model.addConstrs((gp.quicksum(x_pd[i, k]+x_over_pd[i, k] for i in supplier_agents if k in response[i]) <= self.demand[k]
                                            for k in self.demand.keys()), name="demand_limit")
 
         model.optimize()
-        xsol = model.getAttr('x', x)
+        xsol = model.getAttr('x', x_pd)
+        x_over_sol = model.getAttr('x', x_over_pd)
         selection_decision = {}
         for i in supplier_agents:
             selection_decision[i] = {}
             for k in response[i].keys():
-                if xsol[i, k] > 0.1:
-                    selection_decision[i].update({k: xsol[i, k]})
+                if xsol[i, k]+x_over_sol[i, k] > 0.1:
+                    selection_decision[i].update({k: xsol[i, k]+x_over_sol[i, k]})
             if len(selection_decision[i].keys()) == 0:
                 selection_decision.pop(i)
 
@@ -195,7 +220,7 @@ class Agent:
                 flag = False
         return flag
 
-    # supplier agent find needed materials
+    # supplier agent find needed materials based on the required production
     def find_needed_materials(self, needed_production):
         needed_materials = {}
         for product in needed_production.keys():
@@ -209,6 +234,7 @@ class Agent:
 
         return needed_materials
 
+    # calculate the total flow in this edge
     def get_transportaion_amount(self, source, dest):
         amount = 0
         for flow in self.flow.keys():
@@ -216,6 +242,7 @@ class Agent:
                 amount += self.flow[flow]
         return amount
 
+    # check whether the network has remaining related agents the this agent has not explored
     def check_possible_iteration(self, agent_network):
         flag = False
         supplier_agents = self.exploration(agent_network)
@@ -227,6 +254,7 @@ class Agent:
                         break
         return flag
 
+    # check whether the agent has remaining production capacity
     def have_remaining_capacity(self):
         if len(self.capability.knowledge["Production"]) == 0:
             return False
@@ -238,9 +266,27 @@ class Agent:
         else:
             return False
 
+    # get the remaining capacity considering over capacity
+    def get_remaining_capacity(self):
+        total_production = 0
+        for product in self.state.production.keys():
+            total_production += self.state.production[product]
+        return 1.3*self.capability.get_capacity() - total_production
+
+    # get the remaining capacity without over capacity
+    def get_normal_remaining_capacity(self):
+        total_production = 0
+        for product in self.state.production.keys():
+            total_production += self.state.production[product]
+        return max(0, self.capability.get_capacity() - total_production)
+
+
+    # determine which downstream agents are affected and cancel their related production
     def cancel_downstream_production(self, agent_network):
         model = gp.Model('Cancel_downstream_production')
         model.Params.LogToConsole = 0
+
+        # Get the downstream products that might be affected
         potential_affected_product = set()
         potential_affected_outflow = set()
         for outflow in self.state.outflow.keys():
@@ -256,7 +302,7 @@ class Agent:
             for final_prod in K:
                 if component in self.capability.characteristics["Production"][final_prod]["Material"].keys():
                     product_structure[component].append(final_prod)
-        
+        # Identify the affected downstream agent
         downstream = {}
         for final_prod in K:
             downstream[final_prod] = []
@@ -266,7 +312,7 @@ class Agent:
 
         pairs = [(j, k) for k in K for j in downstream[k]]
         x = model.addVars(pairs, vtype=GRB.INTEGER, name="cancelled_production")
-
+        # minimize the total cancelled production
         obj = model.setObjective(gp.quicksum(x[j, k] for k in K for j in downstream[k]), GRB.MINIMIZE)
 
         demand_constrs = model.addConstrs((gp.quicksum(gp.quicksum(x[j, k] for j in downstream[k]) * self.capability.characteristics["Production"][k]["Material"][c] for k in product_structure[c]) >= self.demand[c]
@@ -289,9 +335,11 @@ class Agent:
             except:
                 reduced_production[flow[1]] = reduced_outflow[flow]
 
+        # update the flow and production in the network
         transportation = network.find_agent_by_name(agent_network, "Transportation")
         for prod in reduced_production:
             self.state.update_prod_inv("production", prod, -reduced_production[prod])
+            # ripple effects to other upstream agents of the cancelled-production agents
             self.cancel_upstream_production(agent_network)
             self.demand.clear()
         outflow_agents = set()
@@ -305,13 +353,16 @@ class Agent:
             if "Customer" not in downstream_agent.name:
                 downstream_agent.demand[flow[1]] = reduced_outflow[flow]
                 outflow_agents.add(downstream_agent)
+        # ripple effects to the downstream agents of the cancelled-production agents
         for downstream_agent in outflow_agents:
             downstream_agent.cancel_downstream_production(agent_network)
 
+    # determine which upstream agents are affected and cancel their related production
     def cancel_upstream_production(self, agent_network):
         model = gp.Model('Cancel_upstream_production')
         model.Params.LogToConsole = 0
 
+        # identify the upstream agents
         upstream = {}
         up_agent = set()
         for flow in self.state.inflow.keys():
@@ -328,6 +379,7 @@ class Agent:
                 if component in self.capability.characteristics["Production"][final_prod]["Material"].keys():
                     product_structure[component].append(final_prod)
 
+        # identify the current needs for upstream agents depending on the current production
         total_need = {}
         for component in upstream.keys():
             total_need[component] = 0
@@ -337,7 +389,7 @@ class Agent:
 
         pairs = [(i, k) for k in upstream.keys() for i in upstream[k]]
         x = model.addVars(pairs, vtype=GRB.INTEGER, name="remaining_production")
-
+        # minimize the total cancelled flow
         obj = model.setObjective(gp.quicksum(self.state.inflow[(i, k)] - x[i, k] for k in upstream.keys() for i in upstream[k]), GRB.MINIMIZE)
 
         demand_constrs = model.addConstrs((gp.quicksum(x[i, k] for i in upstream[k]) <= total_need[k] for k in upstream.keys()), name="demand_limit")
@@ -345,6 +397,7 @@ class Agent:
         model.optimize()
         xsol = model.getAttr('x', x)
 
+        # update the production and flow in the network
         transportation = network.find_agent_by_name(agent_network, "Transportation")
         for k in upstream.keys():
             for i in upstream[k]:
@@ -354,6 +407,7 @@ class Agent:
                 ag = network.find_agent_by_name(agent_network, i)
                 ag.state.update_prod_inv("production", k, xsol[i, k] - initial_flow)
                 ag.state.update_flow("outflow", self.name, k, xsol[i, k] - initial_flow)
+                # ripple effects
                 if len(ag.state.inflow.keys()) != 0:
                     ag.cancel_upstream_production(agent_network)
 

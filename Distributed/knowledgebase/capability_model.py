@@ -55,20 +55,27 @@ class CapabilityModel():
         for product in self.characteristics["Production"].keys():
             return self.characteristics["Production"][product]["Capacity"]
 
-    def remove_capability(self, key, product):
-        # Remove a product type to a capability 'key'
-        if product in self.knowledge[key]:
-            self.knowledge[key].remove(product)
-        for char in self.characteristics[key].keys():
-            if product in self.characteristics[key][char].keys():
-                self.characteristics[key][char].remove(product)
+    def get_ave_cost(self):
+        ave_cost = 0
+        for product in self.characteristics["Production"].keys():
+            ave_cost += self.characteristics["Production"][product]["Cost"]
+        ave_cost /= len(self.characteristics["Production"].keys())
+        return ave_cost
 
-    def update_characteristic(self, key, product, info):
-        # Update characteristic for existing product type
-        # info = {"char1": x1, "char2": x2}
-        for char in info.keys():
-            if product in self.characteristics[key][char].keys():
-                self.characteristics[key][char][product] = info[char]
+    # def remove_capability(self, key, product):
+    #     # Remove a product type to a capability 'key'
+    #     if product in self.knowledge[key]:
+    #         self.knowledge[key].remove(product)
+    #     for char in self.characteristics[key].keys():
+    #         if product in self.characteristics[key][char].keys():
+    #             self.characteristics[key][char].remove(product)
+
+    # def update_characteristic(self, key, product, info):
+    #     # Update characteristic for existing product type
+    #     # info = {"char1": x1, "char2": x2}
+    #     for char in info.keys():
+    #         if product in self.characteristics[key][char].keys():
+    #             self.characteristics[key][char][product] = info[char]
 
     # Functions for obtaining information from capability model
 
@@ -80,9 +87,9 @@ class CapabilityModel():
 
     def get_characteristic(self, key, product, char):
         # Get the characteristic value for capability 'key' of 'product'
-        self.characteristics[key][product][char] = info[char]
-        if char in self.characteristics[key].keys():
-            if product in self.characteristics[key][char].keys():
-                return self.characteristics[key][product][char]
+        if key in self.characteristics.keys():
+            if product in self.characteristics[key].keys():
+                if char in self.characteristics[key][product].keys():
+                    return self.characteristics[key][product][char]
         return None
 

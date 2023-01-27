@@ -15,6 +15,7 @@ def create_model():
 
     # Define Sets
     model.V = pyo.Set()  # vertices
+    model.V_mfg = pyo.Set()
     model.K = pyo.Set()  # product range
     model.E = pyo.Set(dimen=2)  # links
 
@@ -46,27 +47,37 @@ def create_model():
     # network flow*[
     model.y = pyo.Var(model.E, model.K, within=pyo.NonNegativeReals)  # flow
     model.z = pyo.Var(model.E, within=pyo.Binary, initialize=0)  # link usage
-    model.x = pyo.Var(model.V, model.K, within=pyo.Reals)  # demand satisfied
+    model.x = pyo.Var(model.V, model.K, within=pyo.Integers)  # demand satisfied
+    model.y_u = pyo.Var(model.E, model.K, within=pyo.NonNegativeReals) # under capacity
+    model.y_o = pyo.Var(model.E, model.K, within=pyo.NonNegativeReals) # over capacity
 
     # production/inventory
-    model.L = pyo.Var(model.V, model.K, within=pyo.NonNegativeReals)  # run length
+    model.L = pyo.Var(model.V, model.K, within=pyo.NonNegativeIntegers)  # run length
     model.zeta = pyo.Var(model.V, within=pyo.Binary, initialize=0)  # product line usage
     model.I = pyo.Var(model.V, model.K, within=pyo.NonNegativeReals)  # inventory
+    model.L_u = pyo.Var(model.V, model.K, within=pyo.NonNegativeIntegers)  # under capacity
+    model.L_o = pyo.Var(model.V, model.K, within=pyo.NonNegativeIntegers)  # over capacity
 
     # penalty
-    model.delta_d = pyo.Var(model.V, model.K, within=pyo.NonNegativeReals)  # demand penalty term
+    model.delta_d = pyo.Var(model.V, model.K, within=pyo.NonNegativeIntegers)  # demand penalty term
     model.delta_I = pyo.Var(model.V, model.K, within=pyo.NonNegativeReals)  # inventory penalty term
 
     # Define Objectives
     def cost_rule(model):
         return (sum(model.f[i, j] * model.z[i, j] for i, j in model.E) +
                 sum(model.phi[i] * model.zeta[i] for i in model.V) +
-                sum(model.c[i, j, k] * model.y[i, j, k] for i, j in model.E for k in
+                sum(model.c[i, j, k] * model.y_u[i, j, k] + 2 * model.c[i, j, k] * model.y_o[i, j, k] for i, j in model.E for k in
                     model.K) +
+                # sum(model.c[i, j, k] * model.y[i, j, k] for i, j in model.E for k in model.K) +
                 sum(model.h[i, k] * model.I[i, k] +
-                    model.e[i, k] * model.L[i, k] +
+                    model.e[i, k] * model.L_u[i, k] + 2 * model.e[i, k] * model.L_o[i, k] +
+                    # model.e[i, k] * model.L[i, k] +
                     model.rho_I[i, k] * model.delta_I[i, k] +
                     model.rho_d[i, k] * model.delta_d[i, k] for i in model.V for k
+
+
+
+
                     in model.K))
 
     model.cost = pyo.Objective(rule=cost_rule)
@@ -74,6 +85,17 @@ def create_model():
     # model.profit = pyo.Objective()
 
     # Define Constraints
+
+    def flow_rule(model, i, j, k):
+        return model.y[i, j, k] == model.y_u[i, j, k] + model.y_o[i, j, k]
+
+    model.flow_rule = pyo.Constraint(model.E, model.K, rule=flow_rule)
+
+    def prod_rule(model, i, k):
+        return model.L[i, k] == model.L_u[i, k] + model.L_o[i, k]
+
+    model.prod_rule = pyo.Constraint(model.V, model.K, rule=prod_rule)
+
     # flow balance
     def balance_rule(model, i, k):
         return (sum(model.y[i, j, k] for _, j in model.E if _ == i) - sum(
@@ -85,21 +107,38 @@ def create_model():
 
     # link capacity
     def link_cap_rule(model, i, j):
-        return sum(model.y[i, j, k] for k in model.K) <= model.u[i, j] * model.z[i, j]
+        return sum(model.y[i, j, k] for k in model.K) <= 1.3*model.u[i, j] * model.z[i, j]
 
     model.link_capacity = pyo.Constraint(model.E, rule=link_cap_rule)
 
     # production capacity
     def prod_cap_rule(model, i):
-        return sum(model.L[i, k] for k in model.K) <= model.Lmax[i] * model.zeta[i]
+        return sum(model.L[i, k] for k in model.K) <= 1.3*model.Lmax[i] * model.zeta[i]
 
     model.prod_capacity = pyo.Constraint(model.V, rule=prod_cap_rule)
+
+    # link capacity
+    def link_cap_rule2(model, i, j):
+        return sum(model.y_u[i, j, k] for k in model.K) <= model.u[i, j] * model.z[i, j]
+
+    model.link_capacity2 = pyo.Constraint(model.E, rule=link_cap_rule2)
+
+    # production capacity
+    def prod_cap_rule2(model, i):
+        return sum(model.L_u[i, k] for k in model.K) <= model.Lmax[i] * model.zeta[i]
+
+    model.prod_capacity2 = pyo.Constraint(model.V, rule=prod_cap_rule2)
 
     # penalty terms
     def demand_pel_rule(model, i, k):
         return model.delta_d[i, k] >= model.x[i, k] - model.d[i, k]
 
     model.demand_penalty = pyo.Constraint(model.V, model.K, rule=demand_pel_rule)
+
+    def demand_rule(model, i, k):
+        return model.delta_d[i, k] <= 0.1
+
+    model.demand_rule = pyo.Constraint(model.V_mfg, model.K, rule=demand_rule)
 
     def inv_pel_rule(model, i, k):
         return model.delta_I[i, k] >= model.I_s[i, k] - model.I[i, k]
@@ -240,6 +279,7 @@ class SinglePeriod:
                         for v in self.instance.V:
                             if pyo.value(self.instance.delta_d[v, k]) > 1e-4:
                                 print(str((v, k)) + ": " + str(pyo.value(self.instance.delta_d[v, k])))
+                                # print(str((v, k)) + ": " + str(pyo.value(self.instance.x[v, k])))
 
                 if self.network_change:
                     reactCost = reactCost + self.instance.Rho * (
@@ -274,6 +314,7 @@ class SinglePeriod:
                             prod = {'Agent': v, "Product": k, "Value": float(pyo.value(self.instance.L[v, k]))}
                             production.append(prod)
                 results['Productions'] = production
+
 
                 print("Flows:")
                 flows = []

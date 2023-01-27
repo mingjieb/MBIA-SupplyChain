@@ -12,11 +12,12 @@ from Distributed.initialization import network
 def calculate_attributes(agent_network, agent_name, initial_flows, initial_productions):
     ag = network.find_agent_by_name(agent_network, agent_name)
     in_degree, out_degree, com_degree = calculate_degrees(ag)
-    capability_redundancy, capacity_proportion = calculate_capability_capacity(ag)
+    capability_redundancy, capacity_proportion, capacity_utility = calculate_capability_capacity(ag)
     flow_contribution = calculate_flow_contributions(ag, initial_productions)
-    max_steps = get_production_steps(agent_network, ag)
+    l, n = get_production_steps(agent_network, ag)
 
-    attributes = attributes_summary(in_degree, out_degree, com_degree, capability_redundancy, capacity_proportion, flow_contribution, max_steps)
+    attributes = attributes_summary(in_degree, out_degree, com_degree, capability_redundancy, capacity_proportion,
+                                    capacity_utility, flow_contribution, l, n)
     return attributes
 
 def calculate_degrees(agent):
@@ -52,17 +53,29 @@ def calculate_degrees(agent):
 def calculate_capability_capacity(agent):
     capability_redundancy = {}
     capacity_proportion = {}
+    capacity_utility = {}
     for product in agent.capability.knowledge["Production"]:
         try:
             capability_redundancy[product] = len(agent.environment.clustering_agent[product])
             total_cap = 0
+            total_remain = 0
             for ag in agent.environment.clustering_agent[product]:
                 total_cap += ag.capability.get_capacity()
+                total_remain += ag.get_remaining_capacity()
             capacity_proportion[product] = agent.capability.get_capacity() / (agent.capability.get_capacity() + total_cap)
+            try:
+                capacity_utility[product] = agent.state.production[product] / total_remain
+            except:
+                capacity_utility[product] = 0
         except:
             capability_redundancy[product] = 0
             capacity_proportion[product] = 1
-    return capability_redundancy, capacity_proportion
+            capacity_utility[product] = 0
+            # try:
+            #     capacity_utility[product] = agent.state.production[product] / agent.get_remaining_capacity()
+            # except:
+            #     capacity_utility[product] = 0
+    return capability_redundancy, capacity_proportion, capacity_utility
 
 def calculate_flow_contributions(agent, initial_productions):
     flow_contribution = {}
@@ -76,13 +89,15 @@ def calculate_flow_contributions(agent, initial_productions):
 
 def get_production_steps(agent_network, agent):
     production_hierarchy = {}
+    production_steps = {}
     for product in set(agent_network.product_structure.index):
         try:
             production_hierarchy[product] = list(agent_network.product_structure.loc[product, "Needed"].values)
         except:
             production_hierarchy[product] = [agent_network.product_structure.loc[product, "Needed"]]
-    final_products = [p for p in production_hierarchy.keys() if "cockpit" in p]
-    production_steps = {key: set() for key in final_products}
+        production_steps[product] = set()
+
+    # production_steps = {key: set() for key in set(agent_network.product_structure.index)}
     for key in production_steps:
         component = production_hierarchy[key].copy()
         while len(component) != 0:
@@ -91,25 +106,41 @@ def get_production_steps(agent_network, agent):
             try:
                 component += production_hierarchy[p]
             except: pass
-    
-    contributed_final_products = []
+
+    final_products = [p for p in production_hierarchy.keys() if "cockpit" in p]
+
+    contributed_final_products, l = {}, {}
+    needed_component, n = {}, {}
     for prod in agent.capability.knowledge["Production"]:
-        for final_prod in production_steps:
-            if (prod in production_steps[final_prod] or final_prod in agent.capability.knowledge["Production"]) and final_prod not in contributed_final_products:
-                contributed_final_products.append(final_prod)
+        try:
+            needed_component[prod] = production_steps[prod]
+        except:
+            needed_component[prod] = set()
+        contributed_final_products[prod] = set()
+        for final_prod in final_products:
+            if prod in production_steps[final_prod] or final_prod in agent.capability.knowledge["Production"]:
+                contributed_final_products[prod].add(final_prod)
+        l[prod] = len(needed_component[prod])
+        n[prod] = len(contributed_final_products[prod])
 
-    max_steps = max(len(production_steps[final_prod]) for final_prod in contributed_final_products)
-    return max_steps
+    # max_steps = max(len(production_steps[final_prod]) for final_prod in contributed_final_products)
+    # return max_steps
+    return l, n
 
-def attributes_summary(in_degree, out_degree, com_degree, capability_redundancy, capacity_proportion, flow_contribution, max_steps):
+
+
+def attributes_summary(in_degree, out_degree, com_degree, capability_redundancy, capacity_proportion,
+                                    capacity_utility, flow_contribution, l, n):
     attributes = {
         'g_in': in_degree,
         'g_out': out_degree,
         'g_com': com_degree,
-        'l_max': max_steps,
         'P': capability_redundancy,
-        'Q': capacity_proportion,
-        'F': flow_contribution
+        'U': capacity_proportion,
+        'Q': capacity_utility,
+        'F': flow_contribution,
+        'l': l,
+        'n': n
     }
     return attributes
 

@@ -49,12 +49,21 @@ class TransportationAgent(Agent):
                 return True
         return False
 
-    def get_available_capacity(self, start, end):
-        capacity = self.capability.characteristics["Transportation"][(start, end)]["Capacity"][0]
+    def get_available_capacity(self, start, end, overcapacity_multiplier):
+        capacity = self.capability.characteristics["Transportation"][(start, end)]["Capacity"] * overcapacity_multiplier
         used_capacity = 0
         for key in self.flow.keys():
             if start == key[0] and end == key[1]:
                 used_capacity += self.flow[key]
 
         return capacity-used_capacity
+
+    def get_normal_available_capacity(self, start, end):
+        capacity = self.capability.characteristics["Transportation"][(start, end)]["Capacity"]
+        used_capacity = 0
+        for key in self.flow.keys():
+            if start == key[0] and end == key[1]:
+                used_capacity += self.flow[key]
+
+        return max(0, capacity-used_capacity)
 
