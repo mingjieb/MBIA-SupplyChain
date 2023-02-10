@@ -1,105 +1,15 @@
 {
-    "Production cost": 97503.0,
-    "Flow cost": 12546.0,
+    "Production cost": 98042.0,
+    "Flow cost": 12713.0,
     "Productions": [
         {
-            "Agent": "bezel_sup_1",
-            "Product": "bezel_2",
+            "Agent": "navi_sup_1",
+            "Product": "navi",
             "Value": 60.0
         },
         {
-            "Agent": "button_sup_5",
-            "Product": "button_2",
-            "Value": 120.0
-        },
-        {
-            "Agent": "faceplate_sup_1",
-            "Product": "faceplate_1",
-            "Value": 60.0
-        },
-        {
-            "Agent": "radio_sup_1",
-            "Product": "radio",
-            "Value": 60.0
-        },
-        {
-            "Agent": "substrate_sup_1",
-            "Product": "substrate_1",
-            "Value": 60.0
-        },
-        {
-            "Agent": "switch_sup_1",
-            "Product": "switch_1",
-            "Value": 360.0
-        },
-        {
-            "Agent": "bezel_sup_3",
-            "Product": "bezel_1",
-            "Value": 120.0
-        },
-        {
-            "Agent": "connector_sup_1",
-            "Product": "connector",
-            "Value": 180.0
-        },
-        {
-            "Agent": "wheel_sup_1",
-            "Product": "wheel_1",
-            "Value": 60.0
-        },
-        {
-            "Agent": "gauge_sup_1",
-            "Product": "analog_gauge",
-            "Value": 180.0
-        },
-        {
-            "Agent": "controlunit_sup_1",
-            "Product": "control_unit",
-            "Value": 60.0
-        },
-        {
-            "Agent": "wood_sup_1",
-            "Product": "wood",
-            "Value": 180.0
-        },
-        {
-            "Agent": "fabric_sup_1",
-            "Product": "fabric",
-            "Value": 360.0
-        },
-        {
-            "Agent": "wiring_sup_1",
-            "Product": "wiring_1",
-            "Value": 60.0
-        },
-        {
-            "Agent": "bezel_sup_1",
-            "Product": "bezel_3",
-            "Value": 180.0
-        },
-        {
-            "Agent": "al_sup_1",
-            "Product": "aluminum",
-            "Value": 60.0
-        },
-        {
-            "Agent": "glass_sup_1",
-            "Product": "glass",
-            "Value": 60.0
-        },
-        {
-            "Agent": "button_sup_4",
-            "Product": "button_1",
-            "Value": 600.0
-        },
-        {
-            "Agent": "bezel_sup_4",
-            "Product": "bezel_5",
-            "Value": 60.0
-        },
-        {
-            "Agent": "cluster_sup_1",
-            "Product": "cluster_1",
+            "Agent": "cockpit_assy_1",
+            "Product": "cockpit_1",
             "Value": 60.0
         },
         {
@@ -108,33 +18,13 @@
             "Value": 60.0
         },
         {
-            "Agent": "column_sup_1",
-            "Product": "column",
+            "Agent": "radio_sup_1",
+            "Product": "radio",
             "Value": 60.0
         },
         {
-            "Agent": "valve_sup_1",
-            "Product": "valve",
-            "Value": 180.0
-        },
-        {
-            "Agent": "cover_sup_1",
-            "Product": "cover",
-            "Value": 300.0
-        },
-        {
-            "Agent": "airbag_sup_1",
-            "Product": "airbag",
-            "Value": 120.0
-        },
-        {
-            "Agent": "infortainment_sup_1",
-            "Product": "infotainment_1",
-            "Value": 60.0
-        },
-        {
-            "Agent": "compressor_sup_1",
-            "Product": "compressor_1",
+            "Agent": "faceplate_sup_1",
+            "Product": "faceplate_1",
             "Value": 60.0
         },
         {
@@ -143,33 +33,53 @@
             "Value": 300.0
         },
         {
-            "Agent": "wire_sup_1",
-            "Product": "wire",
-            "Value": 300.0
+            "Agent": "fabric_sup_1",
+            "Product": "fabric",
+            "Value": 360.0
         },
         {
-            "Agent": "cockpit_assy_1",
-            "Product": "cockpit_1",
+            "Agent": "steering_sup_2",
+            "Product": "steering_column_1",
             "Value": 60.0
         },
         {
-            "Agent": "fanvent_sup_1",
+            "Agent": "fanvent_sup_3",
             "Product": "fan_vent_1",
             "Value": 240.0
         },
         {
+            "Agent": "button_sup_4",
+            "Product": "button_1",
+            "Value": 600.0
+        },
+        {
+            "Agent": "infortainment_sup_1",
+            "Product": "infotainment_1",
+            "Value": 60.0
+        },
+        {
+            "Agent": "wheel_sup_1",
+            "Product": "wheel_1",
+            "Value": 60.0
+        },
+        {
+            "Agent": "bezel_sup_4",
+            "Product": "bezel_5",
+            "Value": 60.0
+        },
+        {
+            "Agent": "al_sup_1",
+            "Product": "aluminum",
+            "Value": 60.0
+        },
+        {
+            "Agent": "compressor_sup_1",
+            "Product": "compressor_1",
+            "Value": 60.0
+        },
+        {
             "Agent": "beam_sup_1",
             "Product": "cross_car_beam_1",
-            "Value": 60.0
-        },
-        {
-            "Agent": "glovebox_sup_2",
-            "Product": "glove_box_1",
-            "Value": 60.0
-        },
-        {
-            "Agent": "leather_sup_1",
-            "Product": "leather",
             "Value": 60.0
         },
         {
@@ -178,9 +88,14 @@
             "Value": 60.0
         },
         {
-            "Agent": "steering_sup_2",
-            "Product": "steering_column_1",
+            "Agent": "column_sup_1",
+            "Product": "column",
             "Value": 60.0
+        },
+        {
+            "Agent": "button_sup_5",
+            "Product": "button_2",
+            "Value": 120.0
         },
         {
             "Agent": "bezel_sup_5",
@@ -188,9 +103,89 @@
             "Value": 120.0
         },
         {
-            "Agent": "navi_sup_1",
-            "Product": "navi",
+            "Agent": "glass_sup_1",
+            "Product": "glass",
             "Value": 60.0
+        },
+        {
+            "Agent": "plastic_sup_2",
+            "Product": "plastic",
+            "Value": 660.0
+        },
+        {
+            "Agent": "plastic_sup_4",
+            "Product": "plastic",
+            "Value": 240.0
+        },
+        {
+            "Agent": "gauge_sup_1",
+            "Product": "analog_gauge",
+            "Value": 180.0
+        },
+        {
+            "Agent": "glovebox_sup_1",
+            "Product": "glove_box_1",
+            "Value": 60.0
+        },
+        {
+            "Agent": "bezel_sup_1",
+            "Product": "bezel_3",
+            "Value": 180.0
+        },
+        {
+            "Agent": "controlunit_sup_1",
+            "Product": "control_unit",
+            "Value": 60.0
+        },
+        {
+            "Agent": "cover_sup_1",
+            "Product": "cover",
+            "Value": 300.0
+        },
+        {
+            "Agent": "wire_sup_1",
+            "Product": "wire",
+            "Value": 300.0
+        },
+        {
+            "Agent": "wood_sup_1",
+            "Product": "wood",
+            "Value": 180.0
+        },
+        {
+            "Agent": "cluster_sup_1",
+            "Product": "cluster_1",
+            "Value": 60.0
+        },
+        {
+            "Agent": "valve_sup_1",
+            "Product": "valve",
+            "Value": 180.0
+        },
+        {
+            "Agent": "wiring_sup_1",
+            "Product": "wiring_1",
+            "Value": 60.0
+        },
+        {
+            "Agent": "bezel_sup_3",
+            "Product": "bezel_1",
+            "Value": 120.0
+        },
+        {
+            "Agent": "switch_sup_2",
+            "Product": "switch_1",
+            "Value": 480.0
+        },
+        {
+            "Agent": "airbag_sup_2",
+            "Product": "airbag",
+            "Value": 120.0
+        },
+        {
+            "Agent": "connector_sup_1",
+            "Product": "connector",
+            "Value": 180.0
         },
         {
             "Agent": "LED_sup_1",
@@ -198,147 +193,32 @@
             "Value": 240.0
         },
         {
-            "Agent": "plastic_sup_2",
-            "Product": "plastic",
-            "Value": 720.0
-        },
-        {
-            "Agent": "plastic_sup_4",
-            "Product": "plastic",
-            "Value": 180.0
-        }
-    ],
-    "Flows": [
-        {
-            "Source": "bezel_sup_1",
-            "Dest": "cockpit_assy_1",
-            "Product": "bezel_2",
-            "Value": 60.0
-        },
-        {
-            "Source": "button_sup_5",
-            "Dest": "HVAC_sup_1",
-            "Product": "button_2",
-            "Value": 120.0
-        },
-        {
-            "Source": "faceplate_sup_1",
-            "Dest": "cluster_sup_1",
-            "Product": "faceplate_1",
-            "Value": 60.0
-        },
-        {
-            "Source": "radio_sup_1",
-            "Dest": "infortainment_sup_1",
-            "Product": "radio",
-            "Value": 60.0
-        },
-        {
-            "Source": "substrate_sup_1",
-            "Dest": "cockpit_assy_1",
+            "Agent": "substrate_sup_1",
             "Product": "substrate_1",
             "Value": 60.0
         },
         {
-            "Source": "switch_sup_1",
-            "Dest": "infortainment_sup_1",
-            "Product": "switch_1",
-            "Value": 180.0
+            "Agent": "bezel_sup_1",
+            "Product": "bezel_2",
+            "Value": 60.0
         },
         {
-            "Source": "switch_sup_1",
-            "Dest": "HVAC_sup_1",
-            "Product": "switch_1",
-            "Value": 180.0
-        },
-        {
-            "Source": "bezel_sup_3",
-            "Dest": "cockpit_assy_1",
-            "Product": "bezel_1",
+            "Agent": "leather_sup_1",
+            "Product": "leather",
             "Value": 120.0
-        },
+        }
+    ],
+    "Flows": [
         {
-            "Source": "connector_sup_1",
-            "Dest": "wiring_sup_1",
-            "Product": "connector",
-            "Value": 180.0
-        },
-        {
-            "Source": "wheel_sup_1",
-            "Dest": "steering_sup_2",
-            "Product": "wheel_1",
-            "Value": 60.0
-        },
-        {
-            "Source": "gauge_sup_1",
-            "Dest": "cluster_sup_1",
-            "Product": "analog_gauge",
-            "Value": 180.0
-        },
-        {
-            "Source": "controlunit_sup_1",
-            "Dest": "HVAC_sup_1",
-            "Product": "control_unit",
-            "Value": 60.0
-        },
-        {
-            "Source": "wood_sup_1",
-            "Dest": "bezel_sup_1",
-            "Product": "wood",
-            "Value": 180.0
-        },
-        {
-            "Source": "fabric_sup_1",
-            "Dest": "airbag_sup_1",
-            "Product": "fabric",
-            "Value": 360.0
-        },
-        {
-            "Source": "wiring_sup_1",
-            "Dest": "cockpit_assy_1",
-            "Product": "wiring_1",
-            "Value": 60.0
-        },
-        {
-            "Source": "bezel_sup_1",
-            "Dest": "cockpit_assy_1",
-            "Product": "bezel_3",
-            "Value": 180.0
-        },
-        {
-            "Source": "al_sup_1",
-            "Dest": "substrate_sup_1",
-            "Product": "aluminum",
-            "Value": 60.0
-        },
-        {
-            "Source": "glass_sup_1",
-            "Dest": "cluster_sup_1",
-            "Product": "glass",
-            "Value": 60.0
-        },
-        {
-            "Source": "button_sup_4",
+            "Source": "navi_sup_1",
             "Dest": "infortainment_sup_1",
-            "Product": "button_1",
-            "Value": 360.0
-        },
-        {
-            "Source": "button_sup_4",
-            "Dest": "steering_sup_2",
-            "Product": "button_1",
-            "Value": 240.0
-        },
-        {
-            "Source": "bezel_sup_4",
-            "Dest": "cluster_sup_1",
-            "Product": "bezel_5",
+            "Product": "navi",
             "Value": 60.0
         },
         {
-            "Source": "cluster_sup_1",
-            "Dest": "cockpit_assy_1",
-            "Product": "cluster_1",
+            "Source": "cockpit_assy_1",
+            "Dest": "Customer_1",
+            "Product": "cockpit_1",
             "Value": 60.0
         },
         {
@@ -348,39 +228,15 @@
             "Value": 60.0
         },
         {
-            "Source": "column_sup_1",
-            "Dest": "steering_sup_2",
-            "Product": "column",
+            "Source": "radio_sup_1",
+            "Dest": "infortainment_sup_1",
+            "Product": "radio",
             "Value": 60.0
         },
         {
-            "Source": "valve_sup_1",
-            "Dest": "HVAC_sup_1",
-            "Product": "valve",
-            "Value": 180.0
-        },
-        {
-            "Source": "cover_sup_1",
-            "Dest": "wiring_sup_1",
-            "Product": "cover",
-            "Value": 300.0
-        },
-        {
-            "Source": "airbag_sup_1",
-            "Dest": "cockpit_assy_1",
-            "Product": "airbag",
-            "Value": 120.0
-        },
-        {
-            "Source": "infortainment_sup_1",
-            "Dest": "cockpit_assy_1",
-            "Product": "infotainment_1",
-            "Value": 60.0
-        },
-        {
-            "Source": "compressor_sup_1",
-            "Dest": "HVAC_sup_1",
-            "Product": "compressor_1",
+            "Source": "faceplate_sup_1",
+            "Dest": "cluster_sup_1",
+            "Product": "faceplate_1",
             "Value": 60.0
         },
         {
@@ -390,39 +246,69 @@
             "Value": 300.0
         },
         {
-            "Source": "wire_sup_1",
-            "Dest": "wiring_sup_1",
-            "Product": "wire",
-            "Value": 300.0
+            "Source": "fabric_sup_1",
+            "Dest": "airbag_sup_2",
+            "Product": "fabric",
+            "Value": 360.0
         },
         {
-            "Source": "cockpit_assy_1",
-            "Dest": "Customer_1",
-            "Product": "cockpit_1",
+            "Source": "steering_sup_2",
+            "Dest": "cockpit_assy_1",
+            "Product": "steering_column_1",
             "Value": 60.0
         },
         {
-            "Source": "fanvent_sup_1",
+            "Source": "fanvent_sup_3",
             "Dest": "HVAC_sup_1",
             "Product": "fan_vent_1",
             "Value": 240.0
         },
         {
+            "Source": "button_sup_4",
+            "Dest": "steering_sup_2",
+            "Product": "button_1",
+            "Value": 240.0
+        },
+        {
+            "Source": "button_sup_4",
+            "Dest": "infortainment_sup_1",
+            "Product": "button_1",
+            "Value": 360.0
+        },
+        {
+            "Source": "infortainment_sup_1",
+            "Dest": "cockpit_assy_1",
+            "Product": "infotainment_1",
+            "Value": 60.0
+        },
+        {
+            "Source": "wheel_sup_1",
+            "Dest": "steering_sup_2",
+            "Product": "wheel_1",
+            "Value": 60.0
+        },
+        {
+            "Source": "bezel_sup_4",
+            "Dest": "cluster_sup_1",
+            "Product": "bezel_5",
+            "Value": 60.0
+        },
+        {
+            "Source": "al_sup_1",
+            "Dest": "substrate_sup_1",
+            "Product": "aluminum",
+            "Value": 60.0
+        },
+        {
+            "Source": "compressor_sup_1",
+            "Dest": "HVAC_sup_1",
+            "Product": "compressor_1",
+            "Value": 60.0
+        },
+        {
             "Source": "beam_sup_1",
             "Dest": "cockpit_assy_1",
             "Product": "cross_car_beam_1",
-            "Value": 60.0
-        },
-        {
-            "Source": "glovebox_sup_2",
-            "Dest": "cockpit_assy_1",
-            "Product": "glove_box_1",
-            "Value": 60.0
-        },
-        {
-            "Source": "leather_sup_1",
-            "Dest": "glovebox_sup_2",
-            "Product": "leather",
             "Value": 60.0
         },
         {
@@ -432,10 +318,16 @@
             "Value": 60.0
         },
         {
-            "Source": "steering_sup_2",
-            "Dest": "cockpit_assy_1",
-            "Product": "steering_column_1",
+            "Source": "column_sup_1",
+            "Dest": "steering_sup_2",
+            "Product": "column",
             "Value": 60.0
+        },
+        {
+            "Source": "button_sup_5",
+            "Dest": "HVAC_sup_1",
+            "Product": "button_2",
+            "Value": 120.0
         },
         {
             "Source": "bezel_sup_5",
@@ -444,25 +336,13 @@
             "Value": 120.0
         },
         {
-            "Source": "navi_sup_1",
-            "Dest": "infortainment_sup_1",
-            "Product": "navi",
-            "Value": 60.0
-        },
-        {
-            "Source": "LED_sup_1",
+            "Source": "glass_sup_1",
             "Dest": "cluster_sup_1",
-            "Product": "LED",
-            "Value": 240.0
-        },
-        {
-            "Source": "plastic_sup_2",
-            "Dest": "bezel_sup_1",
-            "Product": "plastic",
+            "Product": "glass",
             "Value": 60.0
         },
         {
-            "Source": "plastic_sup_2",
+            "Source": "plastic_sup_4",
             "Dest": "bezel_sup_4",
             "Product": "plastic",
             "Value": 120.0
@@ -475,27 +355,149 @@
         },
         {
             "Source": "plastic_sup_2",
+            "Dest": "bezel_sup_1",
+            "Product": "plastic",
+            "Value": 60.0
+        },
+        {
+            "Source": "plastic_sup_2",
+            "Dest": "glovebox_sup_1",
+            "Product": "plastic",
+            "Value": 60.0
+        },
+        {
+            "Source": "plastic_sup_4",
+            "Dest": "airbag_sup_2",
+            "Product": "plastic",
+            "Value": 120.0
+        },
+        {
+            "Source": "plastic_sup_2",
             "Dest": "bezel_sup_5",
             "Product": "plastic",
             "Value": 120.0
         },
         {
-            "Source": "plastic_sup_4",
+            "Source": "plastic_sup_2",
             "Dest": "substrate_sup_1",
             "Product": "plastic",
             "Value": 180.0
         },
         {
-            "Source": "plastic_sup_2",
-            "Dest": "airbag_sup_1",
-            "Product": "plastic",
+            "Source": "gauge_sup_1",
+            "Dest": "cluster_sup_1",
+            "Product": "analog_gauge",
+            "Value": 180.0
+        },
+        {
+            "Source": "glovebox_sup_1",
+            "Dest": "cockpit_assy_1",
+            "Product": "glove_box_1",
+            "Value": 60.0
+        },
+        {
+            "Source": "bezel_sup_1",
+            "Dest": "cockpit_assy_1",
+            "Product": "bezel_3",
+            "Value": 180.0
+        },
+        {
+            "Source": "controlunit_sup_1",
+            "Dest": "HVAC_sup_1",
+            "Product": "control_unit",
+            "Value": 60.0
+        },
+        {
+            "Source": "cover_sup_1",
+            "Dest": "wiring_sup_1",
+            "Product": "cover",
+            "Value": 300.0
+        },
+        {
+            "Source": "wire_sup_1",
+            "Dest": "wiring_sup_1",
+            "Product": "wire",
+            "Value": 300.0
+        },
+        {
+            "Source": "wood_sup_1",
+            "Dest": "bezel_sup_1",
+            "Product": "wood",
+            "Value": 180.0
+        },
+        {
+            "Source": "cluster_sup_1",
+            "Dest": "cockpit_assy_1",
+            "Product": "cluster_1",
+            "Value": 60.0
+        },
+        {
+            "Source": "valve_sup_1",
+            "Dest": "HVAC_sup_1",
+            "Product": "valve",
+            "Value": 180.0
+        },
+        {
+            "Source": "wiring_sup_1",
+            "Dest": "cockpit_assy_1",
+            "Product": "wiring_1",
+            "Value": 60.0
+        },
+        {
+            "Source": "bezel_sup_3",
+            "Dest": "cockpit_assy_1",
+            "Product": "bezel_1",
             "Value": 120.0
         },
         {
-            "Source": "plastic_sup_2",
-            "Dest": "glovebox_sup_2",
-            "Product": "plastic",
+            "Source": "switch_sup_2",
+            "Dest": "infortainment_sup_1",
+            "Product": "switch_1",
+            "Value": 180.0
+        },
+        {
+            "Source": "switch_sup_2",
+            "Dest": "HVAC_sup_1",
+            "Product": "switch_1",
+            "Value": 300.0
+        },
+        {
+            "Source": "airbag_sup_2",
+            "Dest": "cockpit_assy_1",
+            "Product": "airbag",
+            "Value": 120.0
+        },
+        {
+            "Source": "connector_sup_1",
+            "Dest": "wiring_sup_1",
+            "Product": "connector",
+            "Value": 180.0
+        },
+        {
+            "Source": "LED_sup_1",
+            "Dest": "cluster_sup_1",
+            "Product": "LED",
+            "Value": 240.0
+        },
+        {
+            "Source": "substrate_sup_1",
+            "Dest": "cockpit_assy_1",
+            "Product": "substrate_1",
             "Value": 60.0
+        },
+        {
+            "Source": "bezel_sup_1",
+            "Dest": "cockpit_assy_1",
+            "Product": "bezel_2",
+            "Value": 60.0
+        },
+        {
+            "Source": "leather_sup_1",
+            "Dest": "glovebox_sup_1",
+            "Product": "leather",
+            "Value": 120.0
         }
-    ]
+    ],
+    "OverProductions": [],
+    "OverFlows": []
 }

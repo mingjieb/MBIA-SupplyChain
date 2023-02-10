@@ -54,7 +54,7 @@ class Params:
         self.link = pd.read_excel(filename, sheet_name='Link', index_col=[0, 1])
         # self.E = self.link[['sourceStage', 'destinationStage']].to_records(index=False).tolist()
         self.E = set(self.link.index)
-        self.e = {(v, k): stageCost.loc[v, k][0] for v, k in self.info['prodLine']}
+        self.e = {(v, k): stageCost.loc[v, k] for v, k in self.info['prodLine']}
         self.c = {link: self.link.loc[link, 'TransportCost'] for link in self.E}
         self.u = {link: self.link.loc[link, 'TransportCapacity'] for link in self.E}
         self.Lmax = {v: data.loc[v, 'ProductionCapacity'].values[0] for v in self.V}
@@ -246,10 +246,10 @@ class Params:
             'E': [[i, j] for i, j in self.E - self._disabled_E],
             # 'u': [{'index': [i, j], 'value': 1e6} for i, j in self.E - self._disabled_E],
             'u': [{'index': [i, j], 'value': float(self.u[i, j])} for i, j in self.E - self._disabled_E],
-            'f': [{'index': [i, j], 'value': 0} for i, j in self.E - self._disabled_E],
+            'f': [{'index': [i, j], 'value': 1} for i, j in self.E - self._disabled_E],
             # 'c': [{'index': [i, j, k], 'value': float(self.sample_cost((i, j)))} for i, j in self.E for k in self.K],
             'c': [{'index': [i, j, k], 'value': float(self.c[i, j])} for i, j in self.E - self._disabled_E for k in self.K],
-            'phi': [{'index': v, 'value': 0} for v in self.V - self._disabled_V],
+            'phi': [{'index': v, 'value': 1} for v in self.V - self._disabled_V],
             'p': [{'index': [v, k], 'value': 1 if (v, k) in self.info['prodLine'] else 0} for v in self.V - self._disabled_V for k in
                   self.K],
             # 'Lmax': [{'index': v, 'value': 1e6 if self.info['V_type'][v] in self.stageTypes else 0} for v in self.V - self._disabled_V],
@@ -302,15 +302,37 @@ if __name__ == "__main__":
     my_params = Params(scid=0)
     my_params.create_instance(sample=False)
     centralized_run_time = {}
-    for agent in agent_with_productions:
+    # for agent in agent_with_productions:
+    for agent in ["HVAC_sup_3"]:
         my_params.enable_all()
-        my_params.disable(vertex_list=[agent])
+
+        # uncomment for penalty of adding agents and edges
         my_params.to_json()
         model = pyomoModel.SinglePeriod()
         model.create_instance(filenames=['data.json'])
+        model.solve(tee=False)
+
+
+        my_params.disable(vertex_list=[agent])
+        my_params.to_json()
+
+        # no penalty for changing agents and edges
+        # model = pyomoModel.SinglePeriod(reschedule=True)
+        # model.create_instance(filenames=['data.json'])
+        # start_time = time.time()
+        # model.solve(tee=False, case_name=agent)
+        # end_time = time.time()
+
+        # penalty for changing agents and edges
+        network = model.get(["z", "zeta"])
+        my_params.network_to_json(network, penalty=1e4)
+        model_networkChange = pyomoModel.SinglePeriod(exist_G=True, reschedule=True)
+        model_networkChange.create_instance(filenames=['data.json', 'network.json'])
         start_time = time.time()
-        model.solve(tee=False, case_name=agent)
+        model_networkChange.solve(tee=False, case_name=agent)
         end_time = time.time()
+
+
         centralized_run_time[agent] = end_time - start_time
 
     with open("CentralizedResults/runtime.json", 'w', encoding='utf-8') as f:

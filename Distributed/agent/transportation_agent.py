@@ -14,6 +14,7 @@ class TransportationAgent(Agent):
     def __init__(self, name):
         Agent.__init__(self, name, "Transportation")
         self.flow = dict()
+        self.over_flow = dict()
         self.flow_change = 0
         self.flow_added = 0
     def update_flow(self, flow, change):

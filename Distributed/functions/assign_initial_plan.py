@@ -39,6 +39,20 @@ def assign_initial_flow(ag_network, file_name):
         productions[(prod['Agent'], prod['Product'])] = prod["Value"]
         if ag.name not in agent_with_productions:
             agent_with_productions.append(ag.name)
+            ag.used = True
+
+    if 'OverProductions' in data.keys() or 'OverFlows' in data.keys():
+        over_flows = {}
+        for o_f in data["OverFlows"]:
+            if o_f["Value"] > 1e-5:
+                over_flows[(o_f['Source'], o_f['Dest'], o_f['Product'])] = o_f["Value"]
+        tp.over_flow = over_flows.copy()
+
+        for o_p in data['OverProductions']:
+            if o_p["Value"] > 1e-5:
+                ag = network.find_agent_by_name(ag_network, o_p['Agent'])
+                ag.state.update_over_prod("production", o_p['Product'], o_p["Value"])
+
 
     return flows, productions, agent_with_productions
 
@@ -46,10 +60,13 @@ def re_initilize_network(ag_network, file_name):
     for ag_type in ag_network.agent_list.keys():
         for ag in ag_network.agent_list[ag_type]:
             ag.down = False
+            ag.explore = False
+            ag.used = False
             ag.state.clear_state()
             # ag.communication_manager.clear_message()
             if ag.name == "Transportation":
                 ag.flow.clear()
+                ag.over_flow.clear()
             if "Customer" not in ag.name:
                 ag.demand.clear()
     ag_network.occurred_communication = 0

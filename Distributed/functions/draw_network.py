@@ -9,6 +9,7 @@
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 import matplotlib.colors as colors
 import matplotlib.cm as cm
 import matplotlib.lines as mlines
@@ -103,7 +104,7 @@ SizeMap = {
 # }
 
 color_values = [ColorMap[type] for type in nx.get_node_attributes(G, 'type').values()]
-size_values = [SizeMap[type] for type in nx.get_node_attributes(G, 'type').values()]
+size_values = [SizeMap[type]*5 for type in nx.get_node_attributes(G, 'type').values()]
 
 # cNorm = colors.Normalize(vmin=0, vmax=max(values))
 # scalarMap = cm.ScalarMappable(norm=cNorm, cmap=cmap)
@@ -119,7 +120,7 @@ size_values = [SizeMap[type] for type in nx.get_node_attributes(G, 'type').value
 #                       label=LegendMap[label]))
 
 
-fig, ax = plt.subplots(dpi=400)
+fig, ax = plt.subplots(figsize=(15, 10))
 # values = [ColorLegend[type] for type in nx.get_node_attributes(G, 'type').values()]
 node_pose = nx.multipartite_layout(G)
 for key in node_pose.keys():
@@ -140,9 +141,16 @@ for key in node_pose.keys():
 # nx.draw_networkx(G, cmap=cmap, vmin=0, vmax=max(values), node_color=values,
 #                  arrows=True, with_labels=False, node_size=50, font_size=4,
 #                  pos=node_pose, ax=ax, width=0.5, arrowsize=5)
-nx.draw_networkx(G, node_color=color_values, linewidths = 0.2, edgecolors='black', node_size=size_values, pos=node_pose,
+nx.draw_networkx(G, node_color=color_values, linewidths = 0.5, edgecolors='black', node_size=size_values, pos=node_pose,
                  with_labels = False, arrows=True, edge_color='#262626',
                  ax=ax, width=0.5, arrowsize=4)
+
+handles = [Line2D([0], [0], marker='o', color='w', markeredgecolor='black', markerfacecolor=node_color, markersize=10) for node_color in list(ColorMap.values())]
+
+labels = ["Raw material\nsupplier", "Part supplier", "Component supplier", "Cockpit assembly", "Auto assembly\n(customer)"]
+# fig.supxlabel('Normalized metric values of the difference between centralized and distributed approaches')
+# fig.supylabel('Level of connectivity')
+fig.legend(handles, labels, loc='lower center', ncol=5, bbox_to_anchor=(0.5, 0.1), fontsize=12)
 
 plt.axis('off')
 # plt.legend(handles=handler, loc="upper center", ncol=len(handler))

@@ -14,6 +14,7 @@ class StateModel():
         self.outflow = {}
         self.inventory = {}
         self.production = {}
+        self.over_production = {}
 
     def update_prod_inv(self, key, product, change):
         # if key == "inventory":
@@ -44,9 +45,23 @@ class StateModel():
             if self.outflow[(agent, product)] - 0 < 0.1:
                 self.outflow.pop((agent, product))
 
+    def update_over_prod(self, key, product, change):
+        # if key == "inventory":
+        #     self.inventory[product] = amount
+        #     if amount - 0 < 0.01:
+        #         self.inventory.pop(product)
+        if key == "production":
+            try:
+                self.over_production[product] += change
+            except:
+                self.over_production[product] = change
+            if self.over_production[product] - 0 < 0.1:
+                self.over_production.pop(product)
+
 
     def clear_state(self):
         self.inflow.clear()
         self.outflow.clear()
         self.inventory.clear()
         self.production.clear()
+        self.over_production.clear()

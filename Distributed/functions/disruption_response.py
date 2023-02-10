@@ -86,6 +86,7 @@ def supplier_reselection(agent_network, demand_agents, transportation, find_solu
     new_flows = {}
     new_productions = {}
     while len(demand_agents) != 0:
+        iter_flows = {}
         total_supplier_agents = {}
         # all the demand_agents send request
         for ag_dm in demand_agents:
@@ -112,17 +113,40 @@ def supplier_reselection(agent_network, demand_agents, transportation, find_solu
 
         # all the demand_agents select the suppliers
         for ag_dm in demand_agents:
+            # update response
+            for product in total_supplier_agents[ag_dm.name].keys():
+                for ag_sup in total_supplier_agents[ag_dm.name][product]:
+                    try:
+                        response_decision = ag_sup.response_optimizer(transportation)
+                    except:
+                        print(ag_sup.name, "cannot find response to", ag_dm.name)
+                        find_solution = False
+                    ag_sup.send_response(response_decision)
+                    supplier_agents_considered.append(ag_sup.name)
+                    agent_network.occurred_communication += len(
+                        ag_sup.communication_manager.delivered_response.keys())
             try:
-                ag_dm_decision, ag_dm_flows = ag_dm.supplier_selector()
+                ag_dm_decision, ag_dm_flows, over_production, over_flow = ag_dm.supplier_selector()
             except:
                 print(ag_dm.name, "cannot find enough suppliers")
                 find_solution = False
-            new_flows.update(ag_dm_flows)
+            for f in ag_dm_flows.keys():
+                if f in new_flows.keys():
+                    new_flows[f] += ag_dm_flows[f]
+                else:
+                    new_flows[f] = ag_dm_flows[f]
+
+                if f in iter_flows.keys():
+                    iter_flows[f] += ag_dm_flows[f]
+                else:
+                    iter_flows[f] = ag_dm_flows[f]
+
             agent_network.occurred_communication += len(ag_dm_decision.keys())
             for ag_sup in ag_dm_decision.keys():
                 ag = network.find_agent_by_name(agent_network, ag_sup)
                 for product in ag_dm_decision[ag_sup].keys():
                     ag.state.update_prod_inv("production", product, ag_dm_decision[ag_sup][product])
+                    ag.used = True
                 try:
                     for product in ag_dm_decision[ag_sup].keys():
                         try:
@@ -131,6 +155,13 @@ def supplier_reselection(agent_network, demand_agents, transportation, find_solu
                             new_productions[ag_sup].update({product: ag_dm_decision[ag_sup][product]})
                 except:
                     new_productions[ag_sup] = ag_dm_decision[ag_sup]
+
+            for ag_prod in over_production.keys():
+                ag = network.find_agent_by_name(agent_network, ag_prod[0])
+                ag.state.update_over_prod("production", ag_prod[1], over_production[ag_prod])
+            for o_flow in over_flow.keys():
+                transportation.update_flow(o_flow, over_flow[o_flow])
+
             for flow in ag_dm_flows.keys():
                 transportation.update_flow(flow, ag_dm_flows[flow])
                 source_ag = network.find_agent_by_name(agent_network, flow[0])
@@ -142,12 +173,13 @@ def supplier_reselection(agent_network, demand_agents, transportation, find_solu
             ag_dm.communication_manager.clear_message()
             for prod in total_supplier_agents[ag_dm.name]:
                 for ag in total_supplier_agents[ag_dm.name][prod]:
-                    ag.communication_manager.clear_message()
+                    ag.communication_manager.delivered_response.pop(ag_dm.name, None)
+                    ag.communication_manager.received_request.pop(ag_dm.name, None)
         # demand_agents = [ag_dm for ag_dm in demand_agents if not ag_dm.check_demand(ag_dm_flows)]
 
         # demand agents check whether their demands are satisfied
         for ag_dm in demand_agents[:]:
-            if ag_dm.check_demand(new_flows):
+            if ag_dm.check_demand(iter_flows):
                 demand_agents.remove(ag_dm)
             elif not ag_dm.check_possible_iteration(agent_network):
                 demand_agents.remove(ag_dm)

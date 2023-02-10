@@ -17,7 +17,7 @@ def calculate_attributes(agent_network, agent_name, initial_flows, initial_produ
     l, n = get_production_steps(agent_network, ag)
 
     attributes = attributes_summary(in_degree, out_degree, com_degree, capability_redundancy, capacity_proportion,
-                                    capacity_utility, flow_contribution, l, n)
+                                    capacity_utility, flow_contribution, l, n, float(ag.depth))
     return attributes
 
 def calculate_degrees(agent):
@@ -130,7 +130,7 @@ def get_production_steps(agent_network, agent):
 
 
 def attributes_summary(in_degree, out_degree, com_degree, capability_redundancy, capacity_proportion,
-                                    capacity_utility, flow_contribution, l, n):
+                                    capacity_utility, flow_contribution, l, n, depth):
     attributes = {
         'g_in': in_degree,
         'g_out': out_degree,
@@ -140,7 +140,8 @@ def attributes_summary(in_degree, out_degree, com_degree, capability_redundancy,
         'Q': capacity_utility,
         'F': flow_contribution,
         'l': l,
-        'n': n
+        'n': n,
+        "depth": depth
     }
     return attributes
 

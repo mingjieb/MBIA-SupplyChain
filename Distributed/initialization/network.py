@@ -10,6 +10,8 @@
 from Distributed.agent import customer_agent, distributor_agent, manufacturing_agent, oem_agent, \
     raw_material_agent, transportation_agent
 import pandas as pd
+import matplotlib.pyplot as plt
+import statistics
 
 
 # Information in the network
@@ -62,6 +64,19 @@ def agent_initialization(self, info):
     # Initialize communication network
     build_environment_model(self, info)
 
+    # redun = []
+    # for ag in self.agent_list["Assembly"] + self.agent_list["TierSupplier"]:
+    #     capability_redundancy = []
+    #     for product in ag.capability.knowledge["Production"]:
+    #         try:
+    #             capability_redundancy.append(len(ag.environment.clustering_agent[product]))
+    #         except:
+    #             capability_redundancy.append(0)
+    #     redun.append(statistics.mean(capability_redundancy))
+    #
+    # plt.scatter(range(len(self.agent_list["Assembly"] + self.agent_list["TierSupplier"])), redun)
+    # plt.show()
+    # print("Check")
 
 # Build the initial environment model for each agent
 # Environment model contains a list of agents that one agent can communicate
@@ -111,15 +126,17 @@ def build_capability_model(self, info):
     agent_product = info["Agent"].set_index(['AgentName', 'ProductType'])
     transport_link = info["Link"].set_index(['Source', 'Destination'])
     product_structure = info["ProductStructure"].set_index(['Product', 'Needed'])
+    agent_depth = info["Agent"].set_index(["AgentName"])
     # initialize production capability
     for idx in agent_product.index:
         ag = find_agent_by_name(self, idx[0])
+        ag.depth = 4-agent_product.loc[idx, "Level"]
         if 'Customer' in ag.name:
-            ag.demand[idx[1]] = agent_product.loc[idx, "Demand"][0]
+            ag.demand[idx[1]] = agent_product.loc[idx, "Demand"]
         else:
             prod_char = {}
-            prod_char["Cost"] = agent_product.loc[idx, 'ProductionCost'][0]
-            prod_char["Capacity"] = agent_product.loc[idx, 'ProductionCapacity'][0]
+            prod_char["Cost"] = agent_product.loc[idx, 'ProductionCost']
+            prod_char["Capacity"] = agent_product.loc[idx, 'ProductionCapacity']
             prod_char["Material"] = {}
             for need in product_structure.index:
                 if need[0] == idx[1]:

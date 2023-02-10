@@ -49,25 +49,40 @@ def over_capacity_cost(agent_network):
     prod_over_cap_cost = 0
     overcapacity_multiplier = 2
     transportation = network.find_agent_by_name(agent_network, "Transportation")
-    for flow in transportation.flow.keys():
-        cap = transportation.capability.characteristics["Transportation"][(flow[0], flow[1])]["Capacity"]
+    # for flow in transportation.flow.keys():
+    #     cap = transportation.capability.characteristics["Transportation"][(flow[0], flow[1])]["Capacity"]
+    #     unit_over_cost = overcapacity_multiplier * \
+    #                      transportation.capability.characteristics["Transportation"][(flow[0], flow[1])]["Cost"]
+    #     amount = transportation.get_transportaion_amount(flow[0], flow[1])
+    #     over_cap = max(0, amount - cap)
+    #     flow_over_cap_cost += over_cap * unit_over_cost
+    #     # if over_cap > 0:
+    #     #     print(flow)
+    #
+    #
+    # for ag in agent_network.agent_list["Assembly"] + agent_network.agent_list["TierSupplier"]:
+    #     cap = ag.capability.get_capacity()
+    #     unit_over_cost = overcapacity_multiplier * ag.capability.get_ave_cost()
+    #     prod = 0
+    #     for product in ag.state.production.keys():
+    #         prod += ag.state.production[product]
+    #     over_cap = max(0, prod - cap)
+    #     prod_over_cap_cost += over_cap * unit_over_cost
+    #     # if over_cap > 0:
+    #     #     print(ag)
+
+    for flow in transportation.over_flow.keys():
         unit_over_cost = overcapacity_multiplier * \
                          transportation.capability.characteristics["Transportation"][(flow[0], flow[1])]["Cost"]
-        amount = transportation.get_transportaion_amount(flow[0], flow[1])
-        over_cap = max(0, amount - cap)
-        flow_over_cap_cost += over_cap * unit_over_cost
-        if over_cap > 0:
-            print(flow)
+        flow_over_cap_cost += transportation.over_flow[flow] * unit_over_cost
+        # if over_cap > 0:
+        #     print(flow)
 
 
     for ag in agent_network.agent_list["Assembly"] + agent_network.agent_list["TierSupplier"]:
-        cap = ag.capability.get_capacity()
-        unit_over_cost = overcapacity_multiplier * ag.capability.get_ave_cost()
-        prod = 0
-        for product in ag.state.production.keys():
-            prod += ag.state.production[product]
-        over_cap = max(0, prod - cap)
-        prod_over_cap_cost += over_cap * unit_over_cost
+        for product in ag.state.over_production.keys():
+            unit_over_cost = overcapacity_multiplier * ag.capability.characteristics["Production"][product]["Cost"]
+            prod_over_cap_cost += ag.state.over_production[product] * unit_over_cost
         # if over_cap > 0:
         #     print(ag)
 
@@ -152,22 +167,28 @@ def production_difference(agent_network, initial_productions, current_production
     #         removed_agent[lost[0]] = lost[1]
     added_agent = current_agent - initial_agent
     removed_agent = initial_agent - current_agent
+    print(added_agent)
     return changed_productions, added_agent, removed_agent
 
 def calculate_cost(ag_network, flows, productions):
     flow_cost = 0
     production_cost = 0
     transportation = network.find_agent_by_name(ag_network, "Transportation")
+
     for flow in flows:
         cost = transportation.capability.characteristics["Transportation"][(flow[0], flow[1])]["Cost"]
-        cap = transportation.capability.characteristics["Transportation"][(flow[0], flow[1])]["Capacity"]
-        flow_cost += min(flows[flow], cap) * cost
+        if flow in transportation.over_flow.keys():
+            flow_cost += (flows[flow]-transportation.over_flow[flow]) * cost
+        else:
+            flow_cost += flows[flow] * cost
 
     for prod in productions:
         ag = network.find_agent_by_name(ag_network, prod[0])
         cost = ag.capability.characteristics["Production"][prod[1]]["Cost"]
-        cap = ag.capability.get_capacity()
-        production_cost += min(productions[prod], cap) * cost
+        if prod[1] in ag.state.over_production.keys():
+            production_cost += (productions[prod]-ag.state.over_production[prod[1]]) * cost
+        else:
+            production_cost += productions[prod] * cost
 
     flow_over_cap_cost, prod_over_cap_cost = over_capacity_cost(ag_network)
     flow_cost += flow_over_cap_cost

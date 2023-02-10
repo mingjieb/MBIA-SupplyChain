@@ -25,6 +25,13 @@ if __name__ == '__main__':
     # Initialize the agent network and flows
     agent_network = network.initialize_agent_network(network)
     agent_network.occurred_communication = 0
+
+    # initial_flows, initial_productions, agent_with_productions = assign_initial_flow(agent_network, '../CentralizedResults/initial.json')
+    # initial_flow_cost, initial_production_cost = calculate_cost(agent_network, initial_flows, initial_productions)
+    # re_initilize_network(agent_network, '../CentralizedResults/button_sup_4.json')
+    # results = calculate_metrics(agent_network, initial_flows, initial_productions,
+    #                             0, initial_flow_cost, initial_production_cost)
+
     initial_file_name = 'initialization/InitialPlans.json'
     initial_flows, initial_productions, agent_with_productions = assign_initial_flow(agent_network, initial_file_name)
     initial_flow_cost, initial_production_cost = calculate_cost(agent_network, initial_flows, initial_productions)
@@ -33,9 +40,14 @@ if __name__ == '__main__':
     unsatisfied = 0
     data_summary = {}
     for ag_name in agent_with_productions:
+        # Update the network back to initial plan
+        re_initilize_network(agent_network, initial_file_name)
         # # Used for debug
-        # if ag_name == 'plastic_sup_4':
-        #     print('debug')
+        if ag_name == 'HVAC_sup_3':
+            print('debug')
+            for ag in agent_network.agent_list["TierSupplier"]:
+                if ag.name == "controlunit_sup_2":
+                    print(ag.used)
         attributes = calculate_attributes(agent_network, ag_name, initial_flows, initial_productions)
         # Disruption scenario
         start_time = time.time()
@@ -53,8 +65,7 @@ if __name__ == '__main__':
             unsatisfied += 1
         data_summary[ag_name] = {"attributes": attributes, "results": results}
 
-        # Update the network back to initial plan
-        re_initilize_network(agent_network, initial_file_name)
+
 
     with open('results/Distributed_results.json', 'w', encoding='utf-8') as f:
         json.dump(data_summary, f, ensure_ascii=False, indent=4)
@@ -69,6 +80,9 @@ if __name__ == '__main__':
     agent_amount = sum(len(agent_network.agent_list[key]) for key in agent_network.agent_list.keys())
     for case_name in agent_with_productions:
         re_initilize_network(agent_network, '../CentralizedResults/%s.json' % case_name)
+        # print("centralized: ", case_name)
+        if case_name == "cluster_sup_2":
+            print("debug")
         results = calculate_metrics(agent_network, initial_flows, initial_productions,
                                     0, initial_flow_cost, initial_production_cost)
         centralized_data[case_name] = {"results": results}

@@ -27,6 +27,9 @@ class Agent:
         self.state = state_model.StateModel()
         self.communication_manager = communication_manager.CommunicationManager()
         self.down = False
+        self.explore = False
+        self.used = False
+        self.depth = 0
         self.demand = dict()
 
     # disrupted agent identifies demand agents and their demands
@@ -47,13 +50,23 @@ class Agent:
 
     # demand agent explores supplier agents to request
     def exploration(self, agent_network):
+        # current_inflow_agents = []
+        # for flow_key in self.state.inflow.keys():
+        #     if flow_key[0] not in current_inflow_agents:
+        #         current_inflow_agents.append(flow_key[0])
+
         supplier_agents = {}
         for product in self.demand.keys():
             supplier_agents[product] = []
             for upstream_agent in self.environment.upstream_agent[product]:
                 if not upstream_agent.down:
-                    supplier_agents[product].append(upstream_agent)
-        # TODO: explore other agent in network but not in environment
+                    # only check current in-network agents
+                    if not self.explore and upstream_agent.used:
+                        supplier_agents[product].append(upstream_agent)
+                    # explore other agent in network but not in environment
+                    elif self.explore and not upstream_agent.used:
+                        supplier_agents[product].append(upstream_agent)
+
         return supplier_agents
 
     # demand agent sends request to supplier agents
@@ -161,18 +174,34 @@ class Agent:
         x_over_pd = model.addVars(pairs, vtype=GRB.INTEGER, name="over_pd")
         x_over_tp = model.addVars(pairs, vtype=GRB.INTEGER, name="over_tp")
 
-        obj = model.setObjective(gp.quicksum(response[i][k]["cost_pd"] * x_pd[i, k] + 2 * response[i][k]["cost_pd"] * x_over_pd[i, k]
-                                             + response[i][k]["cost_tp"] * x_tp[i, k] + 2 * response[i][k]["cost_tp"] * x_over_tp[i, k]
-                                             - 1e8*(x_pd[i, k]+x_over_pd[i, k])
-                                             for i in supplier_agents for k in response[i].keys()), GRB.MINIMIZE)
+        delta = model.addVars(self.demand.keys(), vtype=GRB.INTEGER, name="delta")
 
-        resp_constrs_pd = model.addConstrs((x_pd[i, k]+x_over_pd[i, k] <= response[i][k]["amount"]
+        used_agent = []
+        for ag_sup in self.communication_manager.received_response.keys():
+            if self.communication_manager.received_response[ag_sup]["reqFromAgent"].used:
+                used_agent.append(ag_sup)
+
+        zeta = model.addVars(supplier_agents, vtype=GRB.BINARY, name="used_supplier")
+
+        if self.explore:
+            obj = model.setObjective(
+                gp.quicksum(response[i][k]["cost_pd"] * x_pd[i, k] + 2 * response[i][k]["cost_pd"] * x_over_pd[i, k]
+                            + response[i][k]["cost_tp"] * x_tp[i, k] + 2 * response[i][k]["cost_tp"] * x_over_tp[i, k]
+                            - 1e8 * (x_pd[i, k] + x_over_pd[i, k]) + 1e4 * zeta[i]
+                            for i in supplier_agents for k in response[i].keys()), GRB.MINIMIZE)
+        else:
+            obj = model.setObjective(gp.quicksum(response[i][k]["cost_pd"] * x_pd[i, k] + 2 * response[i][k]["cost_pd"] * x_over_pd[i, k]
+                                                 + response[i][k]["cost_tp"] * x_tp[i, k] + 2 * response[i][k]["cost_tp"] * x_over_tp[i, k]
+                                                 - 1e8*(x_pd[i, k]+x_over_pd[i, k])
+                                                 for i in supplier_agents for k in response[i].keys()), GRB.MINIMIZE)
+
+        resp_constrs_pd = model.addConstrs((x_pd[i, k]+x_over_pd[i, k] <= response[i][k]["amount"] * zeta[i]
                                        for i in supplier_agents for k in response[i].keys()), name="resp_limit_pd")
 
         resp_constrs_tp = model.addConstrs((x_tp[i, k] + x_over_tp[i, k] <= response[i][k]["amount"]
                                          for i in supplier_agents for k in response[i].keys()), name="resp_limit_tp")
 
-        capacity_constrs_pd = model.addConstrs((gp.quicksum(x_pd[i, k] for k in response[i].keys()) <= response[i][k]["remaining_cap_pd"]
+        capacity_constrs_pd = model.addConstrs((gp.quicksum(x_pd[i, k] for k in response[i].keys()) <= response[i][k]["remaining_cap_pd"] * zeta[i]
                                          for i in supplier_agents for k in response[i].keys()), name="capacity_limit_pd")
 
         capacity_constrs_tp = model.addConstrs(
@@ -180,20 +209,29 @@ class Agent:
              for i in supplier_agents for k in response[i].keys()), name="capacity_limit_tp")
 
         balance = model.addConstrs((x_tp[i, k] + x_over_tp[i, k] == x_pd[i, k] + x_over_pd[i, k]
-             for i in supplier_agents for k in response[i].keys()), name="capacity_limit_tp")
+             for i in supplier_agents for k in response[i].keys()), name="balance")
 
         demand_constrs = model.addConstrs((gp.quicksum(x_pd[i, k]+x_over_pd[i, k] for i in supplier_agents if k in response[i]) <= self.demand[k]
                                            for k in self.demand.keys()), name="demand_limit")
 
+        priority_constrs = model.addConstrs((zeta[i] == 1  for i in used_agent), name="demand_limit")
+
+
         model.optimize()
         xsol = model.getAttr('x', x_pd)
         x_over_sol = model.getAttr('x', x_over_pd)
+        x_over_sol_tp = model.getAttr('x', x_over_tp)
         selection_decision = {}
+        over_flow, over_production = {}, {}
         for i in supplier_agents:
             selection_decision[i] = {}
             for k in response[i].keys():
                 if xsol[i, k]+x_over_sol[i, k] > 0.1:
                     selection_decision[i].update({k: xsol[i, k]+x_over_sol[i, k]})
+                if x_over_sol[i, k] > 0.1:
+                    over_production[(i, k)] = x_over_sol[i, k]
+                if x_over_sol_tp[i, k] > 0.1:
+                    over_flow[(i, self.name, k)] = x_over_sol_tp[i, k]
             if len(selection_decision[i].keys()) == 0:
                 selection_decision.pop(i)
 
@@ -203,7 +241,7 @@ class Agent:
             for product in selection_decision[sup_name]:
                 new_flows[(sup_name, self.name, product)] = selection_decision[sup_name][product]
         
-        return selection_decision, new_flows
+        return selection_decision, new_flows, over_production, over_flow
 
     # demand agent check demand
     def check_demand(self, new_flows):
@@ -213,7 +251,7 @@ class Agent:
             for flow in new_flows.items():
                 if self.name == flow[0][1] and product == flow[0][2]:
                     actual_get += flow[1]
-            if actual_get >= self.demand[product]:
+            if abs(actual_get- self.demand[product]) < 0.1:
                 self.demand.pop(product)
             else:
                 self.demand[product] -= actual_get
@@ -245,6 +283,7 @@ class Agent:
     # check whether the network has remaining related agents the this agent has not explored
     def check_possible_iteration(self, agent_network):
         flag = False
+        self.explore = True
         supplier_agents = self.exploration(agent_network)
         for product in self.demand.keys():
             if len(supplier_agents[product]) != 0:
@@ -261,7 +300,7 @@ class Agent:
         total_production = 0
         for product in self.state.production.keys():
             total_production += self.state.production[product]
-        if self.capability.get_capacity() - total_production > 0:
+        if 1.3*self.capability.get_capacity() - total_production > 0:
             return True
         else:
             return False

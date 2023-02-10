@@ -10,7 +10,7 @@ import pyomo.environ as pyo
 from pyomo.opt import SolverStatus, TerminationCondition
 
 
-def create_model():
+def create_model(reschedule):
     model = pyo.AbstractModel()
 
     # Define Sets
@@ -66,35 +66,61 @@ def create_model():
     def cost_rule(model):
         return (sum(model.f[i, j] * model.z[i, j] for i, j in model.E) +
                 sum(model.phi[i] * model.zeta[i] for i in model.V) +
-                sum(model.c[i, j, k] * model.y_u[i, j, k] + 2 * model.c[i, j, k] * model.y_o[i, j, k] for i, j in model.E for k in
+                # sum(model.c[i, j, k] * model.y_u[i, j, k] + 2 * model.c[i, j, k] * model.y_o[i, j, k] for i, j in model.E for k in
+                #     model.K) +
+                sum(model.c[i, j, k] * model.y[i, j, k] for i, j in model.E for k in model.K) +
+                sum(model.h[i, k] * model.I[i, k] +
+                    # model.e[i, k] * model.L_u[i, k] + 2 * model.e[i, k] * model.L_o[i, k] +
+                    model.e[i, k] * model.L[i, k] +
+                    model.rho_I[i, k] * model.delta_I[i, k] +
+                    model.rho_d[i, k] * model.delta_d[i, k] for i in model.V for k in model.K))
+
+    def cost_rule_reschedule(model):
+        return (sum(model.f[i, j] * model.z[i, j] for i, j in model.E) +
+                sum(model.phi[i] * model.zeta[i] for i in model.V) +
+                sum(model.c[i, j, k] * model.y_u[i, j, k] + 2 * model.c[i, j, k] * model.y_o[i, j, k] for i, j
+                    in model.E for k in
                     model.K) +
-                # sum(model.c[i, j, k] * model.y[i, j, k] for i, j in model.E for k in model.K) +
                 sum(model.h[i, k] * model.I[i, k] +
                     model.e[i, k] * model.L_u[i, k] + 2 * model.e[i, k] * model.L_o[i, k] +
-                    # model.e[i, k] * model.L[i, k] +
                     model.rho_I[i, k] * model.delta_I[i, k] +
-                    model.rho_d[i, k] * model.delta_d[i, k] for i in model.V for k
-
-
-
-
-                    in model.K))
-
-    model.cost = pyo.Objective(rule=cost_rule)
+                    model.rho_d[i, k] * model.delta_d[i, k] for i in model.V for k in model.K))
+    if reschedule:
+        model.cost = pyo.Objective(rule=cost_rule_reschedule)
+    else:
+        model.cost = pyo.Objective(rule=cost_rule)
 
     # model.profit = pyo.Objective()
-
-    # Define Constraints
 
     def flow_rule(model, i, j, k):
         return model.y[i, j, k] == model.y_u[i, j, k] + model.y_o[i, j, k]
 
-    model.flow_rule = pyo.Constraint(model.E, model.K, rule=flow_rule)
-
     def prod_rule(model, i, k):
         return model.L[i, k] == model.L_u[i, k] + model.L_o[i, k]
 
-    model.prod_rule = pyo.Constraint(model.V, model.K, rule=prod_rule)
+    # link capacity
+    def link_cap_rule1(model, i, j):
+        return sum(model.y_o[i, j, k] for k in model.K) <= 0.3 * model.u[i, j] * model.z[i, j]
+
+    # production capacity
+    def prod_cap_rule1(model, i):
+        return sum(model.L_o[i, k] for k in model.K) <= 0.3 * model.Lmax[i] * model.zeta[i]
+
+    # link capacity
+    def link_cap_rule2(model, i, j):
+        return sum(model.y_u[i, j, k] for k in model.K) <= model.u[i, j] * model.z[i, j]
+
+    # production capacity
+    def prod_cap_rule2(model, i):
+        return sum(model.L_u[i, k] for k in model.K) <= model.Lmax[i] * model.zeta[i]
+
+    if reschedule:
+        model.flow_rule = pyo.Constraint(model.E, model.K, rule=flow_rule)
+        model.prod_rule = pyo.Constraint(model.V, model.K, rule=prod_rule)
+        model.link_capacity1 = pyo.Constraint(model.E, rule=link_cap_rule1)
+        model.prod_capacity1 = pyo.Constraint(model.V, rule=prod_cap_rule1)
+        model.link_capacity2 = pyo.Constraint(model.E, rule=link_cap_rule2)
+        model.prod_capacity2 = pyo.Constraint(model.V, rule=prod_cap_rule2)
 
     # flow balance
     def balance_rule(model, i, k):
@@ -105,29 +131,20 @@ def create_model():
 
     model.flow_balance = pyo.Constraint(model.V, model.K, rule=balance_rule)
 
+    # Remove the over-capacity parameter when generating initial plans
+
     # link capacity
     def link_cap_rule(model, i, j):
-        return sum(model.y[i, j, k] for k in model.K) <= 1.3*model.u[i, j] * model.z[i, j]
-
-    model.link_capacity = pyo.Constraint(model.E, rule=link_cap_rule)
+        return sum(model.y[i, j, k] for k in model.K) <= model.u[i, j] * model.z[i, j]
 
     # production capacity
     def prod_cap_rule(model, i):
-        return sum(model.L[i, k] for k in model.K) <= 1.3*model.Lmax[i] * model.zeta[i]
+        return sum(model.L[i, k] for k in model.K) <= model.Lmax[i] * model.zeta[i]
 
-    model.prod_capacity = pyo.Constraint(model.V, rule=prod_cap_rule)
+    if not reschedule:
+        model.link_capacity = pyo.Constraint(model.E, rule=link_cap_rule)
+        model.prod_capacity = pyo.Constraint(model.V, rule=prod_cap_rule)
 
-    # link capacity
-    def link_cap_rule2(model, i, j):
-        return sum(model.y_u[i, j, k] for k in model.K) <= model.u[i, j] * model.z[i, j]
-
-    model.link_capacity2 = pyo.Constraint(model.E, rule=link_cap_rule2)
-
-    # production capacity
-    def prod_cap_rule2(model, i):
-        return sum(model.L_u[i, k] for k in model.K) <= model.Lmax[i] * model.zeta[i]
-
-    model.prod_capacity2 = pyo.Constraint(model.V, rule=prod_cap_rule2)
 
     # penalty terms
     def demand_pel_rule(model, i, k):
@@ -152,8 +169,8 @@ def create_model():
 
 class SinglePeriod:
 
-    def __init__(self, exist_G=False, soft=True):
-        self.model = create_model()
+    def __init__(self, exist_G=False, soft=True, reschedule=False):
+        self.model = create_model(reschedule)
         self.instance = self.model.is_constructed()
         self.results = None
         self.solved = False
@@ -185,20 +202,29 @@ class SinglePeriod:
             def edge_pel_rule2(model, i, j):
                 return model.delta_E[i, j] >= model.exist_z[i, j] - model.z[i, j]
 
+            self.model.linkChange_penalty_2 = pyo.Constraint(self.model.E, rule=edge_pel_rule2)
+
+            # def remove_agent(model, i):
+            #     return model.zeta[i] <= sum(model.L_u[i, k] + model.L_o[i, k] for k in model.K)
+            #
+            # self.model.remove_constraint = pyo.Constraint(self.model.V, rule=remove_agent)
+
+
             self.model.Rho = pyo.Param(initialize=0)
             self.model.cost.deactivate()
-            self.model.linkChange_penalty_2 = pyo.Constraint(self.model.E, rule=edge_pel_rule2)
 
             def cost_networkChange_rule(model):
                 return (sum(model.f[i, j] * model.z[i, j] for i, j in model.E) +
                         sum(model.phi[i] * model.zeta[i] for i in model.V) +
-                        sum(model.c[i, j, k] * model.y[i, j, k] for i, j in model.E for k in
+                        sum(model.c[i, j, k] * model.y_u[i, j, k] + 2 * model.c[i, j, k] * model.y_o[i, j, k] for i, j
+                            in model.E for k in
                             model.K) +
+                        # sum(model.c[i, j, k] * model.y[i, j, k] for i, j in model.E for k in model.K) +
                         sum(model.h[i, k] * model.I[i, k] +
-                            model.e[i, k] * model.L[i, k] +
+                            model.e[i, k] * model.L_u[i, k] + 2 * model.e[i, k] * model.L_o[i, k] +
+                            # model.e[i, k] * model.L[i, k] +
                             model.rho_I[i, k] * model.delta_I[i, k] +
-                            model.rho_d[i, k] * model.delta_d[i, k] for i in model.V for k
-                            in model.K) +
+                            model.rho_d[i, k] * model.delta_d[i, k] for i in model.V for k in model.K) +
                         model.Rho * (sum(model.delta_E[i, j] for i, j in model.E) + sum(
                             model.delta_V[i] for i in model.V)))
 
@@ -215,6 +241,7 @@ class SinglePeriod:
 
                 def edge_pel_rule4(model):
                     return sum(model.delta_Eplus[i, j] for i, j in model.E) <= model.Emax
+
                 self.model.linkChange_penalty_4 = pyo.Constraint(rule=edge_pel_rule4)
 
             self.soft = soft
@@ -291,10 +318,11 @@ class SinglePeriod:
                     if sum(pyo.value(self.instance.delta_V[i]) for i in self.instance.V) > 1e-2:
                         for i in self.instance.V:
                             if pyo.value(self.instance.delta_V[i]) > 1e-4:
-                                if pyo.value(self.instance.zeta[v]) > 1e-4:
-                                    print(str(v) + ": Added")
+                                if pyo.value(self.instance.zeta[i]) > 1e-4:
+
+                                    print(str(i) + ": Added")
                                 else:
-                                    print(str(v) + ": Removed")
+                                    print(str(i) + ": Removed")
                     print("Total changes of edges: " + str(
                         sum(pyo.value(self.instance.delta_E[i, j]) for i, j in self.instance.E)))
                     if sum(pyo.value(self.instance.delta_E[i, j]) for i, j in self.instance.E) > 1e-2:
@@ -325,6 +353,26 @@ class SinglePeriod:
                             fl = {'Source': link[0], "Dest": link[1], "Product": k, "Value": float(pyo.value(self.instance.y[link, k]))}
                             flows.append(fl)
                 results['Flows'] = flows
+
+                if case_name != "initial":
+                    over_production = []
+                    for k in self.instance.K:
+                        for v in self.instance.V:
+                            if abs(pyo.value(self.instance.L_o[v, k])) > 1e-8:
+                                prod = {'Agent': v, "Product": k, "Value": float(pyo.value(self.instance.L_o[v, k]))}
+                                over_production.append(prod)
+                    results['OverProductions'] = over_production
+
+                    print("Flows:")
+                    over_flows = []
+                    for k in self.instance.K:
+                        for link in self.instance.E:
+                            if abs(pyo.value(self.instance.y_o[link, k])) > 1e-8:
+                                # print(str(link + (k,)) + ": " + str(pyo.value(self.instance.y[link, k])))
+                                fl = {'Source': link[0], "Dest": link[1], "Product": k,
+                                      "Value": float(pyo.value(self.instance.y_o[link, k]))}
+                                over_flows.append(fl)
+                    results['OverFlows'] = over_flows
 
                 with open('CentralizedResults/%s.json' % case_name, 'w', encoding='utf-8') as f:
                     json.dump(results, f, ensure_ascii=False, indent=4)
