@@ -14,36 +14,33 @@ import os
 
 
 class Params:
-    def __init__(self, scid=0):
+    def __init__(self,filename, scid=0):
         self.V, self.E, self.K = (set() for i in range(3))
-        self.V_customer = set()
         self.c, self.due_date = (type(None)() for i in range(2))
         self.info = {}
-        self.read_msom(scid=scid)
         self.d  = {(v, k): 0 for v in self.V for k in self.K}
         self.st = {(v, k): 0 for v in self.V for k in self.K}
         self.stageTypes = ['Manuf', 'Part']
         self.instantiated = False
         self._disabled_V = set()
         self._disabled_E = set()
-        self.G = nx.DiGraph()
+        self.G = nx.DiGraph(rankdir='LR')
         self.G.add_nodes_from(self.V)
         self.G.add_edges_from(self.E)
-        nx.set_node_attributes(self.G, self.info['V_type'], name='type')
-        nx.set_node_attributes(self.G, self.info['depth'], name='subset')
+        self.read_msom(filename=filename,scid=scid)
+        
 
-    def read_msom(self, filename='Distributed/initialization/TASE_Setup.xlsx',  scid=0):
+    def read_msom(self, filename,  scid=0):
         # filename = 'MSOM-06-038-R2 Data Set in Excel Enhanced.xls'
-        # filename = 'Conference Case - New.xlsx'
+        #filename = '/Users/juanest/Documents/PhD/Invierno23/Research/SupplyChainResilience/MBIA-SupplyChain/Distributed/initialization/CASE_instances.xlsx'
         # filename = 'Summer Case.xlsx'
-        data = pd.read_excel(filename, sheet_name='Agent', index_col=[0, 4]).sort_index()
+        data = pd.read_excel(filename, sheet_name='Agent', index_col=[0,1]).sort_index()
         stageCost = data['ProductionCost'].sort_index()
 
         self.info['depth'] = data['Level']
         # self.K = list(set(self.info['depth']))
 
         self.V = set(data.index.get_level_values('AgentName'))
-        self.V_customer = set(v for v in self.V if "Customer" in v)
         self.K = set(data.index.get_level_values('ProductType'))
         self.info['demand'] = data.loc[pd.notna(data['Demand'])]
         # self.info['d_dist'] = data.loc[pd.notna(data['avgDemand']), ['avgDemand', 'stdDevDemand']]
@@ -54,7 +51,7 @@ class Params:
         self.link = pd.read_excel(filename, sheet_name='Link', index_col=[0, 1])
         # self.E = self.link[['sourceStage', 'destinationStage']].to_records(index=False).tolist()
         self.E = set(self.link.index)
-        self.e = {(v, k): stageCost.loc[v, k][0] for v, k in self.info['prodLine']}
+        self.e = {(v, k): stageCost.loc[v, k] for v, k in self.info['prodLine']}
         self.c = {link: self.link.loc[link, 'TransportCost'] for link in self.E}
         self.u = {link: self.link.loc[link, 'TransportCapacity'] for link in self.E}
         self.Lmax = {v: data.loc[v, 'ProductionCapacity'].values[0] for v in self.V}
@@ -64,11 +61,28 @@ class Params:
         self.info['conversion'] = conversion.reset_index()
 
         # self.info['pos'] = data[['xPosition', 'yPosition']].apply(tuple, axis=1).to_dict()
+        
+        ## Parameters for lead time incorporation ##
+
+        #Type of agent
         self.info['V_type'] = data['AgentType'].to_dict()
         self.info['V_type'] = {key[0]: val for key, val in self.info['V_type'].items()}
 
+        nx.set_node_attributes(self.G, self.info['V_type'], name='type')
+        nx.set_node_attributes(self.G, self.info['depth'], name='subset')
+        
+        #leadTime
+        self.info['lead_time'] = data['LeadTime'].to_dict()
+        self.info['lead_time'] = {key[0]: val for key, val in self.info['lead_time'].items()}
+        
+        #dueDate
+        self.info['due_date'] = data['DueDate'].to_dict()
+        self.info['due_date'] = {key[0]: val for key, val in self.info['due_date'].items()}
+        
+
+
     def to_initializationFiles(self):
-        Manuf, Dist, Part, Retail = {}, {}, {}, {}
+        self.Manuf, self.Dist, self.Part, self.Retail = {}, {}, {}, {}
 
         conversion = self.info['conversion']
         for node in self.V:
@@ -87,7 +101,7 @@ class Params:
                             up_prod: float(self.r[up_prod, prod])
                             for up_prod in conversion[conversion['downstream'] == prod]['upstream']
                         }
-                Manuf[node] = {
+                self.Manuf[node] = {
                     "Production": production,
                     "Inventory": {
                         prod: 0 for prod in prodLine
@@ -99,7 +113,7 @@ class Params:
                     }
                 }
             elif self.info['V_type'][node] == 'Part':
-                Part[node] = {
+                self.Part[node] = {
                     "Production": production,
                     "Inventory": {
                         prod: 0 for prod in prodLine
@@ -111,7 +125,7 @@ class Params:
                     }
                 }
             elif self.info['V_type'][node] == 'Dist':
-                Dist[node] = {
+                self.Dist[node] = {
                     "Inventory": {
                         prod: 0 for prod in prodLine
                     },
@@ -122,7 +136,7 @@ class Params:
                     }
                 }
             elif self.info['V_type'][node] == 'Retail':
-                Retail[node] = {
+                self.Retail[node] = {
                     "Demand": {
                         prod: float(self.d[node, prod]) for prod in prodLine
                     },
@@ -185,6 +199,8 @@ class Params:
         self.instantiated = True
         self.sampled = sample
 
+    def get_graph(self):
+        return self.G
 
     def show_graph(self):
         # self.G = nx.Graph()
@@ -239,31 +255,36 @@ class Params:
         self._disabled_E = set()
 
     def to_json(self):
+
         data = {
             'V': [v for v in self.V - self._disabled_V],
-            'V_mfg': [v for v in self.V - self.V_customer - self._disabled_V],
             'K': [k for k in self.K],
             'E': [[i, j] for i, j in self.E - self._disabled_E],
             # 'u': [{'index': [i, j], 'value': 1e6} for i, j in self.E - self._disabled_E],
-            'u': [{'index': [i, j], 'value': float(self.u[i, j])} for i, j in self.E - self._disabled_E],
-            'f': [{'index': [i, j], 'value': 0} for i, j in self.E - self._disabled_E],
+            'u_mix': [{'index': [i, j], 'value': float(self.u[i, j])} for i, j in self.E - self._disabled_E],
+            'u_ind': [{'index': [i, j,k], 'value': float(self.u[i, j])} for i, j in self.E - self._disabled_E for k in self.K],
+            'f': [{'index': [i, j,k], 'value': 1e-2} for i, j in self.E - self._disabled_E for k in self.K],
             # 'c': [{'index': [i, j, k], 'value': float(self.sample_cost((i, j)))} for i, j in self.E for k in self.K],
             'c': [{'index': [i, j, k], 'value': float(self.c[i, j])} for i, j in self.E - self._disabled_E for k in self.K],
-            'phi': [{'index': v, 'value': 0} for v in self.V - self._disabled_V],
-            'p': [{'index': [v, k], 'value': 1 if (v, k) in self.info['prodLine'] else 0} for v in self.V - self._disabled_V for k in
-                  self.K],
+            'phi': [{'index': v, 'value': 1e-2} for v in self.V - self._disabled_V],
+            'p': [{'index': [v, k], 'value': 1 if (v, k) in self.info['prodLine'] else 0} for v in self.V - self._disabled_V for k in self.K],
             # 'Lmax': [{'index': v, 'value': 1e6 if self.info['V_type'][v] in self.stageTypes else 0} for v in self.V - self._disabled_V],
             'Lmax': [{'index': v, 'value': int(self.Lmax[v])} for v in self.V - self._disabled_V],
             'e': [{'index': [v, k], 'value': float(self.get('e', (v, k)))} for v in self.V - self._disabled_V for k in self.K],
             'r': [{'index': [k1, k2], 'value': float(self.get('r', (k1, k2)))} for k1 in self.K for k2 in self.K],
-            'd': [{'index': [v, k], 'value': -self.d[v, k]} for v in self.V - self._disabled_V for k in self.K],
-            'h': [{'index': [v, k], 'value': 0} for v in self.V - self._disabled_V for k in self.K],
+            'd': [{'index': [v, k], 'value': -self.d[v, k] if (v, k) in self.info['prodLine'] else 0} for v in self.V - self._disabled_V for k in self.K],
+            'h': [{'index': [v, k], 'value': 1} for v in self.V - self._disabled_V for k in self.K],
             'I_0': [{'index': [v, k], 'value': 0} for v in self.V - self._disabled_V for k in self.K],
             'I_s': [{'index': [v, k], 'value': 0} for v in self.V - self._disabled_V for k in self.K],
-            'rho_d': [{'index': [v, k], 'value': 1e8} for v in self.V - self._disabled_V for k in self.K],
-            'rho_I': [{'index': [v, k], 'value': 1e8} for v in self.V - self._disabled_V for k in self.K]
+            'rho_d': [{'index': [v, k], 'value': 1e2} for v in self.V - self._disabled_V for k in self.K],
+            'rho_I': [{'index': [v, k], 'value': 1e2} for v in self.V - self._disabled_V for k in self.K],
+            'v_type': [{'index': v, 'value':self.info['V_type'][v]} for v in self.V],
+            'l': [{'index':[i,j,k],'value':self.info['lead_time'][i]} for i, j in self.E - self._disabled_E for k in self.K],
+            't': [{'index': [v, k], 'value': self.info['due_date'][v]} for v in self.V - self._disabled_V for k in self.K],
+            'conv':self.info['conversion'].to_dict(),
+            'depth':self.info['depth'].reset_index().to_dict()
         }
-        with open('data.json', 'w', encoding='utf-8') as f:
+        with open('data_1new.json', 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
 
     def network_to_json(self, network, penalty, added_edges=0):
@@ -277,54 +298,3 @@ class Params:
             json.dump(data, f, ensure_ascii=False, indent=4)
 
 
-if __name__ == "__main__":
-    sys.path.append('../')
-    import pyomoModel
-
-    # generate initial flow
-    # comment it when running when enabling disruptions
-    # my_params = Params(scid=0)
-    # my_params.create_instance(sample=False)
-    # my_params.enable_all()
-    # my_params.to_json()
-    # model = pyomoModel.SinglePeriod()
-    # model.create_instance(filenames=['data.json'])
-    # model.solve(tee=False)
-
-    # get all the agents that have production
-    with open('Distributed/initialization/InitialPlans.json') as f:
-        initial_plan = json.load(f)
-    agent_with_productions = set()
-    for prod in initial_plan['Productions']:
-        agent_with_productions.add(prod['Agent'])
-
-    # invoke disable function to run cases with agent loss
-    my_params = Params(scid=0)
-    my_params.create_instance(sample=False)
-    centralized_run_time = {}
-    for agent in agent_with_productions:
-        my_params.enable_all()
-        my_params.disable(vertex_list=[agent])
-        my_params.to_json()
-        model = pyomoModel.SinglePeriod()
-        model.create_instance(filenames=['data.json'])
-        start_time = time.time()
-        model.solve(tee=False, case_name=agent)
-        end_time = time.time()
-        centralized_run_time[agent] = end_time - start_time
-
-    with open("CentralizedResults/runtime.json", 'w', encoding='utf-8') as f:
-        json.dump(centralized_run_time, f, ensure_ascii=False, indent=4)
-
-
-    # network = model.get(["z", "zeta"])
-
-    # print("Disable Part_04")
-    # my_params.enable_all()
-    # my_params.disable(vertex_list=['Part_04'])
-    # my_params.to_json()
-    # my_params.network_to_json(network, penalty=1)
-    #
-    # model_networkChange = pyomoModel.SinglePeriod(exist_G=True)
-    # model_networkChange.create_instance(filenames=['data.json', 'network.json'])
-    # model_networkChange.solve(tee=False)
