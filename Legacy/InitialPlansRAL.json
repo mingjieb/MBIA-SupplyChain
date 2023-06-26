@@ -1,0 +1,240 @@
+{
+    "Production cost": 125716.09999999998,
+    "Flow cost": 51368.210000000014,
+    "Productions": [
+        {
+            "Agent": "A1",
+            "Product": "Vehicle1",
+            "Value": 2300.0,
+            "Prod_time": 4.0
+        },
+        {
+            "Agent": "A2",
+            "Product": "Vehicle2",
+            "Value": 2500.0,
+            "Prod_time": 4.0
+        },
+        {
+            "Agent": "A3",
+            "Product": "Vehicle2",
+            "Value": 2000.0,
+            "Prod_time": 4.0
+        },
+        {
+            "Agent": "S1",
+            "Product": "PowerTrain1",
+            "Value": 2300.0,
+            "Prod_time": 0.0
+        },
+        {
+            "Agent": "S2",
+            "Product": "PowerTrain2",
+            "Value": 4500.0,
+            "Prod_time": 0.0
+        },
+        {
+            "Agent": "S3",
+            "Product": "Dashboard",
+            "Value": 2000.0,
+            "Prod_time": 0.0
+        },
+        {
+            "Agent": "S4",
+            "Product": "Dashboard",
+            "Value": 4800.0,
+            "Prod_time": 0.0
+        },
+        {
+            "Agent": "S5",
+            "Product": "Transmission",
+            "Value": 3000.0,
+            "Prod_time": 0.0
+        },
+        {
+            "Agent": "S6",
+            "Product": "Transmission",
+            "Value": 1800.0,
+            "Prod_time": 0.0
+        },
+        {
+            "Agent": "S7",
+            "Product": "Transmission",
+            "Value": 2000.0,
+            "Prod_time": 0.0
+        },
+        {
+            "Agent": "D1",
+            "Product": "Vehicle1",
+            "Value": 300.0,
+            "Prod_time": 6.0
+        },
+        {
+            "Agent": "D1",
+            "Product": "Vehicle2",
+            "Value": 2500.0,
+            "Prod_time": 6.0
+        },
+        {
+            "Agent": "D2",
+            "Product": "Vehicle1",
+            "Value": 2000.0,
+            "Prod_time": 6.0
+        },
+        {
+            "Agent": "D2",
+            "Product": "Vehicle2",
+            "Value": 2000.0,
+            "Prod_time": 6.0
+        }
+        
+    ],
+    "Flows": [
+        {
+            "Source": "D1",
+            "Dest": "C1",
+            "Product": "Vehicle1",
+            "Value": 300.0,
+            "Arr_time": 7.0
+        },
+        {
+            "Source": "D1",
+            "Dest": "C2",
+            "Product": "Vehicle2",
+            "Value": 2500.0,
+            "Arr_time": 7.0
+        },
+        {
+            "Source": "D2",
+            "Dest": "C1",
+            "Product": "Vehicle1",
+            "Value": 2000.0,
+            "Arr_time": 7.0
+        },
+        {
+            "Source": "D2",
+            "Dest": "C2",
+            "Product": "Vehicle2",
+            "Value": 2000.0,
+            "Arr_time": 7.0
+        },
+        {
+            "Source": "A1",
+            "Dest": "D1",
+            "Product": "Vehicle1",
+            "Value": 300.0,
+            "Arr_time": 6.0
+        },
+        {
+            "Source": "A1",
+            "Dest": "D2",
+            "Product": "Vehicle1",
+            "Value": 2000.0,
+            "Arr_time": 6.0
+        },
+        {
+            "Source": "A2",
+            "Dest": "D1",
+            "Product": "Vehicle2",
+            "Value": 500.0,
+            "Arr_time": 6.0
+        },
+        {
+            "Source": "A2",
+            "Dest": "D2",
+            "Product": "Vehicle2",
+            "Value": 2000.0,
+            "Arr_time": 6.0
+        },
+        {
+            "Source": "A3",
+            "Dest": "D1",
+            "Product": "Vehicle2",
+            "Value": 2000.0,
+            "Arr_time": 6.0
+        },
+        {
+            "Source": "S1",
+            "Dest": "A1",
+            "Product": "PowerTrain1",
+            "Value": 2300.0,
+            "Arr_time": 4.0
+        },
+        {
+            "Source": "S2",
+            "Dest": "A2",
+            "Product": "PowerTrain2",
+            "Value": 2500.0,
+            "Arr_time": 4.0
+        },
+        {
+            "Source": "S2",
+            "Dest": "A3",
+            "Product": "PowerTrain2",
+            "Value": 2000.0,
+            "Arr_time": 4.0
+        },
+        {
+            "Source": "S3",
+            "Dest": "A3",
+            "Product": "Dashboard",
+            "Value": 2000.0,
+            "Arr_time": 4.0
+        },
+        {
+            "Source": "S4",
+            "Dest": "A1",
+            "Product": "Dashboard",
+            "Value": 2300.0,
+            "Arr_time": 4.0
+        },
+        {
+            "Source": "S4",
+            "Dest": "A2",
+            "Product": "Dashboard",
+            "Value": 2500.0,
+            "Arr_time": 4.0
+        },
+        {
+            "Source": "S5",
+            "Dest": "A1",
+            "Product": "Transmission",
+            "Value": 1900.0,
+            "Arr_time": 4.0
+        },
+        {
+            "Source": "S5",
+            "Dest": "A3",
+            "Product": "Transmission",
+            "Value": 1100.0,
+            "Arr_time": 4.0
+        },
+        {
+            "Source": "S6",
+            "Dest": "A1",
+            "Product": "Transmission",
+            "Value": 400.0,
+            "Arr_time": 4.0
+        },
+        {
+            "Source": "S6",
+            "Dest": "A2",
+            "Product": "Transmission",
+            "Value": 500.0,
+            "Arr_time": 4.0
+        },
+        {
+            "Source": "S6",
+            "Dest": "A3",
+            "Product": "Transmission",
+            "Value": 900.0,
+            "Arr_time": 4.0
+        },
+        {
+            "Source": "S7",
+            "Dest": "A2",
+            "Product": "Transmission",
+            "Value": 2000.0,
+            "Arr_time": 4.0
+        }
+    ]
+}

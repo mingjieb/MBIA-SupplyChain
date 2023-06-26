@@ -518,8 +518,8 @@ class CentralizedSinglePeriod:
         #plt.title(f'Action space progression over {T-1} periods with {total_states} facilities to build with {count} possible paths',fontsize=15)
         plt.show()
         return        
-    def sample_gaussian_trunc(self,lc,uc,mean,sd,n_samples):
-        a, b = (lc - mean) / sd, (uc - mean) / sd
+    def sample_gaussian_trunc(self,lc,uc,mean,sd_pct,n_samples):
+        a, b = (lc - mean) / (mean*sd_pct), (uc - mean) / (mean*sd_pct)
         samples = stats.truncnorm.rvs(a, b, size=n_samples,loc=mean)
 
         #For later, we can save each distribution
@@ -683,12 +683,11 @@ class CentralizedSinglePeriod:
         for v,type in self.m._V_type.items():
             tier_members[type].append(v)
         o = {}
+        planned_o = self.o_sol
         a = {}
         for j,items in in_flows.items():
             for i,info in items.items():
                 for k,data in info.items():
-                    #if (j,k) not in list(time_computation.keys()):
-                    #        time_computation[(j,k)]  = {}
                     a[(i,j,k)] = data['lead_time']
         #Setting incumbent solution
         for part in tier_members['Part']:
@@ -704,9 +703,10 @@ class CentralizedSinglePeriod:
                     if j in active_vertices:
                         for i,info in in_flows[j].items():
                             for k,data in info.items():
-                                #if (j,k) not in list(time_computation.keys()):
+                                if (i,k) not in list(o.keys()):
+                                    print('no esta!')
                                 #        time_computation[(j,k)]  = {}
-                                a[(i,j,k)] = np.ceil(data['lead_time']) + np.ceil(o[(i,k)])
+                                a[(i,j,k)] = np.round(data['lead_time'],0) + np.round(o[(i,k)],0)
                         for k in self.m._active_prods[j]:
                             #print('---------')
                             #print(j,k)
@@ -726,8 +726,7 @@ class CentralizedSinglePeriod:
                             
                             if set(sub_prods).issubset(subproduct_received) == True:
                                 #print(j,k,subproduct_flow_time,subproduct_flow_id)
-                                temp = max(subproduct_flow_time)
-                                max_id = np.argmax(subproduct_flow_time)
+                                temp = max(max(subproduct_flow_time),planned_o[j,k])
                                 #print(temp,subproduct_flow_id[max_id])
                                 o[(j,k)] = temp
             else:
@@ -741,7 +740,7 @@ class CentralizedSinglePeriod:
                             for k,data in info.items():
                                 #if (j,k) not in list(time_computation.keys()):
                                 #        time_computation[(j,k)]  = {}
-                                a[(i,j,k)] = np.ceil(data['lead_time']) + np.ceil(o[(i,k)])
+                                a[(i,j,k)] = np.round(data['lead_time'],0) + np.round(o[(i,k)],0)
                                 #print(i,j,k,a[i,j,k])
                         for k in self.m._active_prods[j]:
                             #print(j,k)
@@ -758,8 +757,7 @@ class CentralizedSinglePeriod:
                             #print(product_flow_id)
                             if len(product_flow_time) > 0:
                                 for prod,data in info.items():
-                                    temp = max(product_flow_time)
-                                    max_id = np.argmax(product_flow_time)
+                                    temp = max(max(product_flow_time),planned_o[j,k])
                                     #print(temp,subproduct_flow_id[max_id])
                                     #print('o',j,prod,'agregado!')
                                     o[(j,k)] = temp
@@ -815,8 +813,8 @@ class CentralizedSinglePeriod:
                 if disrupted_agents['All'][0] == 'log_norm':
                     samples = self.sample_log_norm(mean=mean,sd=disrupted_agents['All'][1],n_samples=n_samples)
                 elif disrupted_agents['All'][0]  == 'gaussian_trunc':
-                    agent_info = disrupted_agents['All'][0][1]
-                    samples = self.sample_gaussian_trunc(lc=agent_info[0],uc=agent_info[1],mean=mean,sd=agent_info[2],n_samples=n_samples)
+                    agent_info = disrupted_agents['All'][1]
+                    samples = self.sample_gaussian_trunc(lc=agent_info[0],uc=agent_info[1],mean=mean,sd_pct=agent_info[2],n_samples=n_samples)
                 sampled_scenarios.append(samples)
             elif search_idx in disrupted_agents_list: #We are impliying the format of the input here... It could be adaptive.
                 if disrupted_agents[search_idx][0] == 'log_norm':
