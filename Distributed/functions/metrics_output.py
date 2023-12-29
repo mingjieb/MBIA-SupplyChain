@@ -29,8 +29,24 @@ def calculate_metrics(agent_network, initial_flows, initial_productions, run_tim
     result = result_summary(unmet_demand, flow_over_capacity_cost, production_over_capacity_cost,
                             changed_flows, added_edge, removed_edge, changed_productions, added_agent, removed_agent,
                             flow_cost_difference, production_cost_difference, number_of_communications, run_time)
-    return result
+    # return result
+    return {"res": result, "flow": current_flows.copy(), "prod": current_productions.copy(), "changed_flow": changed_flows.copy(), "changed_production": changed_productions.copy()}
 
+def reformat(file_name):
+    with open(file_name) as f:
+        data = json.load(f)
+    input_plan = {}
+    for ag in data.keys():
+        input_plan[ag] = {}
+        flows = {}
+        for fl in data[ag]['flows']:
+            flows[(fl['Source'], fl['Dest'], fl['Product'])] = fl["Value"]
+        productions ={}
+        for prod in data[ag]['prods']:
+            productions[(prod['Agent'], prod['Product'])] = prod["Value"]
+        input_plan[ag]["flow"] = flows.copy()
+        input_plan[ag]["prod"] = productions.copy()
+    return input_plan
 
 def get_unmet_demand(agent_network):
     unmet_demand = 0

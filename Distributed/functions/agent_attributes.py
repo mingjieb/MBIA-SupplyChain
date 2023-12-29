@@ -8,16 +8,22 @@
 """
 import matplotlib.pyplot as plt
 from Distributed.initialization import network
+import gurobipy as gp
+from gurobipy import GRB
 
-def calculate_attributes(agent_network, agent_name, initial_flows, initial_productions):
+def calculate_attributes(agent_network, agent_name, initial_flows, initial_productions, contribution, l, n):
     ag = network.find_agent_by_name(agent_network, agent_name)
     in_degree, out_degree, com_degree = calculate_degrees(ag)
     capability_redundancy, capacity_proportion, capacity_utility = calculate_capability_capacity(ag)
     flow_contribution = calculate_flow_contributions(ag, initial_productions)
-    l, n = get_production_steps(agent_network, ag)
+    # l, n = get_production_steps(agent_network, ag)
 
     attributes = attributes_summary(in_degree, out_degree, com_degree, capability_redundancy, capacity_proportion,
+<<<<<<< Updated upstream
                                     capacity_utility, flow_contribution, l, n)
+=======
+                                    capacity_utility, flow_contribution, float(ag.depth), contribution, len(ag.state.production.keys()), l, n)
+>>>>>>> Stashed changes
     return attributes
 
 def calculate_degrees(agent):
@@ -78,23 +84,28 @@ def calculate_capability_capacity(agent):
     return capability_redundancy, capacity_proportion, capacity_utility
 
 def calculate_flow_contributions(agent, initial_productions):
-    flow_contribution = {}
+    product_set = set([p[1] for p in initial_productions.keys()])
+    network_production = {key: 0 for key in product_set}
+    for key in initial_productions.keys():
+        network_production[key[1]] += initial_productions[key]
+
+    agent_production = 0
+    total_production = 0
     for prod in agent.state.production.keys():
-        network_production = 0
-        for key in initial_productions.keys():
-            if key[1] == prod:
-                network_production += initial_productions[key]
-        flow_contribution[prod] = agent.state.production[prod]/network_production
+        agent_production += agent.state.production[prod]
+        total_production += network_production[prod]
+        # flow_contribution[prod] = agent.state.production[prod]/network_production[prod]
+    flow_contribution = agent_production/total_production
     return flow_contribution
 
 def get_production_steps(agent_network, agent):
     production_hierarchy = {}
     production_steps = {}
-    for product in set(agent_network.product_structure.index):
+    for product in set(agent_network.product_structure_2.index):
         try:
-            production_hierarchy[product] = list(agent_network.product_structure.loc[product, "Needed"].values)
+            production_hierarchy[product] = list(agent_network.product_structure_2.loc[product, "Needed"].values)
         except:
-            production_hierarchy[product] = [agent_network.product_structure.loc[product, "Needed"]]
+            production_hierarchy[product] = [agent_network.product_structure_2.loc[product, "Needed"]]
         production_steps[product] = set()
 
     # production_steps = {key: set() for key in set(agent_network.product_structure.index)}
@@ -127,10 +138,130 @@ def get_production_steps(agent_network, agent):
     # return max_steps
     return l, n
 
+def calculate_impact(agent_network, agent_with_productions):
 
+    product_set = set(agent_network.product_structure.index[i][0] for i in range(len(agent_network.product_structure.index)))
+    production_hierarchy = {key: {} for key in product_set}
+    production_steps = {key: {} for key in product_set}
+    for prod_mat in agent_network.product_structure.index:
+        production_hierarchy[prod_mat[0]][prod_mat[1]] = agent_network.product_structure.loc[prod_mat, "Amount"]
+
+    # production_steps = {key: set() for key in set(agent_network.product_structure.index)}
+    for key in production_steps:
+        production_steps[key] = production_hierarchy[key]
+        component = set(production_hierarchy[key].keys()).copy()
+        while len(component) != 0:
+            p = component.pop()
+            if p in product_set:
+                for m in production_hierarchy[p].keys():
+                    try:
+                        production_steps[key][m] += production_hierarchy[key][p] * production_hierarchy[p][m]
+                    except:
+                        production_steps[key][m] = production_hierarchy[key][p] * production_hierarchy[p][m]
+            try:
+                component += set(production_hierarchy[p].keys())
+            except:
+                pass
+    K_f = {ag.name: set() for ag in agent_network.agent_list["Assembly"]}
+    limit = {}
+    agent_by_depth = {i: [] for i in range(4)}
+    impact = {ag_name: 0 for ag_name in agent_with_productions}
+    for ag in agent_network.agent_list["Assembly"]:
+        if ag.name in agent_with_productions:
+            agent_by_depth[0].append(ag)
+            for prod in ag.state.production.keys():
+                impact[ag.name] += ag.state.production[prod]
+                K_f[ag.name].add(prod)
+                limit[prod] = ag.state.production[prod]
+    for ag in agent_network.agent_list["TierSupplier"]:
+        if ag.depth == 1 and ag.name in agent_with_productions:
+            agent_by_depth[1].append(ag)
+        if ag.depth == 2 and ag.name in agent_with_productions:
+            agent_by_depth[2].append(ag)
+        if ag.depth == 3 and ag.name in agent_with_productions:
+            agent_by_depth[3].append(ag)
+
+    linked_assy = {ag.name: set() for ag in agent_network.agent_list["TierSupplier"] if ag.name in agent_with_productions}
+    needed_materials = {k_f: {} for k_f in set(agent_network.product_structure.index) if "cockpit" in k_f}
+    for ag in agent_by_depth[1]:
+        for f in ag.state.outflow.items():
+            for k in K_f[f[0][0]]:
+                linked_assy[ag.name].add(k)
+
+    for ag in agent_by_depth[2]:
+        for f in ag.state.outflow.items():
+            for s in linked_assy[f[0][0]]:
+                linked_assy[ag.name].add(s)
+
+    for ag in agent_by_depth[3]:
+        for f in ag.state.outflow.items():
+            for s in linked_assy[f[0][0]]:
+                linked_assy[ag.name].add(s)
+
+    contributed_types = {key: {} for key in linked_assy.keys()}
+    for ag in contributed_types.keys():
+        agt = network.find_agent_by_name(agent_network, ag)
+        for kf in linked_assy[ag]:
+            for prod in agt.state.production.keys():
+                if prod in production_steps[kf].keys():
+                    try:
+                        contributed_types[ag][kf].add(prod)
+                    except:
+                        contributed_types[ag][kf] = set([prod])
+
+    n = {key: 0 for key in linked_assy.keys()}
+    for key in linked_assy.keys():
+        n[key] = len(linked_assy[key])
+    n["cockpit_assy_1"] = 1
+    n["cockpit_assy_2"] = 2
+    n["cockpit_assy_3"] = 3
+
+    l = {key: 0 for key in linked_assy.keys()}
+    for key in linked_assy.keys():
+        agt = network.find_agent_by_name(agent_network, key)
+        for p in agt.state.production.keys():
+            if p in product_set:
+                l[key] += len(list(production_steps[p].keys()))
+    l["cockpit_assy_1"] = len(list(production_steps["cockpit_1"].keys()))
+    l["cockpit_assy_2"] = len(set(list(production_steps["cockpit_2A"].keys())+list(production_steps["cockpit_2B"].keys())))
+    l["cockpit_assy_3"] = len(set(list(production_steps["cockpit_3A"].keys())+list(production_steps["cockpit_3B"].keys())+list(production_steps["cockpit_3C"].keys())))
+
+    res = {key: {kf: None for kf in contributed_types[key].keys()} for key in linked_assy.keys()}
+    for ag in agent_network.agent_list["TierSupplier"]:
+        if ag.name in agent_with_productions:
+            model = gp.Model('contribution')
+            model.Params.LogToConsole = 0
+            contribution = contributed_types[ag.name]
+            pairs = [(k, m) for k in contribution.keys() for m in contribution[k]]
+            m_to_k = {m: set() for m in ag.state.production.keys()}
+            for m in ag.state.production.keys():
+                for kf in contribution.keys():
+                    if m in contribution[kf]: m_to_k[m].add(kf)
+            y = model.addVars(list(contribution.keys()), vtype=GRB.INTEGER, name="contri")
+
+            obj = model.setObjective(gp.quicksum(y[k] for k in contribution.keys()), GRB.MAXIMIZE)
+
+            pd_constrs = model.addConstrs((gp.quicksum(y[k] * production_steps[k][m] for k in m_to_k[m])
+                                         <= ag.state.production[m] for m in ag.state.production.keys()), name="pd_limit")
+            demand_constrs = model.addConstrs((y[k] <= limit[k] for k in contribution.keys()),
+                                              name="demand_limit")
+
+            model.optimize()
+            xsol = model.getAttr('x', y)
+            for k in contribution.keys():
+                res[ag.name][k] = xsol[k]
+    for ag_name in res.keys():
+        for kf in res[ag_name].keys():
+            impact[ag_name] += res[ag_name][kf]
+
+    return impact, l, n
 
 def attributes_summary(in_degree, out_degree, com_degree, capability_redundancy, capacity_proportion,
+<<<<<<< Updated upstream
                                     capacity_utility, flow_contribution, l, n):
+=======
+                                    capacity_utility, flow_contribution, depth, contribution, variety, l, n):
+>>>>>>> Stashed changes
     attributes = {
         'g_in': in_degree,
         'g_out': out_degree,
@@ -139,6 +270,9 @@ def attributes_summary(in_degree, out_degree, com_degree, capability_redundancy,
         'U': capacity_proportion,
         'Q': capacity_utility,
         'F': flow_contribution,
+        "depth": depth,
+        'kf': contribution,
+        'v': variety,
         'l': l,
         'n': n
     }

@@ -1,0 +1,4141 @@
+{
+    "wiring_sup_3": {
+        "flows": [
+            {
+                "Source": "plastic_sup_2",
+                "Dest": "substrate_sup_1",
+                "Product": "plastic",
+                "Value": 520.0
+            },
+            {
+                "Source": "plastic_sup_2",
+                "Dest": "airbag_sup_2",
+                "Product": "plastic",
+                "Value": 280.0
+            },
+            {
+                "Source": "plastic_sup_4",
+                "Dest": "glovebox_sup_2",
+                "Product": "plastic",
+                "Value": 500.0
+            },
+            {
+                "Source": "plastic_sup_5",
+                "Dest": "bezel_sup_4",
+                "Product": "plastic",
+                "Value": 660.0
+            },
+            {
+                "Source": "plastic_sup_4",
+                "Dest": "substrate_sup_1",
+                "Product": "plastic",
+                "Value": 560.0
+            },
+            {
+                "Source": "plastic_sup_4",
+                "Dest": "airbag_sup_1",
+                "Product": "plastic",
+                "Value": 440.0
+            },
+            {
+                "Source": "plastic_sup_2",
+                "Dest": "bezel_sup_3",
+                "Product": "plastic",
+                "Value": 890.0
+            },
+            {
+                "Source": "cover_sup_2",
+                "Dest": "wiring_sup_1",
+                "Product": "cover",
+                "Value": 159.0
+            },
+            {
+                "Source": "cover_sup_1",
+                "Dest": "wiring_sup_3",
+                "Product": "cover",
+                "Value": 960.0
+            },
+            {
+                "Source": "cover_sup_1",
+                "Dest": "wiring_sup_1",
+                "Product": "cover",
+                "Value": 1000.0
+            },
+            {
+                "Source": "button_sup_5",
+                "Dest": "HVAC_sup_2",
+                "Product": "button_4",
+                "Value": 480.0
+            },
+            {
+                "Source": "button_sup_1",
+                "Dest": "steering_sup_2",
+                "Product": "button_1",
+                "Value": 240.0
+            },
+            {
+                "Source": "button_sup_1",
+                "Dest": "infortainment_sup_2",
+                "Product": "button_1",
+                "Value": 360.0
+            },
+            {
+                "Source": "leather_sup_1",
+                "Dest": "glovebox_sup_2",
+                "Product": "leather",
+                "Value": 400.0
+            },
+            {
+                "Source": "leather_sup_2",
+                "Dest": "glovebox_sup_2",
+                "Product": "leather",
+                "Value": 200.0
+            },
+            {
+                "Source": "button_sup_5",
+                "Dest": "HVAC_sup_1",
+                "Product": "button_2",
+                "Value": 120.0
+            },
+            {
+                "Source": "button_sup_1",
+                "Dest": "steering_sup_2",
+                "Product": "button_2",
+                "Value": 700.0
+            },
+            {
+                "Source": "button_sup_5",
+                "Dest": "HVAC_sup_1",
+                "Product": "button_3",
+                "Value": 420.0
+            },
+            {
+                "Source": "button_sup_5",
+                "Dest": "steering_sup_2",
+                "Product": "button_3",
+                "Value": 480.0
+            },
+            {
+                "Source": "al_sup_1",
+                "Dest": "substrate_sup_1",
+                "Product": "aluminum",
+                "Value": 400.0
+            },
+            {
+                "Source": "al_sup_2",
+                "Dest": "substrate_sup_1",
+                "Product": "aluminum",
+                "Value": 260.0
+            },
+            {
+                "Source": "compressor_sup_2",
+                "Dest": "HVAC_sup_1",
+                "Product": "compressor_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "compressor_sup_2",
+                "Dest": "HVAC_sup_2",
+                "Product": "compressor_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "shaft_sup_3",
+                "Dest": "beam_sup_1",
+                "Product": "shaft_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "shaft_sup_1",
+                "Dest": "beam_sup_2",
+                "Product": "shaft_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "valve_sup_2",
+                "Dest": "HVAC_sup_2",
+                "Product": "valve",
+                "Value": 640.0
+            },
+            {
+                "Source": "valve_sup_1",
+                "Dest": "HVAC_sup_1",
+                "Product": "valve",
+                "Value": 740.0
+            },
+            {
+                "Source": "screen_sup_5",
+                "Dest": "infortainment_sup_3",
+                "Product": "touch_screen_3B",
+                "Value": 70.0
+            },
+            {
+                "Source": "screen_sup_5",
+                "Dest": "infortainment_sup_3",
+                "Product": "touch_screen_3A",
+                "Value": 30.0
+            },
+            {
+                "Source": "screen_sup_5",
+                "Dest": "infortainment_sup_3",
+                "Product": "touch_screen_3C",
+                "Value": 60.0
+            },
+            {
+                "Source": "wire_sup_2",
+                "Dest": "wiring_sup_3",
+                "Product": "wire",
+                "Value": 299.0
+            },
+            {
+                "Source": "wire_sup_2",
+                "Dest": "wiring_sup_1",
+                "Product": "wire",
+                "Value": 923.0
+            },
+            {
+                "Source": "wire_sup_1",
+                "Dest": "wiring_sup_3",
+                "Product": "wire",
+                "Value": 1015.0
+            },
+            {
+                "Source": "wire_sup_1",
+                "Dest": "wiring_sup_1",
+                "Product": "wire",
+                "Value": 503.0
+            },
+            {
+                "Source": "wheel_sup_2",
+                "Dest": "steering_sup_2",
+                "Product": "wheel_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "wheel_sup_3",
+                "Dest": "steering_sup_2",
+                "Product": "wheel_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "wood_sup_1",
+                "Dest": "bezel_sup_3",
+                "Product": "wood",
+                "Value": 700.0
+            },
+            {
+                "Source": "wood_sup_2",
+                "Dest": "bezel_sup_5",
+                "Product": "wood",
+                "Value": 960.0
+            },
+            {
+                "Source": "column_sup_1",
+                "Dest": "steering_sup_2",
+                "Product": "column",
+                "Value": 360.0
+            },
+            {
+                "Source": "LED_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "LED",
+                "Value": 600.0
+            },
+            {
+                "Source": "LED_sup_2",
+                "Dest": "cluster_sup_3",
+                "Product": "LED",
+                "Value": 380.0
+            },
+            {
+                "Source": "fanvent_sup_3",
+                "Dest": "HVAC_sup_1",
+                "Product": "fan_vent_2",
+                "Value": 420.0
+            },
+            {
+                "Source": "wheel_sup_1",
+                "Dest": "steering_sup_2",
+                "Product": "wheel_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "fanvent_sup_3",
+                "Dest": "HVAC_sup_1",
+                "Product": "fan_vent_1",
+                "Value": 240.0
+            },
+            {
+                "Source": "fanvent_sup_3",
+                "Dest": "HVAC_sup_2",
+                "Product": "fan_vent_3",
+                "Value": 480.0
+            },
+            {
+                "Source": "fabric_sup_1",
+                "Dest": "airbag_sup_1",
+                "Product": "fabric",
+                "Value": 1320.0
+            },
+            {
+                "Source": "fabric_sup_2",
+                "Dest": "airbag_sup_2",
+                "Product": "fabric",
+                "Value": 840.0
+            },
+            {
+                "Source": "gauge_sup_3",
+                "Dest": "cluster_sup_3",
+                "Product": "digital_gauge",
+                "Value": 900.0
+            },
+            {
+                "Source": "gauge_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "analog_gauge",
+                "Value": 180.0
+            },
+            {
+                "Source": "controlunit_sup_2",
+                "Dest": "HVAC_sup_1",
+                "Product": "control_unit",
+                "Value": 200.0
+            },
+            {
+                "Source": "controlunit_sup_2",
+                "Dest": "HVAC_sup_2",
+                "Product": "control_unit",
+                "Value": 160.0
+            },
+            {
+                "Source": "switch_sup_1",
+                "Dest": "HVAC_sup_2",
+                "Product": "switch_2",
+                "Value": 640.0
+            },
+            {
+                "Source": "switch_sup_1",
+                "Dest": "infortainment_sup_2",
+                "Product": "switch_1",
+                "Value": 180.0
+            },
+            {
+                "Source": "switch_sup_2",
+                "Dest": "HVAC_sup_1",
+                "Product": "switch_1",
+                "Value": 720.0
+            },
+            {
+                "Source": "duct_sup_1",
+                "Dest": "HVAC_sup_1",
+                "Product": "duct",
+                "Value": 1000.0
+            },
+            {
+                "Source": "duct_sup_1",
+                "Dest": "HVAC_sup_2",
+                "Product": "duct",
+                "Value": 800.0
+            },
+            {
+                "Source": "screen_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "screen_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "screen_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "screen_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "screen_sup_3",
+                "Dest": "infortainment_sup_2",
+                "Product": "touch_screen_2A",
+                "Value": 70.0
+            },
+            {
+                "Source": "faceplate_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "faceplate_2",
+                "Value": 300.0
+            },
+            {
+                "Source": "faceplate_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "faceplate_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "radio_sup_1",
+                "Dest": "infortainment_sup_3",
+                "Product": "radio",
+                "Value": 160.0
+            },
+            {
+                "Source": "radio_sup_1",
+                "Dest": "infortainment_sup_2",
+                "Product": "radio",
+                "Value": 200.0
+            },
+            {
+                "Source": "screen_sup_3",
+                "Dest": "infortainment_sup_2",
+                "Product": "touch_screen_2B",
+                "Value": 70.0
+            },
+            {
+                "Source": "chip_sup_1",
+                "Dest": "infortainment_sup_3",
+                "Product": "chip_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "chip_sup_1",
+                "Dest": "infortainment_sup_2",
+                "Product": "chip_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "glass_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "glass",
+                "Value": 60.0
+            },
+            {
+                "Source": "shaft_sup_2",
+                "Dest": "beam_sup_2",
+                "Product": "shaft_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "connector_sup_1",
+                "Dest": "wiring_sup_3",
+                "Product": "connector",
+                "Value": 1021.0
+            },
+            {
+                "Source": "connector_sup_1",
+                "Dest": "wiring_sup_1",
+                "Product": "connector",
+                "Value": 1017.0
+            },
+            {
+                "Source": "connector_sup_2",
+                "Dest": "wiring_sup_1",
+                "Product": "connector",
+                "Value": 27.0
+            },
+            {
+                "Source": "compressor_sup_2",
+                "Dest": "HVAC_sup_1",
+                "Product": "compressor_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "navi_sup_1",
+                "Dest": "infortainment_sup_3",
+                "Product": "navi",
+                "Value": 160.0
+            },
+            {
+                "Source": "navi_sup_1",
+                "Dest": "infortainment_sup_2",
+                "Product": "navi",
+                "Value": 200.0
+            },
+            {
+                "Source": "cockpit_assy_1",
+                "Dest": "Customer_1",
+                "Product": "cockpit_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "cockpit_assy_3",
+                "Dest": "Customer_5",
+                "Product": "cockpit_3B",
+                "Value": 40.0
+            },
+            {
+                "Source": "cockpit_assy_3",
+                "Dest": "Customer_4",
+                "Product": "cockpit_3B",
+                "Value": 30.0
+            },
+            {
+                "Source": "cockpit_assy_3",
+                "Dest": "Customer_4",
+                "Product": "cockpit_3A",
+                "Value": 30.0
+            },
+            {
+                "Source": "cockpit_assy_3",
+                "Dest": "Customer_5",
+                "Product": "cockpit_3C",
+                "Value": 60.0
+            },
+            {
+                "Source": "steering_sup_2",
+                "Dest": "cockpit_assy_1",
+                "Product": "steering_column_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "steering_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "steering_column_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "steering_sup_2",
+                "Dest": "cockpit_assy_3",
+                "Product": "steering_column_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "bezel_sup_4",
+                "Dest": "HVAC_sup_1",
+                "Product": "bezel_6",
+                "Value": 540.0
+            },
+            {
+                "Source": "bezel_sup_5",
+                "Dest": "HVAC_sup_2",
+                "Product": "bezel_7",
+                "Value": 480.0
+            },
+            {
+                "Source": "beam_sup_1",
+                "Dest": "cockpit_assy_1",
+                "Product": "cross_car_beam_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "beam_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "cross_car_beam_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "substrate_sup_1",
+                "Dest": "cockpit_assy_3",
+                "Product": "substrate_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "substrate_sup_1",
+                "Dest": "cockpit_assy_1",
+                "Product": "substrate_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "substrate_sup_1",
+                "Dest": "cockpit_assy_2",
+                "Product": "substrate_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "cluster_sup_3",
+                "Dest": "cockpit_assy_2",
+                "Product": "cluster_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "cluster_sup_3",
+                "Dest": "cockpit_assy_1",
+                "Product": "cluster_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "cluster_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "cluster_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "HVAC_sup_2",
+                "Dest": "cockpit_assy_3",
+                "Product": "HVAC_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "HVAC_sup_1",
+                "Dest": "cockpit_assy_1",
+                "Product": "HVAC_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "beam_sup_2",
+                "Dest": "cockpit_assy_3",
+                "Product": "cross_car_beam_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "wiring_sup_1",
+                "Dest": "cockpit_assy_2",
+                "Product": "wiring_2A",
+                "Value": 70.0
+            },
+            {
+                "Source": "wiring_sup_1",
+                "Dest": "cockpit_assy_1",
+                "Product": "wiring_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "wiring_sup_1",
+                "Dest": "cockpit_assy_2",
+                "Product": "wiring_2B",
+                "Value": 70.0
+            },
+            {
+                "Source": "glovebox_sup_2",
+                "Dest": "cockpit_assy_3",
+                "Product": "glove_box_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "glovebox_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "glove_box_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "glovebox_sup_2",
+                "Dest": "cockpit_assy_1",
+                "Product": "glove_box_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "airbag_sup_1",
+                "Dest": "cockpit_assy_1",
+                "Product": "airbag",
+                "Value": 120.0
+            },
+            {
+                "Source": "airbag_sup_1",
+                "Dest": "cockpit_assy_3",
+                "Product": "airbag",
+                "Value": 320.0
+            },
+            {
+                "Source": "airbag_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "airbag",
+                "Value": 280.0
+            },
+            {
+                "Source": "infortainment_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "infotainment_3A",
+                "Value": 30.0
+            },
+            {
+                "Source": "infortainment_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "infotainment_2A",
+                "Value": 70.0
+            },
+            {
+                "Source": "infortainment_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "infotainment_2B",
+                "Value": 70.0
+            },
+            {
+                "Source": "infortainment_sup_2",
+                "Dest": "cockpit_assy_1",
+                "Product": "infotainment_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_1",
+                "Product": "bezel_2",
+                "Value": 60.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "bezel_2",
+                "Value": 180.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_2",
+                "Product": "bezel_2",
+                "Value": 70.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_1",
+                "Product": "bezel_3",
+                "Value": 180.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "bezel_3",
+                "Value": 170.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_2",
+                "Product": "bezel_3",
+                "Value": 350.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_1",
+                "Product": "bezel_1",
+                "Value": 120.0
+            },
+            {
+                "Source": "HVAC_sup_1",
+                "Dest": "cockpit_assy_2",
+                "Product": "HVAC_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "infortainment_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "infotainment_3B",
+                "Value": 70.0
+            },
+            {
+                "Source": "infortainment_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "infotainment_3C",
+                "Value": 60.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "bezel_4",
+                "Value": 130.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_2",
+                "Product": "bezel_4",
+                "Value": 210.0
+            },
+            {
+                "Source": "cockpit_assy_2",
+                "Dest": "Customer_3",
+                "Product": "cockpit_2B",
+                "Value": 70.0
+            },
+            {
+                "Source": "cockpit_assy_2",
+                "Dest": "Customer_2",
+                "Product": "cockpit_2A",
+                "Value": 30.0
+            },
+            {
+                "Source": "cockpit_assy_2",
+                "Dest": "Customer_3",
+                "Product": "cockpit_2A",
+                "Value": 40.0
+            },
+            {
+                "Source": "bezel_sup_4",
+                "Dest": "cluster_sup_3",
+                "Product": "bezel_5",
+                "Value": 60.0
+            },
+            {
+                "Source": "wiring_sup_1",
+                "Dest": "cockpit_assy_3",
+                "Product": "wiring_3B",
+                "Value": 4
+            },
+            {
+                "Source": "wiring_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "wiring_3A",
+                "Value": 11
+            },
+            {
+                "Source": "wiring_sup_4",
+                "Dest": "cockpit_assy_3",
+                "Product": "wiring_3B",
+                "Value": 65
+            },
+            {
+                "Source": "wiring_sup_4",
+                "Dest": "cockpit_assy_3",
+                "Product": "wiring_3A",
+                "Value": 19
+            },
+            {
+                "Source": "wiring_sup_4",
+                "Dest": "cockpit_assy_3",
+                "Product": "wiring_3C",
+                "Value": 55
+            },
+            {
+                "Source": "wiring_sup_2",
+                "Dest": "cockpit_assy_3",
+                "Product": "wiring_3C",
+                "Value": 5
+            },
+            {
+                "Source": "wire_sup_3",
+                "Dest": "wiring_sup_1",
+                "Product": "wire",
+                "Value": 13
+            },
+            {
+                "Source": "wire_sup_4",
+                "Dest": "wiring_sup_1",
+                "Product": "wire",
+                "Value": 12
+            },
+            {
+                "Source": "cover_sup_3",
+                "Dest": "wiring_sup_1",
+                "Product": "cover",
+                "Value": 5
+            },
+            {
+                "Source": "wire_sup_3",
+                "Dest": "wiring_sup_3",
+                "Product": "wire",
+                "Value": 43
+            },
+            {
+                "Source": "wire_sup_4",
+                "Dest": "wiring_sup_3",
+                "Product": "wire",
+                "Value": 11
+            },
+            {
+                "Source": "connector_sup_2",
+                "Dest": "wiring_sup_3",
+                "Product": "connector",
+                "Value": 5
+            },
+            {
+                "Source": "cover_sup_2",
+                "Dest": "wiring_sup_3",
+                "Product": "cover",
+                "Value": 63
+            },
+            {
+                "Source": "cover_sup_3",
+                "Dest": "wiring_sup_3",
+                "Product": "cover",
+                "Value": 3
+            },
+            {
+                "Source": "wire_sup_1",
+                "Dest": "wiring_sup_4",
+                "Product": "wire",
+                "Value": 55
+            },
+            {
+                "Source": "wire_sup_2",
+                "Dest": "wiring_sup_4",
+                "Product": "wire",
+                "Value": 31
+            },
+            {
+                "Source": "wire_sup_3",
+                "Dest": "wiring_sup_4",
+                "Product": "wire",
+                "Value": 345
+            },
+            {
+                "Source": "wire_sup_4",
+                "Dest": "wiring_sup_4",
+                "Product": "wire",
+                "Value": 681
+            },
+            {
+                "Source": "connector_sup_1",
+                "Dest": "wiring_sup_4",
+                "Product": "connector",
+                "Value": 762
+            },
+            {
+                "Source": "connector_sup_2",
+                "Dest": "wiring_sup_4",
+                "Product": "connector",
+                "Value": 72
+            },
+            {
+                "Source": "cover_sup_1",
+                "Dest": "wiring_sup_4",
+                "Product": "cover",
+                "Value": 107
+            },
+            {
+                "Source": "cover_sup_2",
+                "Dest": "wiring_sup_4",
+                "Product": "cover",
+                "Value": 476
+            },
+            {
+                "Source": "cover_sup_3",
+                "Dest": "wiring_sup_4",
+                "Product": "cover",
+                "Value": 251
+            },
+            {
+                "Source": "wire_sup_1",
+                "Dest": "wiring_sup_2",
+                "Product": "wire",
+                "Value": 7
+            },
+            {
+                "Source": "wire_sup_2",
+                "Dest": "wiring_sup_2",
+                "Product": "wire",
+                "Value": 5
+            },
+            {
+                "Source": "wire_sup_3",
+                "Dest": "wiring_sup_2",
+                "Product": "wire",
+                "Value": 17
+            },
+            {
+                "Source": "wire_sup_4",
+                "Dest": "wiring_sup_2",
+                "Product": "wire",
+                "Value": 11
+            },
+            {
+                "Source": "connector_sup_1",
+                "Dest": "wiring_sup_2",
+                "Product": "connector",
+                "Value": 25
+            },
+            {
+                "Source": "connector_sup_2",
+                "Dest": "wiring_sup_2",
+                "Product": "connector",
+                "Value": 5
+            },
+            {
+                "Source": "cover_sup_1",
+                "Dest": "wiring_sup_2",
+                "Product": "cover",
+                "Value": 17
+            },
+            {
+                "Source": "cover_sup_2",
+                "Dest": "wiring_sup_2",
+                "Product": "cover",
+                "Value": 6
+            },
+            {
+                "Source": "cover_sup_3",
+                "Dest": "wiring_sup_2",
+                "Product": "cover",
+                "Value": 7
+            }
+        ],
+        "prods": [
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "cockpit_3C",
+                "Value": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "cockpit_3B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "cockpit_3A",
+                "Value": 30.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "cockpit_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "cockpit_2A",
+                "Value": 70.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "cockpit_2B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "wire_sup_1",
+                "Product": "wire",
+                "Value": 1580.0
+            },
+            {
+                "Agent": "switch_sup_1",
+                "Product": "switch_1",
+                "Value": 180.0
+            },
+            {
+                "Agent": "switch_sup_1",
+                "Product": "switch_2",
+                "Value": 640.0
+            },
+            {
+                "Agent": "valve_sup_1",
+                "Product": "valve",
+                "Value": 740.0
+            },
+            {
+                "Agent": "fabric_sup_1",
+                "Product": "fabric",
+                "Value": 1320.0
+            },
+            {
+                "Agent": "plastic_sup_5",
+                "Product": "plastic",
+                "Value": 660.0
+            },
+            {
+                "Agent": "faceplate_sup_1",
+                "Product": "faceplate_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "faceplate_sup_1",
+                "Product": "faceplate_2",
+                "Value": 300.0
+            },
+            {
+                "Agent": "plastic_sup_4",
+                "Product": "plastic",
+                "Value": 1500.0
+            },
+            {
+                "Agent": "wiring_sup_2",
+                "Product": "wiring_3C",
+                "Value": 5
+            },
+            {
+                "Agent": "cover_sup_3",
+                "Product": "cover",
+                "Value": 266
+            },
+            {
+                "Agent": "wheel_sup_1",
+                "Product": "wheel_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "wire_sup_3",
+                "Product": "wire",
+                "Value": 418
+            },
+            {
+                "Agent": "HVAC_sup_1",
+                "Product": "HVAC_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "HVAC_sup_1",
+                "Product": "HVAC_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "valve_sup_2",
+                "Product": "valve",
+                "Value": 640.0
+            },
+            {
+                "Agent": "beam_sup_2",
+                "Product": "cross_car_beam_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "beam_sup_2",
+                "Product": "cross_car_beam_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "radio_sup_1",
+                "Product": "radio",
+                "Value": 360.0
+            },
+            {
+                "Agent": "compressor_sup_2",
+                "Product": "compressor_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "compressor_sup_2",
+                "Product": "compressor_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "compressor_sup_2",
+                "Product": "compressor_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "glovebox_sup_2",
+                "Product": "glove_box_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "glovebox_sup_2",
+                "Product": "glove_box_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "glovebox_sup_2",
+                "Product": "glove_box_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "infotainment_2B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "infotainment_2A",
+                "Value": 70.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "infotainment_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "wire_sup_4",
+                "Product": "wire",
+                "Value": 715
+            },
+            {
+                "Agent": "button_sup_5",
+                "Product": "button_4",
+                "Value": 480.0
+            },
+            {
+                "Agent": "button_sup_5",
+                "Product": "button_3",
+                "Value": 900.0
+            },
+            {
+                "Agent": "button_sup_5",
+                "Product": "button_2",
+                "Value": 120.0
+            },
+            {
+                "Agent": "shaft_sup_3",
+                "Product": "shaft_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "wiring_sup_1",
+                "Product": "wiring_2B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "wiring_sup_1",
+                "Product": "wiring_2A",
+                "Value": 70.0
+            },
+            {
+                "Agent": "wiring_sup_1",
+                "Product": "wiring_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "wiring_sup_1",
+                "Product": "wiring_3B",
+                "Value": 4
+            },
+            {
+                "Agent": "LED_sup_1",
+                "Product": "LED",
+                "Value": 600.0
+            },
+            {
+                "Agent": "al_sup_2",
+                "Product": "aluminum",
+                "Value": 260.0
+            },
+            {
+                "Agent": "bezel_sup_5",
+                "Product": "bezel_7",
+                "Value": 480.0
+            },
+            {
+                "Agent": "fabric_sup_2",
+                "Product": "fabric",
+                "Value": 840.0
+            },
+            {
+                "Agent": "shaft_sup_1",
+                "Product": "shaft_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "wheel_sup_3",
+                "Product": "wheel_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "wheel_sup_2",
+                "Product": "wheel_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "connector_sup_1",
+                "Product": "connector",
+                "Value": 2825.0
+            },
+            {
+                "Agent": "shaft_sup_2",
+                "Product": "shaft_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "cover_sup_2",
+                "Product": "cover",
+                "Value": 704.0
+            },
+            {
+                "Agent": "leather_sup_1",
+                "Product": "leather",
+                "Value": 400.0
+            },
+            {
+                "Agent": "bezel_sup_3",
+                "Product": "bezel_3",
+                "Value": 700.0
+            },
+            {
+                "Agent": "bezel_sup_3",
+                "Product": "bezel_2",
+                "Value": 310.0
+            },
+            {
+                "Agent": "bezel_sup_3",
+                "Product": "bezel_1",
+                "Value": 120.0
+            },
+            {
+                "Agent": "bezel_sup_3",
+                "Product": "bezel_4",
+                "Value": 340.0
+            },
+            {
+                "Agent": "cover_sup_1",
+                "Product": "cover",
+                "Value": 2084.0
+            },
+            {
+                "Agent": "airbag_sup_1",
+                "Product": "airbag",
+                "Value": 440.0
+            },
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "bezel_5",
+                "Value": 60.0
+            },
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "bezel_6",
+                "Value": 540.0
+            },
+            {
+                "Agent": "screen_sup_5",
+                "Product": "touch_screen_3A",
+                "Value": 30.0
+            },
+            {
+                "Agent": "screen_sup_5",
+                "Product": "touch_screen_3B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "screen_sup_5",
+                "Product": "touch_screen_3C",
+                "Value": 60.0
+            },
+            {
+                "Agent": "wiring_sup_4",
+                "Product": "wiring_3B",
+                "Value": 65
+            },
+            {
+                "Agent": "wiring_sup_4",
+                "Product": "wiring_3A",
+                "Value": 19
+            },
+            {
+                "Agent": "wiring_sup_4",
+                "Product": "wiring_3C",
+                "Value": 55
+            },
+            {
+                "Agent": "navi_sup_1",
+                "Product": "navi",
+                "Value": 360.0
+            },
+            {
+                "Agent": "HVAC_sup_2",
+                "Product": "HVAC_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "airbag_sup_2",
+                "Product": "airbag",
+                "Value": 280.0
+            },
+            {
+                "Agent": "duct_sup_1",
+                "Product": "duct",
+                "Value": 1800.0
+            },
+            {
+                "Agent": "controlunit_sup_2",
+                "Product": "control_unit",
+                "Value": 360.0
+            },
+            {
+                "Agent": "switch_sup_2",
+                "Product": "switch_1",
+                "Value": 720.0
+            },
+            {
+                "Agent": "gauge_sup_3",
+                "Product": "digital_gauge",
+                "Value": 900.0
+            },
+            {
+                "Agent": "column_sup_1",
+                "Product": "column",
+                "Value": 360.0
+            },
+            {
+                "Agent": "screen_sup_3",
+                "Product": "touch_screen_2A",
+                "Value": 70.0
+            },
+            {
+                "Agent": "screen_sup_3",
+                "Product": "touch_screen_2B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "substrate_sup_1",
+                "Product": "substrate_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "substrate_sup_1",
+                "Product": "substrate_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "substrate_sup_1",
+                "Product": "substrate_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "screen_sup_1",
+                "Product": "screen_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "screen_sup_1",
+                "Product": "screen_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "wiring_sup_3",
+                "Product": "wiring_3A",
+                "Value": 11
+            },
+            {
+                "Agent": "LED_sup_2",
+                "Product": "LED",
+                "Value": 380.0
+            },
+            {
+                "Agent": "glass_sup_1",
+                "Product": "glass",
+                "Value": 60.0
+            },
+            {
+                "Agent": "gauge_sup_1",
+                "Product": "analog_gauge",
+                "Value": 180.0
+            },
+            {
+                "Agent": "beam_sup_1",
+                "Product": "cross_car_beam_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "wood_sup_2",
+                "Product": "wood",
+                "Value": 960.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "cluster_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "cluster_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "cluster_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "chip_sup_1",
+                "Product": "chip_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "chip_sup_1",
+                "Product": "chip_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "button_sup_1",
+                "Product": "button_2",
+                "Value": 700.0
+            },
+            {
+                "Agent": "button_sup_1",
+                "Product": "button_1",
+                "Value": 600.0
+            },
+            {
+                "Agent": "plastic_sup_2",
+                "Product": "plastic",
+                "Value": 1690.0
+            },
+            {
+                "Agent": "steering_sup_2",
+                "Product": "steering_column_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "steering_sup_2",
+                "Product": "steering_column_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "steering_sup_2",
+                "Product": "steering_column_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "leather_sup_2",
+                "Product": "leather",
+                "Value": 200.0
+            },
+            {
+                "Agent": "wire_sup_2",
+                "Product": "wire",
+                "Value": 1258.0
+            },
+            {
+                "Agent": "infortainment_sup_3",
+                "Product": "infotainment_3B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "infortainment_sup_3",
+                "Product": "infotainment_3C",
+                "Value": 60.0
+            },
+            {
+                "Agent": "infortainment_sup_3",
+                "Product": "infotainment_3A",
+                "Value": 30.0
+            },
+            {
+                "Agent": "fanvent_sup_3",
+                "Product": "fan_vent_3",
+                "Value": 480.0
+            },
+            {
+                "Agent": "fanvent_sup_3",
+                "Product": "fan_vent_2",
+                "Value": 420.0
+            },
+            {
+                "Agent": "fanvent_sup_3",
+                "Product": "fan_vent_1",
+                "Value": 240.0
+            },
+            {
+                "Agent": "al_sup_1",
+                "Product": "aluminum",
+                "Value": 400.0
+            },
+            {
+                "Agent": "connector_sup_2",
+                "Product": "connector",
+                "Value": 109.0
+            },
+            {
+                "Agent": "wood_sup_1",
+                "Product": "wood",
+                "Value": 700.0
+            }
+        ],
+        "res": {
+            "delta_d": 0.0,
+            "O_c_flow": 3344.8,
+            "O_c_production": 0,
+            "C_f": 6970.100000000006,
+            "C_p": 5143.29999999993,
+            "N_f": 9,
+            "N_p": 8,
+            "H_f": 29,
+            "H_p": 5,
+            "M_e": 218,
+            "T_e": 2.4491827487945557
+        }
+    },
+    "plastic_sup_5": {
+        "flows": [
+            {
+                "Source": "plastic_sup_2",
+                "Dest": "substrate_sup_1",
+                "Product": "plastic",
+                "Value": 520.0
+            },
+            {
+                "Source": "plastic_sup_2",
+                "Dest": "airbag_sup_2",
+                "Product": "plastic",
+                "Value": 280.0
+            },
+            {
+                "Source": "plastic_sup_4",
+                "Dest": "glovebox_sup_2",
+                "Product": "plastic",
+                "Value": 500.0
+            },
+            {
+                "Source": "plastic_sup_4",
+                "Dest": "substrate_sup_1",
+                "Product": "plastic",
+                "Value": 560.0
+            },
+            {
+                "Source": "plastic_sup_4",
+                "Dest": "airbag_sup_1",
+                "Product": "plastic",
+                "Value": 440.0
+            },
+            {
+                "Source": "plastic_sup_2",
+                "Dest": "bezel_sup_3",
+                "Product": "plastic",
+                "Value": 890.0
+            },
+            {
+                "Source": "cover_sup_2",
+                "Dest": "wiring_sup_1",
+                "Product": "cover",
+                "Value": 140.0
+            },
+            {
+                "Source": "cover_sup_1",
+                "Dest": "wiring_sup_3",
+                "Product": "cover",
+                "Value": 960.0
+            },
+            {
+                "Source": "cover_sup_1",
+                "Dest": "wiring_sup_1",
+                "Product": "cover",
+                "Value": 1000.0
+            },
+            {
+                "Source": "button_sup_5",
+                "Dest": "HVAC_sup_2",
+                "Product": "button_4",
+                "Value": 480.0
+            },
+            {
+                "Source": "button_sup_1",
+                "Dest": "steering_sup_2",
+                "Product": "button_1",
+                "Value": 240.0
+            },
+            {
+                "Source": "button_sup_1",
+                "Dest": "infortainment_sup_2",
+                "Product": "button_1",
+                "Value": 360.0
+            },
+            {
+                "Source": "leather_sup_1",
+                "Dest": "glovebox_sup_2",
+                "Product": "leather",
+                "Value": 400.0
+            },
+            {
+                "Source": "leather_sup_2",
+                "Dest": "glovebox_sup_2",
+                "Product": "leather",
+                "Value": 200.0
+            },
+            {
+                "Source": "button_sup_5",
+                "Dest": "HVAC_sup_1",
+                "Product": "button_2",
+                "Value": 120.0
+            },
+            {
+                "Source": "button_sup_1",
+                "Dest": "steering_sup_2",
+                "Product": "button_2",
+                "Value": 700.0
+            },
+            {
+                "Source": "button_sup_5",
+                "Dest": "HVAC_sup_1",
+                "Product": "button_3",
+                "Value": 420.0
+            },
+            {
+                "Source": "button_sup_5",
+                "Dest": "steering_sup_2",
+                "Product": "button_3",
+                "Value": 480.0
+            },
+            {
+                "Source": "al_sup_1",
+                "Dest": "substrate_sup_1",
+                "Product": "aluminum",
+                "Value": 400.0
+            },
+            {
+                "Source": "al_sup_2",
+                "Dest": "substrate_sup_1",
+                "Product": "aluminum",
+                "Value": 260.0
+            },
+            {
+                "Source": "compressor_sup_2",
+                "Dest": "HVAC_sup_1",
+                "Product": "compressor_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "compressor_sup_2",
+                "Dest": "HVAC_sup_2",
+                "Product": "compressor_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "shaft_sup_3",
+                "Dest": "beam_sup_1",
+                "Product": "shaft_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "shaft_sup_1",
+                "Dest": "beam_sup_2",
+                "Product": "shaft_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "valve_sup_2",
+                "Dest": "HVAC_sup_2",
+                "Product": "valve",
+                "Value": 640.0
+            },
+            {
+                "Source": "valve_sup_1",
+                "Dest": "HVAC_sup_1",
+                "Product": "valve",
+                "Value": 740.0
+            },
+            {
+                "Source": "screen_sup_5",
+                "Dest": "infortainment_sup_3",
+                "Product": "touch_screen_3B",
+                "Value": 70.0
+            },
+            {
+                "Source": "screen_sup_5",
+                "Dest": "infortainment_sup_3",
+                "Product": "touch_screen_3A",
+                "Value": 30.0
+            },
+            {
+                "Source": "screen_sup_5",
+                "Dest": "infortainment_sup_3",
+                "Product": "touch_screen_3C",
+                "Value": 60.0
+            },
+            {
+                "Source": "wire_sup_2",
+                "Dest": "wiring_sup_3",
+                "Product": "wire",
+                "Value": 280.0
+            },
+            {
+                "Source": "wire_sup_2",
+                "Dest": "wiring_sup_1",
+                "Product": "wire",
+                "Value": 920.0
+            },
+            {
+                "Source": "wire_sup_1",
+                "Dest": "wiring_sup_3",
+                "Product": "wire",
+                "Value": 1000.0
+            },
+            {
+                "Source": "wire_sup_1",
+                "Dest": "wiring_sup_1",
+                "Product": "wire",
+                "Value": 500.0
+            },
+            {
+                "Source": "wheel_sup_2",
+                "Dest": "steering_sup_2",
+                "Product": "wheel_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "wheel_sup_3",
+                "Dest": "steering_sup_2",
+                "Product": "wheel_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "wood_sup_1",
+                "Dest": "bezel_sup_3",
+                "Product": "wood",
+                "Value": 700.0
+            },
+            {
+                "Source": "wood_sup_2",
+                "Dest": "bezel_sup_5",
+                "Product": "wood",
+                "Value": 960.0
+            },
+            {
+                "Source": "column_sup_1",
+                "Dest": "steering_sup_2",
+                "Product": "column",
+                "Value": 360.0
+            },
+            {
+                "Source": "LED_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "LED",
+                "Value": 600.0
+            },
+            {
+                "Source": "LED_sup_2",
+                "Dest": "cluster_sup_3",
+                "Product": "LED",
+                "Value": 380.0
+            },
+            {
+                "Source": "fanvent_sup_3",
+                "Dest": "HVAC_sup_1",
+                "Product": "fan_vent_2",
+                "Value": 420.0
+            },
+            {
+                "Source": "wheel_sup_1",
+                "Dest": "steering_sup_2",
+                "Product": "wheel_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "fanvent_sup_3",
+                "Dest": "HVAC_sup_1",
+                "Product": "fan_vent_1",
+                "Value": 240.0
+            },
+            {
+                "Source": "fanvent_sup_3",
+                "Dest": "HVAC_sup_2",
+                "Product": "fan_vent_3",
+                "Value": 480.0
+            },
+            {
+                "Source": "fabric_sup_1",
+                "Dest": "airbag_sup_1",
+                "Product": "fabric",
+                "Value": 1320.0
+            },
+            {
+                "Source": "fabric_sup_2",
+                "Dest": "airbag_sup_2",
+                "Product": "fabric",
+                "Value": 840.0
+            },
+            {
+                "Source": "gauge_sup_3",
+                "Dest": "cluster_sup_3",
+                "Product": "digital_gauge",
+                "Value": 900.0
+            },
+            {
+                "Source": "gauge_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "analog_gauge",
+                "Value": 180.0
+            },
+            {
+                "Source": "controlunit_sup_2",
+                "Dest": "HVAC_sup_1",
+                "Product": "control_unit",
+                "Value": 200.0
+            },
+            {
+                "Source": "controlunit_sup_2",
+                "Dest": "HVAC_sup_2",
+                "Product": "control_unit",
+                "Value": 160.0
+            },
+            {
+                "Source": "switch_sup_1",
+                "Dest": "HVAC_sup_2",
+                "Product": "switch_2",
+                "Value": 640.0
+            },
+            {
+                "Source": "switch_sup_1",
+                "Dest": "infortainment_sup_2",
+                "Product": "switch_1",
+                "Value": 180.0
+            },
+            {
+                "Source": "switch_sup_2",
+                "Dest": "HVAC_sup_1",
+                "Product": "switch_1",
+                "Value": 720.0
+            },
+            {
+                "Source": "duct_sup_1",
+                "Dest": "HVAC_sup_1",
+                "Product": "duct",
+                "Value": 1000.0
+            },
+            {
+                "Source": "duct_sup_1",
+                "Dest": "HVAC_sup_2",
+                "Product": "duct",
+                "Value": 800.0
+            },
+            {
+                "Source": "screen_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "screen_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "screen_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "screen_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "screen_sup_3",
+                "Dest": "infortainment_sup_2",
+                "Product": "touch_screen_2A",
+                "Value": 70.0
+            },
+            {
+                "Source": "faceplate_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "faceplate_2",
+                "Value": 300.0
+            },
+            {
+                "Source": "faceplate_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "faceplate_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "radio_sup_1",
+                "Dest": "infortainment_sup_3",
+                "Product": "radio",
+                "Value": 160.0
+            },
+            {
+                "Source": "radio_sup_1",
+                "Dest": "infortainment_sup_2",
+                "Product": "radio",
+                "Value": 200.0
+            },
+            {
+                "Source": "screen_sup_3",
+                "Dest": "infortainment_sup_2",
+                "Product": "touch_screen_2B",
+                "Value": 70.0
+            },
+            {
+                "Source": "chip_sup_1",
+                "Dest": "infortainment_sup_3",
+                "Product": "chip_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "chip_sup_1",
+                "Dest": "infortainment_sup_2",
+                "Product": "chip_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "glass_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "glass",
+                "Value": 60.0
+            },
+            {
+                "Source": "shaft_sup_2",
+                "Dest": "beam_sup_2",
+                "Product": "shaft_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "connector_sup_1",
+                "Dest": "wiring_sup_3",
+                "Product": "connector",
+                "Value": 960.0
+            },
+            {
+                "Source": "connector_sup_1",
+                "Dest": "wiring_sup_1",
+                "Product": "connector",
+                "Value": 1000.0
+            },
+            {
+                "Source": "connector_sup_2",
+                "Dest": "wiring_sup_1",
+                "Product": "connector",
+                "Value": 20.0
+            },
+            {
+                "Source": "compressor_sup_2",
+                "Dest": "HVAC_sup_1",
+                "Product": "compressor_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "navi_sup_1",
+                "Dest": "infortainment_sup_3",
+                "Product": "navi",
+                "Value": 160.0
+            },
+            {
+                "Source": "navi_sup_1",
+                "Dest": "infortainment_sup_2",
+                "Product": "navi",
+                "Value": 200.0
+            },
+            {
+                "Source": "cockpit_assy_1",
+                "Dest": "Customer_1",
+                "Product": "cockpit_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "cockpit_assy_3",
+                "Dest": "Customer_5",
+                "Product": "cockpit_3B",
+                "Value": 40.0
+            },
+            {
+                "Source": "cockpit_assy_3",
+                "Dest": "Customer_4",
+                "Product": "cockpit_3B",
+                "Value": 30.0
+            },
+            {
+                "Source": "cockpit_assy_3",
+                "Dest": "Customer_4",
+                "Product": "cockpit_3A",
+                "Value": 30.0
+            },
+            {
+                "Source": "cockpit_assy_3",
+                "Dest": "Customer_5",
+                "Product": "cockpit_3C",
+                "Value": 60.0
+            },
+            {
+                "Source": "steering_sup_2",
+                "Dest": "cockpit_assy_1",
+                "Product": "steering_column_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "steering_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "steering_column_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "steering_sup_2",
+                "Dest": "cockpit_assy_3",
+                "Product": "steering_column_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "bezel_sup_4",
+                "Dest": "HVAC_sup_1",
+                "Product": "bezel_6",
+                "Value": 540.0
+            },
+            {
+                "Source": "bezel_sup_5",
+                "Dest": "HVAC_sup_2",
+                "Product": "bezel_7",
+                "Value": 480.0
+            },
+            {
+                "Source": "beam_sup_1",
+                "Dest": "cockpit_assy_1",
+                "Product": "cross_car_beam_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "beam_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "cross_car_beam_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "substrate_sup_1",
+                "Dest": "cockpit_assy_3",
+                "Product": "substrate_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "substrate_sup_1",
+                "Dest": "cockpit_assy_1",
+                "Product": "substrate_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "substrate_sup_1",
+                "Dest": "cockpit_assy_2",
+                "Product": "substrate_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "cluster_sup_3",
+                "Dest": "cockpit_assy_2",
+                "Product": "cluster_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "cluster_sup_3",
+                "Dest": "cockpit_assy_1",
+                "Product": "cluster_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "cluster_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "cluster_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "HVAC_sup_2",
+                "Dest": "cockpit_assy_3",
+                "Product": "HVAC_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "HVAC_sup_1",
+                "Dest": "cockpit_assy_1",
+                "Product": "HVAC_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "wiring_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "wiring_3B",
+                "Value": 70.0
+            },
+            {
+                "Source": "wiring_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "wiring_3A",
+                "Value": 30.0
+            },
+            {
+                "Source": "wiring_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "wiring_3C",
+                "Value": 60.0
+            },
+            {
+                "Source": "beam_sup_2",
+                "Dest": "cockpit_assy_3",
+                "Product": "cross_car_beam_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "wiring_sup_1",
+                "Dest": "cockpit_assy_2",
+                "Product": "wiring_2A",
+                "Value": 70.0
+            },
+            {
+                "Source": "wiring_sup_1",
+                "Dest": "cockpit_assy_1",
+                "Product": "wiring_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "wiring_sup_1",
+                "Dest": "cockpit_assy_2",
+                "Product": "wiring_2B",
+                "Value": 70.0
+            },
+            {
+                "Source": "glovebox_sup_2",
+                "Dest": "cockpit_assy_3",
+                "Product": "glove_box_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "glovebox_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "glove_box_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "glovebox_sup_2",
+                "Dest": "cockpit_assy_1",
+                "Product": "glove_box_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "airbag_sup_1",
+                "Dest": "cockpit_assy_1",
+                "Product": "airbag",
+                "Value": 120.0
+            },
+            {
+                "Source": "airbag_sup_1",
+                "Dest": "cockpit_assy_3",
+                "Product": "airbag",
+                "Value": 320.0
+            },
+            {
+                "Source": "airbag_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "airbag",
+                "Value": 280.0
+            },
+            {
+                "Source": "infortainment_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "infotainment_3A",
+                "Value": 30.0
+            },
+            {
+                "Source": "infortainment_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "infotainment_2A",
+                "Value": 70.0
+            },
+            {
+                "Source": "infortainment_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "infotainment_2B",
+                "Value": 70.0
+            },
+            {
+                "Source": "infortainment_sup_2",
+                "Dest": "cockpit_assy_1",
+                "Product": "infotainment_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_1",
+                "Product": "bezel_2",
+                "Value": 60.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "bezel_2",
+                "Value": 180.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_2",
+                "Product": "bezel_2",
+                "Value": 70.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_1",
+                "Product": "bezel_3",
+                "Value": 180.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "bezel_3",
+                "Value": 170.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_2",
+                "Product": "bezel_3",
+                "Value": 350.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_1",
+                "Product": "bezel_1",
+                "Value": 120.0
+            },
+            {
+                "Source": "HVAC_sup_1",
+                "Dest": "cockpit_assy_2",
+                "Product": "HVAC_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "infortainment_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "infotainment_3B",
+                "Value": 70.0
+            },
+            {
+                "Source": "infortainment_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "infotainment_3C",
+                "Value": 60.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "bezel_4",
+                "Value": 130.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_2",
+                "Product": "bezel_4",
+                "Value": 210.0
+            },
+            {
+                "Source": "cockpit_assy_2",
+                "Dest": "Customer_3",
+                "Product": "cockpit_2B",
+                "Value": 70.0
+            },
+            {
+                "Source": "cockpit_assy_2",
+                "Dest": "Customer_2",
+                "Product": "cockpit_2A",
+                "Value": 30.0
+            },
+            {
+                "Source": "cockpit_assy_2",
+                "Dest": "Customer_3",
+                "Product": "cockpit_2A",
+                "Value": 40.0
+            },
+            {
+                "Source": "bezel_sup_4",
+                "Dest": "cluster_sup_3",
+                "Product": "bezel_5",
+                "Value": 60.0
+            },
+            {
+                "Source": "plastic_sup_1",
+                "Dest": "bezel_sup_4",
+                "Product": "plastic",
+                "Value": 576
+            },
+            {
+                "Source": "plastic_sup_3",
+                "Dest": "bezel_sup_4",
+                "Product": "plastic",
+                "Value": 54
+            },
+            {
+                "Source": "plastic_sup_4",
+                "Dest": "bezel_sup_4",
+                "Product": "plastic",
+                "Value": 29
+            }
+        ],
+        "prods": [
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "cockpit_3C",
+                "Value": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "cockpit_3B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "cockpit_3A",
+                "Value": 30.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "cockpit_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "cockpit_2A",
+                "Value": 70.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "cockpit_2B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "wire_sup_1",
+                "Product": "wire",
+                "Value": 1500.0
+            },
+            {
+                "Agent": "switch_sup_1",
+                "Product": "switch_1",
+                "Value": 180.0
+            },
+            {
+                "Agent": "switch_sup_1",
+                "Product": "switch_2",
+                "Value": 640.0
+            },
+            {
+                "Agent": "valve_sup_1",
+                "Product": "valve",
+                "Value": 740.0
+            },
+            {
+                "Agent": "fabric_sup_1",
+                "Product": "fabric",
+                "Value": 1320.0
+            },
+            {
+                "Agent": "faceplate_sup_1",
+                "Product": "faceplate_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "faceplate_sup_1",
+                "Product": "faceplate_2",
+                "Value": 300.0
+            },
+            {
+                "Agent": "plastic_sup_4",
+                "Product": "plastic",
+                "Value": 1529.0
+            },
+            {
+                "Agent": "wheel_sup_1",
+                "Product": "wheel_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "HVAC_sup_1",
+                "Product": "HVAC_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "HVAC_sup_1",
+                "Product": "HVAC_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "valve_sup_2",
+                "Product": "valve",
+                "Value": 640.0
+            },
+            {
+                "Agent": "beam_sup_2",
+                "Product": "cross_car_beam_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "beam_sup_2",
+                "Product": "cross_car_beam_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "radio_sup_1",
+                "Product": "radio",
+                "Value": 360.0
+            },
+            {
+                "Agent": "compressor_sup_2",
+                "Product": "compressor_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "compressor_sup_2",
+                "Product": "compressor_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "compressor_sup_2",
+                "Product": "compressor_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "glovebox_sup_2",
+                "Product": "glove_box_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "glovebox_sup_2",
+                "Product": "glove_box_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "glovebox_sup_2",
+                "Product": "glove_box_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "infotainment_2B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "infotainment_2A",
+                "Value": 70.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "infotainment_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "button_sup_5",
+                "Product": "button_4",
+                "Value": 480.0
+            },
+            {
+                "Agent": "button_sup_5",
+                "Product": "button_3",
+                "Value": 900.0
+            },
+            {
+                "Agent": "button_sup_5",
+                "Product": "button_2",
+                "Value": 120.0
+            },
+            {
+                "Agent": "shaft_sup_3",
+                "Product": "shaft_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "wiring_sup_1",
+                "Product": "wiring_2B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "wiring_sup_1",
+                "Product": "wiring_2A",
+                "Value": 70.0
+            },
+            {
+                "Agent": "wiring_sup_1",
+                "Product": "wiring_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "LED_sup_1",
+                "Product": "LED",
+                "Value": 600.0
+            },
+            {
+                "Agent": "al_sup_2",
+                "Product": "aluminum",
+                "Value": 260.0
+            },
+            {
+                "Agent": "bezel_sup_5",
+                "Product": "bezel_7",
+                "Value": 480.0
+            },
+            {
+                "Agent": "fabric_sup_2",
+                "Product": "fabric",
+                "Value": 840.0
+            },
+            {
+                "Agent": "shaft_sup_1",
+                "Product": "shaft_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "wheel_sup_3",
+                "Product": "wheel_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "wheel_sup_2",
+                "Product": "wheel_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "connector_sup_1",
+                "Product": "connector",
+                "Value": 1960.0
+            },
+            {
+                "Agent": "shaft_sup_2",
+                "Product": "shaft_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "cover_sup_2",
+                "Product": "cover",
+                "Value": 140.0
+            },
+            {
+                "Agent": "leather_sup_1",
+                "Product": "leather",
+                "Value": 400.0
+            },
+            {
+                "Agent": "bezel_sup_3",
+                "Product": "bezel_3",
+                "Value": 700.0
+            },
+            {
+                "Agent": "bezel_sup_3",
+                "Product": "bezel_2",
+                "Value": 310.0
+            },
+            {
+                "Agent": "bezel_sup_3",
+                "Product": "bezel_1",
+                "Value": 120.0
+            },
+            {
+                "Agent": "bezel_sup_3",
+                "Product": "bezel_4",
+                "Value": 340.0
+            },
+            {
+                "Agent": "cover_sup_1",
+                "Product": "cover",
+                "Value": 1960.0
+            },
+            {
+                "Agent": "plastic_sup_1",
+                "Product": "plastic",
+                "Value": 576
+            },
+            {
+                "Agent": "airbag_sup_1",
+                "Product": "airbag",
+                "Value": 440.0
+            },
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "bezel_5",
+                "Value": 60.0
+            },
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "bezel_6",
+                "Value": 540.0
+            },
+            {
+                "Agent": "screen_sup_5",
+                "Product": "touch_screen_3A",
+                "Value": 30.0
+            },
+            {
+                "Agent": "screen_sup_5",
+                "Product": "touch_screen_3B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "screen_sup_5",
+                "Product": "touch_screen_3C",
+                "Value": 60.0
+            },
+            {
+                "Agent": "navi_sup_1",
+                "Product": "navi",
+                "Value": 360.0
+            },
+            {
+                "Agent": "HVAC_sup_2",
+                "Product": "HVAC_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "airbag_sup_2",
+                "Product": "airbag",
+                "Value": 280.0
+            },
+            {
+                "Agent": "duct_sup_1",
+                "Product": "duct",
+                "Value": 1800.0
+            },
+            {
+                "Agent": "controlunit_sup_2",
+                "Product": "control_unit",
+                "Value": 360.0
+            },
+            {
+                "Agent": "switch_sup_2",
+                "Product": "switch_1",
+                "Value": 720.0
+            },
+            {
+                "Agent": "gauge_sup_3",
+                "Product": "digital_gauge",
+                "Value": 900.0
+            },
+            {
+                "Agent": "column_sup_1",
+                "Product": "column",
+                "Value": 360.0
+            },
+            {
+                "Agent": "screen_sup_3",
+                "Product": "touch_screen_2A",
+                "Value": 70.0
+            },
+            {
+                "Agent": "screen_sup_3",
+                "Product": "touch_screen_2B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "substrate_sup_1",
+                "Product": "substrate_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "substrate_sup_1",
+                "Product": "substrate_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "substrate_sup_1",
+                "Product": "substrate_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "screen_sup_1",
+                "Product": "screen_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "screen_sup_1",
+                "Product": "screen_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "wiring_sup_3",
+                "Product": "wiring_3C",
+                "Value": 60.0
+            },
+            {
+                "Agent": "wiring_sup_3",
+                "Product": "wiring_3A",
+                "Value": 30.0
+            },
+            {
+                "Agent": "wiring_sup_3",
+                "Product": "wiring_3B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "LED_sup_2",
+                "Product": "LED",
+                "Value": 380.0
+            },
+            {
+                "Agent": "glass_sup_1",
+                "Product": "glass",
+                "Value": 60.0
+            },
+            {
+                "Agent": "gauge_sup_1",
+                "Product": "analog_gauge",
+                "Value": 180.0
+            },
+            {
+                "Agent": "beam_sup_1",
+                "Product": "cross_car_beam_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "wood_sup_2",
+                "Product": "wood",
+                "Value": 960.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "cluster_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "cluster_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "cluster_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "chip_sup_1",
+                "Product": "chip_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "chip_sup_1",
+                "Product": "chip_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "button_sup_1",
+                "Product": "button_2",
+                "Value": 700.0
+            },
+            {
+                "Agent": "button_sup_1",
+                "Product": "button_1",
+                "Value": 600.0
+            },
+            {
+                "Agent": "plastic_sup_2",
+                "Product": "plastic",
+                "Value": 1690.0
+            },
+            {
+                "Agent": "steering_sup_2",
+                "Product": "steering_column_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "steering_sup_2",
+                "Product": "steering_column_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "steering_sup_2",
+                "Product": "steering_column_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "leather_sup_2",
+                "Product": "leather",
+                "Value": 200.0
+            },
+            {
+                "Agent": "wire_sup_2",
+                "Product": "wire",
+                "Value": 1200.0
+            },
+            {
+                "Agent": "infortainment_sup_3",
+                "Product": "infotainment_3B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "infortainment_sup_3",
+                "Product": "infotainment_3C",
+                "Value": 60.0
+            },
+            {
+                "Agent": "infortainment_sup_3",
+                "Product": "infotainment_3A",
+                "Value": 30.0
+            },
+            {
+                "Agent": "plastic_sup_3",
+                "Product": "plastic",
+                "Value": 54
+            },
+            {
+                "Agent": "fanvent_sup_3",
+                "Product": "fan_vent_3",
+                "Value": 480.0
+            },
+            {
+                "Agent": "fanvent_sup_3",
+                "Product": "fan_vent_2",
+                "Value": 420.0
+            },
+            {
+                "Agent": "fanvent_sup_3",
+                "Product": "fan_vent_1",
+                "Value": 240.0
+            },
+            {
+                "Agent": "al_sup_1",
+                "Product": "aluminum",
+                "Value": 400.0
+            },
+            {
+                "Agent": "connector_sup_2",
+                "Product": "connector",
+                "Value": 20.0
+            },
+            {
+                "Agent": "wood_sup_1",
+                "Product": "wood",
+                "Value": 700.0
+            }
+        ],
+        "res": {
+            "delta_d": 0.0,
+            "O_c_flow": 0,
+            "O_c_production": 0,
+            "C_f": 1.9000000000087311,
+            "C_p": 0.8999999999068677,
+            "N_f": 1,
+            "N_p": 2,
+            "H_f": 3,
+            "H_p": 2,
+            "M_e": 20,
+            "T_e": 0.25420427322387695
+        }
+    },
+    "bezel_sup_5": {
+        "flows": [
+            {
+                "Source": "plastic_sup_2",
+                "Dest": "substrate_sup_1",
+                "Product": "plastic",
+                "Value": 520.0
+            },
+            {
+                "Source": "plastic_sup_2",
+                "Dest": "airbag_sup_2",
+                "Product": "plastic",
+                "Value": 280.0
+            },
+            {
+                "Source": "plastic_sup_4",
+                "Dest": "glovebox_sup_2",
+                "Product": "plastic",
+                "Value": 500.0
+            },
+            {
+                "Source": "plastic_sup_5",
+                "Dest": "bezel_sup_4",
+                "Product": "plastic",
+                "Value": 660.0
+            },
+            {
+                "Source": "plastic_sup_4",
+                "Dest": "substrate_sup_1",
+                "Product": "plastic",
+                "Value": 560.0
+            },
+            {
+                "Source": "plastic_sup_4",
+                "Dest": "airbag_sup_1",
+                "Product": "plastic",
+                "Value": 440.0
+            },
+            {
+                "Source": "plastic_sup_2",
+                "Dest": "bezel_sup_3",
+                "Product": "plastic",
+                "Value": 890.0
+            },
+            {
+                "Source": "cover_sup_2",
+                "Dest": "wiring_sup_1",
+                "Product": "cover",
+                "Value": 140.0
+            },
+            {
+                "Source": "cover_sup_1",
+                "Dest": "wiring_sup_3",
+                "Product": "cover",
+                "Value": 960.0
+            },
+            {
+                "Source": "cover_sup_1",
+                "Dest": "wiring_sup_1",
+                "Product": "cover",
+                "Value": 1000.0
+            },
+            {
+                "Source": "button_sup_5",
+                "Dest": "HVAC_sup_2",
+                "Product": "button_4",
+                "Value": 480.0
+            },
+            {
+                "Source": "button_sup_1",
+                "Dest": "steering_sup_2",
+                "Product": "button_1",
+                "Value": 240.0
+            },
+            {
+                "Source": "button_sup_1",
+                "Dest": "infortainment_sup_2",
+                "Product": "button_1",
+                "Value": 360.0
+            },
+            {
+                "Source": "leather_sup_1",
+                "Dest": "glovebox_sup_2",
+                "Product": "leather",
+                "Value": 400.0
+            },
+            {
+                "Source": "leather_sup_2",
+                "Dest": "glovebox_sup_2",
+                "Product": "leather",
+                "Value": 200.0
+            },
+            {
+                "Source": "button_sup_5",
+                "Dest": "HVAC_sup_1",
+                "Product": "button_2",
+                "Value": 120.0
+            },
+            {
+                "Source": "button_sup_1",
+                "Dest": "steering_sup_2",
+                "Product": "button_2",
+                "Value": 700.0
+            },
+            {
+                "Source": "button_sup_5",
+                "Dest": "HVAC_sup_1",
+                "Product": "button_3",
+                "Value": 420.0
+            },
+            {
+                "Source": "button_sup_5",
+                "Dest": "steering_sup_2",
+                "Product": "button_3",
+                "Value": 480.0
+            },
+            {
+                "Source": "al_sup_1",
+                "Dest": "substrate_sup_1",
+                "Product": "aluminum",
+                "Value": 400.0
+            },
+            {
+                "Source": "al_sup_2",
+                "Dest": "substrate_sup_1",
+                "Product": "aluminum",
+                "Value": 260.0
+            },
+            {
+                "Source": "compressor_sup_2",
+                "Dest": "HVAC_sup_1",
+                "Product": "compressor_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "compressor_sup_2",
+                "Dest": "HVAC_sup_2",
+                "Product": "compressor_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "shaft_sup_3",
+                "Dest": "beam_sup_1",
+                "Product": "shaft_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "shaft_sup_1",
+                "Dest": "beam_sup_2",
+                "Product": "shaft_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "valve_sup_2",
+                "Dest": "HVAC_sup_2",
+                "Product": "valve",
+                "Value": 640.0
+            },
+            {
+                "Source": "valve_sup_1",
+                "Dest": "HVAC_sup_1",
+                "Product": "valve",
+                "Value": 740.0
+            },
+            {
+                "Source": "screen_sup_5",
+                "Dest": "infortainment_sup_3",
+                "Product": "touch_screen_3B",
+                "Value": 70.0
+            },
+            {
+                "Source": "screen_sup_5",
+                "Dest": "infortainment_sup_3",
+                "Product": "touch_screen_3A",
+                "Value": 30.0
+            },
+            {
+                "Source": "screen_sup_5",
+                "Dest": "infortainment_sup_3",
+                "Product": "touch_screen_3C",
+                "Value": 60.0
+            },
+            {
+                "Source": "wire_sup_2",
+                "Dest": "wiring_sup_3",
+                "Product": "wire",
+                "Value": 280.0
+            },
+            {
+                "Source": "wire_sup_2",
+                "Dest": "wiring_sup_1",
+                "Product": "wire",
+                "Value": 920.0
+            },
+            {
+                "Source": "wire_sup_1",
+                "Dest": "wiring_sup_3",
+                "Product": "wire",
+                "Value": 1000.0
+            },
+            {
+                "Source": "wire_sup_1",
+                "Dest": "wiring_sup_1",
+                "Product": "wire",
+                "Value": 500.0
+            },
+            {
+                "Source": "wheel_sup_2",
+                "Dest": "steering_sup_2",
+                "Product": "wheel_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "wheel_sup_3",
+                "Dest": "steering_sup_2",
+                "Product": "wheel_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "wood_sup_1",
+                "Dest": "bezel_sup_3",
+                "Product": "wood",
+                "Value": 700.0
+            },
+            {
+                "Source": "wood_sup_2",
+                "Dest": "bezel_sup_5",
+                "Product": "wood",
+                "Value": 960.0
+            },
+            {
+                "Source": "column_sup_1",
+                "Dest": "steering_sup_2",
+                "Product": "column",
+                "Value": 360.0
+            },
+            {
+                "Source": "LED_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "LED",
+                "Value": 600.0
+            },
+            {
+                "Source": "LED_sup_2",
+                "Dest": "cluster_sup_3",
+                "Product": "LED",
+                "Value": 380.0
+            },
+            {
+                "Source": "fanvent_sup_3",
+                "Dest": "HVAC_sup_1",
+                "Product": "fan_vent_2",
+                "Value": 420.0
+            },
+            {
+                "Source": "wheel_sup_1",
+                "Dest": "steering_sup_2",
+                "Product": "wheel_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "fanvent_sup_3",
+                "Dest": "HVAC_sup_1",
+                "Product": "fan_vent_1",
+                "Value": 240.0
+            },
+            {
+                "Source": "fanvent_sup_3",
+                "Dest": "HVAC_sup_2",
+                "Product": "fan_vent_3",
+                "Value": 480.0
+            },
+            {
+                "Source": "fabric_sup_1",
+                "Dest": "airbag_sup_1",
+                "Product": "fabric",
+                "Value": 1320.0
+            },
+            {
+                "Source": "fabric_sup_2",
+                "Dest": "airbag_sup_2",
+                "Product": "fabric",
+                "Value": 840.0
+            },
+            {
+                "Source": "gauge_sup_3",
+                "Dest": "cluster_sup_3",
+                "Product": "digital_gauge",
+                "Value": 900.0
+            },
+            {
+                "Source": "gauge_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "analog_gauge",
+                "Value": 180.0
+            },
+            {
+                "Source": "controlunit_sup_2",
+                "Dest": "HVAC_sup_1",
+                "Product": "control_unit",
+                "Value": 200.0
+            },
+            {
+                "Source": "controlunit_sup_2",
+                "Dest": "HVAC_sup_2",
+                "Product": "control_unit",
+                "Value": 160.0
+            },
+            {
+                "Source": "switch_sup_1",
+                "Dest": "HVAC_sup_2",
+                "Product": "switch_2",
+                "Value": 640.0
+            },
+            {
+                "Source": "switch_sup_1",
+                "Dest": "infortainment_sup_2",
+                "Product": "switch_1",
+                "Value": 180.0
+            },
+            {
+                "Source": "switch_sup_2",
+                "Dest": "HVAC_sup_1",
+                "Product": "switch_1",
+                "Value": 720.0
+            },
+            {
+                "Source": "duct_sup_1",
+                "Dest": "HVAC_sup_1",
+                "Product": "duct",
+                "Value": 1000.0
+            },
+            {
+                "Source": "duct_sup_1",
+                "Dest": "HVAC_sup_2",
+                "Product": "duct",
+                "Value": 800.0
+            },
+            {
+                "Source": "screen_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "screen_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "screen_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "screen_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "screen_sup_3",
+                "Dest": "infortainment_sup_2",
+                "Product": "touch_screen_2A",
+                "Value": 70.0
+            },
+            {
+                "Source": "faceplate_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "faceplate_2",
+                "Value": 300.0
+            },
+            {
+                "Source": "faceplate_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "faceplate_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "radio_sup_1",
+                "Dest": "infortainment_sup_3",
+                "Product": "radio",
+                "Value": 160.0
+            },
+            {
+                "Source": "radio_sup_1",
+                "Dest": "infortainment_sup_2",
+                "Product": "radio",
+                "Value": 200.0
+            },
+            {
+                "Source": "screen_sup_3",
+                "Dest": "infortainment_sup_2",
+                "Product": "touch_screen_2B",
+                "Value": 70.0
+            },
+            {
+                "Source": "chip_sup_1",
+                "Dest": "infortainment_sup_3",
+                "Product": "chip_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "chip_sup_1",
+                "Dest": "infortainment_sup_2",
+                "Product": "chip_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "glass_sup_1",
+                "Dest": "cluster_sup_3",
+                "Product": "glass",
+                "Value": 60.0
+            },
+            {
+                "Source": "shaft_sup_2",
+                "Dest": "beam_sup_2",
+                "Product": "shaft_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "connector_sup_1",
+                "Dest": "wiring_sup_3",
+                "Product": "connector",
+                "Value": 960.0
+            },
+            {
+                "Source": "connector_sup_1",
+                "Dest": "wiring_sup_1",
+                "Product": "connector",
+                "Value": 1000.0
+            },
+            {
+                "Source": "connector_sup_2",
+                "Dest": "wiring_sup_1",
+                "Product": "connector",
+                "Value": 20.0
+            },
+            {
+                "Source": "compressor_sup_2",
+                "Dest": "HVAC_sup_1",
+                "Product": "compressor_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "navi_sup_1",
+                "Dest": "infortainment_sup_3",
+                "Product": "navi",
+                "Value": 160.0
+            },
+            {
+                "Source": "navi_sup_1",
+                "Dest": "infortainment_sup_2",
+                "Product": "navi",
+                "Value": 200.0
+            },
+            {
+                "Source": "cockpit_assy_1",
+                "Dest": "Customer_1",
+                "Product": "cockpit_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "cockpit_assy_3",
+                "Dest": "Customer_5",
+                "Product": "cockpit_3B",
+                "Value": 40.0
+            },
+            {
+                "Source": "cockpit_assy_3",
+                "Dest": "Customer_4",
+                "Product": "cockpit_3B",
+                "Value": 30.0
+            },
+            {
+                "Source": "cockpit_assy_3",
+                "Dest": "Customer_4",
+                "Product": "cockpit_3A",
+                "Value": 30.0
+            },
+            {
+                "Source": "cockpit_assy_3",
+                "Dest": "Customer_5",
+                "Product": "cockpit_3C",
+                "Value": 60.0
+            },
+            {
+                "Source": "steering_sup_2",
+                "Dest": "cockpit_assy_1",
+                "Product": "steering_column_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "steering_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "steering_column_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "steering_sup_2",
+                "Dest": "cockpit_assy_3",
+                "Product": "steering_column_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "bezel_sup_4",
+                "Dest": "HVAC_sup_1",
+                "Product": "bezel_6",
+                "Value": 540.0
+            },
+            {
+                "Source": "bezel_sup_5",
+                "Dest": "HVAC_sup_2",
+                "Product": "bezel_7",
+                "Value": 480.0
+            },
+            {
+                "Source": "beam_sup_1",
+                "Dest": "cockpit_assy_1",
+                "Product": "cross_car_beam_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "beam_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "cross_car_beam_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "substrate_sup_1",
+                "Dest": "cockpit_assy_3",
+                "Product": "substrate_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "substrate_sup_1",
+                "Dest": "cockpit_assy_1",
+                "Product": "substrate_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "substrate_sup_1",
+                "Dest": "cockpit_assy_2",
+                "Product": "substrate_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "cluster_sup_3",
+                "Dest": "cockpit_assy_2",
+                "Product": "cluster_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "cluster_sup_3",
+                "Dest": "cockpit_assy_1",
+                "Product": "cluster_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "cluster_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "cluster_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "HVAC_sup_2",
+                "Dest": "cockpit_assy_3",
+                "Product": "HVAC_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "HVAC_sup_1",
+                "Dest": "cockpit_assy_1",
+                "Product": "HVAC_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "wiring_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "wiring_3B",
+                "Value": 70.0
+            },
+            {
+                "Source": "wiring_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "wiring_3A",
+                "Value": 30.0
+            },
+            {
+                "Source": "wiring_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "wiring_3C",
+                "Value": 60.0
+            },
+            {
+                "Source": "beam_sup_2",
+                "Dest": "cockpit_assy_3",
+                "Product": "cross_car_beam_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "wiring_sup_1",
+                "Dest": "cockpit_assy_2",
+                "Product": "wiring_2A",
+                "Value": 70.0
+            },
+            {
+                "Source": "wiring_sup_1",
+                "Dest": "cockpit_assy_1",
+                "Product": "wiring_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "wiring_sup_1",
+                "Dest": "cockpit_assy_2",
+                "Product": "wiring_2B",
+                "Value": 70.0
+            },
+            {
+                "Source": "glovebox_sup_2",
+                "Dest": "cockpit_assy_3",
+                "Product": "glove_box_3",
+                "Value": 160.0
+            },
+            {
+                "Source": "glovebox_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "glove_box_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "glovebox_sup_2",
+                "Dest": "cockpit_assy_1",
+                "Product": "glove_box_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "airbag_sup_1",
+                "Dest": "cockpit_assy_1",
+                "Product": "airbag",
+                "Value": 120.0
+            },
+            {
+                "Source": "airbag_sup_1",
+                "Dest": "cockpit_assy_3",
+                "Product": "airbag",
+                "Value": 320.0
+            },
+            {
+                "Source": "airbag_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "airbag",
+                "Value": 280.0
+            },
+            {
+                "Source": "infortainment_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "infotainment_3A",
+                "Value": 30.0
+            },
+            {
+                "Source": "infortainment_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "infotainment_2A",
+                "Value": 70.0
+            },
+            {
+                "Source": "infortainment_sup_2",
+                "Dest": "cockpit_assy_2",
+                "Product": "infotainment_2B",
+                "Value": 70.0
+            },
+            {
+                "Source": "infortainment_sup_2",
+                "Dest": "cockpit_assy_1",
+                "Product": "infotainment_1",
+                "Value": 60.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_1",
+                "Product": "bezel_2",
+                "Value": 60.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "bezel_2",
+                "Value": 180.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_2",
+                "Product": "bezel_2",
+                "Value": 70.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_1",
+                "Product": "bezel_3",
+                "Value": 180.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "bezel_3",
+                "Value": 170.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_2",
+                "Product": "bezel_3",
+                "Value": 350.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_1",
+                "Product": "bezel_1",
+                "Value": 120.0
+            },
+            {
+                "Source": "HVAC_sup_1",
+                "Dest": "cockpit_assy_2",
+                "Product": "HVAC_2",
+                "Value": 140.0
+            },
+            {
+                "Source": "infortainment_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "infotainment_3B",
+                "Value": 70.0
+            },
+            {
+                "Source": "infortainment_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "infotainment_3C",
+                "Value": 60.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_3",
+                "Product": "bezel_4",
+                "Value": 130.0
+            },
+            {
+                "Source": "bezel_sup_3",
+                "Dest": "cockpit_assy_2",
+                "Product": "bezel_4",
+                "Value": 210.0
+            },
+            {
+                "Source": "cockpit_assy_2",
+                "Dest": "Customer_3",
+                "Product": "cockpit_2B",
+                "Value": 70.0
+            },
+            {
+                "Source": "cockpit_assy_2",
+                "Dest": "Customer_2",
+                "Product": "cockpit_2A",
+                "Value": 30.0
+            },
+            {
+                "Source": "cockpit_assy_2",
+                "Dest": "Customer_3",
+                "Product": "cockpit_2A",
+                "Value": 40.0
+            },
+            {
+                "Source": "bezel_sup_4",
+                "Dest": "cluster_sup_3",
+                "Product": "bezel_5",
+                "Value": 60.0
+            }
+        ],
+        "prods": [
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "cockpit_3C",
+                "Value": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "cockpit_3B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "cockpit_3A",
+                "Value": 30.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "cockpit_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "cockpit_2A",
+                "Value": 70.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "cockpit_2B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "wire_sup_1",
+                "Product": "wire",
+                "Value": 1500.0
+            },
+            {
+                "Agent": "switch_sup_1",
+                "Product": "switch_1",
+                "Value": 180.0
+            },
+            {
+                "Agent": "switch_sup_1",
+                "Product": "switch_2",
+                "Value": 640.0
+            },
+            {
+                "Agent": "valve_sup_1",
+                "Product": "valve",
+                "Value": 740.0
+            },
+            {
+                "Agent": "fabric_sup_1",
+                "Product": "fabric",
+                "Value": 1320.0
+            },
+            {
+                "Agent": "plastic_sup_5",
+                "Product": "plastic",
+                "Value": 660.0
+            },
+            {
+                "Agent": "faceplate_sup_1",
+                "Product": "faceplate_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "faceplate_sup_1",
+                "Product": "faceplate_2",
+                "Value": 300.0
+            },
+            {
+                "Agent": "plastic_sup_4",
+                "Product": "plastic",
+                "Value": 1500.0
+            },
+            {
+                "Agent": "wheel_sup_1",
+                "Product": "wheel_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "HVAC_sup_1",
+                "Product": "HVAC_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "HVAC_sup_1",
+                "Product": "HVAC_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "valve_sup_2",
+                "Product": "valve",
+                "Value": 640.0
+            },
+            {
+                "Agent": "beam_sup_2",
+                "Product": "cross_car_beam_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "beam_sup_2",
+                "Product": "cross_car_beam_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "radio_sup_1",
+                "Product": "radio",
+                "Value": 360.0
+            },
+            {
+                "Agent": "compressor_sup_2",
+                "Product": "compressor_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "compressor_sup_2",
+                "Product": "compressor_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "compressor_sup_2",
+                "Product": "compressor_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "glovebox_sup_2",
+                "Product": "glove_box_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "glovebox_sup_2",
+                "Product": "glove_box_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "glovebox_sup_2",
+                "Product": "glove_box_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "infotainment_2B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "infotainment_2A",
+                "Value": 70.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "infotainment_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "button_sup_5",
+                "Product": "button_4",
+                "Value": 480.0
+            },
+            {
+                "Agent": "button_sup_5",
+                "Product": "button_3",
+                "Value": 900.0
+            },
+            {
+                "Agent": "button_sup_5",
+                "Product": "button_2",
+                "Value": 120.0
+            },
+            {
+                "Agent": "shaft_sup_3",
+                "Product": "shaft_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "wiring_sup_1",
+                "Product": "wiring_2B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "wiring_sup_1",
+                "Product": "wiring_2A",
+                "Value": 70.0
+            },
+            {
+                "Agent": "wiring_sup_1",
+                "Product": "wiring_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "LED_sup_1",
+                "Product": "LED",
+                "Value": 600.0
+            },
+            {
+                "Agent": "al_sup_2",
+                "Product": "aluminum",
+                "Value": 260.0
+            },
+            {
+                "Agent": "bezel_sup_5",
+                "Product": "bezel_7",
+                "Value": 480.0
+            },
+            {
+                "Agent": "fabric_sup_2",
+                "Product": "fabric",
+                "Value": 840.0
+            },
+            {
+                "Agent": "shaft_sup_1",
+                "Product": "shaft_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "wheel_sup_3",
+                "Product": "wheel_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "wheel_sup_2",
+                "Product": "wheel_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "connector_sup_1",
+                "Product": "connector",
+                "Value": 1960.0
+            },
+            {
+                "Agent": "shaft_sup_2",
+                "Product": "shaft_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "cover_sup_2",
+                "Product": "cover",
+                "Value": 140.0
+            },
+            {
+                "Agent": "leather_sup_1",
+                "Product": "leather",
+                "Value": 400.0
+            },
+            {
+                "Agent": "bezel_sup_3",
+                "Product": "bezel_3",
+                "Value": 700.0
+            },
+            {
+                "Agent": "bezel_sup_3",
+                "Product": "bezel_2",
+                "Value": 310.0
+            },
+            {
+                "Agent": "bezel_sup_3",
+                "Product": "bezel_1",
+                "Value": 120.0
+            },
+            {
+                "Agent": "bezel_sup_3",
+                "Product": "bezel_4",
+                "Value": 340.0
+            },
+            {
+                "Agent": "cover_sup_1",
+                "Product": "cover",
+                "Value": 1960.0
+            },
+            {
+                "Agent": "airbag_sup_1",
+                "Product": "airbag",
+                "Value": 440.0
+            },
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "bezel_5",
+                "Value": 60.0
+            },
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "bezel_6",
+                "Value": 540.0
+            },
+            {
+                "Agent": "screen_sup_5",
+                "Product": "touch_screen_3A",
+                "Value": 30.0
+            },
+            {
+                "Agent": "screen_sup_5",
+                "Product": "touch_screen_3B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "screen_sup_5",
+                "Product": "touch_screen_3C",
+                "Value": 60.0
+            },
+            {
+                "Agent": "navi_sup_1",
+                "Product": "navi",
+                "Value": 360.0
+            },
+            {
+                "Agent": "HVAC_sup_2",
+                "Product": "HVAC_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "airbag_sup_2",
+                "Product": "airbag",
+                "Value": 280.0
+            },
+            {
+                "Agent": "duct_sup_1",
+                "Product": "duct",
+                "Value": 1800.0
+            },
+            {
+                "Agent": "controlunit_sup_2",
+                "Product": "control_unit",
+                "Value": 360.0
+            },
+            {
+                "Agent": "switch_sup_2",
+                "Product": "switch_1",
+                "Value": 720.0
+            },
+            {
+                "Agent": "gauge_sup_3",
+                "Product": "digital_gauge",
+                "Value": 900.0
+            },
+            {
+                "Agent": "column_sup_1",
+                "Product": "column",
+                "Value": 360.0
+            },
+            {
+                "Agent": "screen_sup_3",
+                "Product": "touch_screen_2A",
+                "Value": 70.0
+            },
+            {
+                "Agent": "screen_sup_3",
+                "Product": "touch_screen_2B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "substrate_sup_1",
+                "Product": "substrate_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "substrate_sup_1",
+                "Product": "substrate_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "substrate_sup_1",
+                "Product": "substrate_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "screen_sup_1",
+                "Product": "screen_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "screen_sup_1",
+                "Product": "screen_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "wiring_sup_3",
+                "Product": "wiring_3C",
+                "Value": 60.0
+            },
+            {
+                "Agent": "wiring_sup_3",
+                "Product": "wiring_3A",
+                "Value": 30.0
+            },
+            {
+                "Agent": "wiring_sup_3",
+                "Product": "wiring_3B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "LED_sup_2",
+                "Product": "LED",
+                "Value": 380.0
+            },
+            {
+                "Agent": "glass_sup_1",
+                "Product": "glass",
+                "Value": 60.0
+            },
+            {
+                "Agent": "gauge_sup_1",
+                "Product": "analog_gauge",
+                "Value": 180.0
+            },
+            {
+                "Agent": "beam_sup_1",
+                "Product": "cross_car_beam_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "wood_sup_2",
+                "Product": "wood",
+                "Value": 960.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "cluster_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "cluster_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "cluster_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "chip_sup_1",
+                "Product": "chip_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "chip_sup_1",
+                "Product": "chip_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "button_sup_1",
+                "Product": "button_2",
+                "Value": 700.0
+            },
+            {
+                "Agent": "button_sup_1",
+                "Product": "button_1",
+                "Value": 600.0
+            },
+            {
+                "Agent": "plastic_sup_2",
+                "Product": "plastic",
+                "Value": 1690.0
+            },
+            {
+                "Agent": "steering_sup_2",
+                "Product": "steering_column_2",
+                "Value": 140.0
+            },
+            {
+                "Agent": "steering_sup_2",
+                "Product": "steering_column_3",
+                "Value": 160.0
+            },
+            {
+                "Agent": "steering_sup_2",
+                "Product": "steering_column_1",
+                "Value": 60.0
+            },
+            {
+                "Agent": "leather_sup_2",
+                "Product": "leather",
+                "Value": 200.0
+            },
+            {
+                "Agent": "wire_sup_2",
+                "Product": "wire",
+                "Value": 1200.0
+            },
+            {
+                "Agent": "infortainment_sup_3",
+                "Product": "infotainment_3B",
+                "Value": 70.0
+            },
+            {
+                "Agent": "infortainment_sup_3",
+                "Product": "infotainment_3C",
+                "Value": 60.0
+            },
+            {
+                "Agent": "infortainment_sup_3",
+                "Product": "infotainment_3A",
+                "Value": 30.0
+            },
+            {
+                "Agent": "fanvent_sup_3",
+                "Product": "fan_vent_3",
+                "Value": 480.0
+            },
+            {
+                "Agent": "fanvent_sup_3",
+                "Product": "fan_vent_2",
+                "Value": 420.0
+            },
+            {
+                "Agent": "fanvent_sup_3",
+                "Product": "fan_vent_1",
+                "Value": 240.0
+            },
+            {
+                "Agent": "al_sup_1",
+                "Product": "aluminum",
+                "Value": 400.0
+            },
+            {
+                "Agent": "connector_sup_2",
+                "Product": "connector",
+                "Value": 20.0
+            },
+            {
+                "Agent": "wood_sup_1",
+                "Product": "wood",
+                "Value": 700.0
+            }
+        ],
+        "res": {
+            "delta_d": 0.0,
+            "O_c_flow": 0,
+            "O_c_production": 0,
+            "C_f": 0.0,
+            "C_p": 0.0,
+            "N_f": 0,
+            "N_p": 0,
+            "H_f": 0,
+            "H_p": 0,
+            "M_e": 0,
+            "T_e": 0.0
+        }
+    }
+}

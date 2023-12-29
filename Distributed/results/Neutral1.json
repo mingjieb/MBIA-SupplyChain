@@ -1,0 +1,844 @@
+{
+    "cluster_sup_3": [
+        [
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 6
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 6
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 6
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 5
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 6
+            },
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 7
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 7
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 8
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 8
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 8
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 8
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 6
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 7
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 7
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 7
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 6
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 6
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 6
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 6
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 6
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 7
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 7
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 1
+            },
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 4
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 5
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 6
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 7
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 8
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 8
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 8
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 8
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 5
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 7
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 5
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 5
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 6
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 6
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 7
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 7
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 2
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 5
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 4
+            }
+        ],
+        [
+            {
+                "Customer": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 3
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 4
+            },
+            {
+                "Customer": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 4
+            }
+        ]
+    ]
+}

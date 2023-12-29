@@ -14,6 +14,11 @@ class TransportationAgent(Agent):
     def __init__(self, name):
         Agent.__init__(self, name, "Transportation")
         self.flow = dict()
+<<<<<<< Updated upstream
+=======
+        self.over_flow = dict()
+        self.flow_time = dict()
+>>>>>>> Stashed changes
         self.flow_change = 0
         self.flow_added = 0
     def update_flow(self, flow, change):
@@ -23,6 +28,14 @@ class TransportationAgent(Agent):
             self.flow[flow] = change
         if self.flow[flow] - 0 < 0.1:
             self.flow.pop(flow)
+            # self.flow_time.pop(flow)
+    def update_over_flow(self, flow, change):
+        try:
+            self.over_flow[flow] += change
+        except:
+            self.over_flow[flow] = change
+        if self.over_flow[flow] - 0 < 0.1:
+            self.over_flow.pop(flow)
     # agent checks its current knowledge for response
     def check_request(self, requestingAgent, product, unit):
         # TODO: determine the amount of product it can provide
@@ -66,4 +79,18 @@ class TransportationAgent(Agent):
                 used_capacity += self.flow[key]
 
         return max(0, capacity-used_capacity)
+
+    def have_capacity(self, start, end):
+        if (start, end) not in self.capability.knowledge["Transportation"]:
+            return False
+        capacity = self.capability.characteristics["Transportation"][(start, end)]["Capacity"]
+        used_capacity = 0
+        for key in self.flow.keys():
+            if start == key[0] and end == key[1]:
+                used_capacity += self.flow[key]
+
+        if abs(1.3*capacity - used_capacity) > 0.5:
+            return True
+        else:
+            return False
 

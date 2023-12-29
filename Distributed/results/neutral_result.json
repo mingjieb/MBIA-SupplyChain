@@ -1,0 +1,1858 @@
+{
+    "wiring_sup_3": [
+        [
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "chip_2",
+                "Lateness": 1,
+                "From": "chip_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "wiring_sup_3",
+                "Product": "wire",
+                "Lateness": 1,
+                "From": "wire_sup_3",
+                "Prod_amount": 152.0
+            },
+            {
+                "Agent": "wiring_sup_4",
+                "Product": "wire",
+                "Lateness": 1,
+                "From": "wire_sup_3",
+                "Prod_amount": 782.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "bezel_5",
+                "Lateness": 1,
+                "From": "bezel_sup_4",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "bezel_1",
+                "Lateness": 1,
+                "From": "bezel_sup_3",
+                "Prod_amount": 120.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "bezel_3",
+                "Lateness": 1,
+                "From": "bezel_sup_3",
+                "Prod_amount": 350.0
+            },
+            {
+                "Agent": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 2,
+                "From": "cockpit_assy_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3B",
+                "Lateness": 3,
+                "From": "wiring_sup_3",
+                "Prod_amount": 13.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3A",
+                "Lateness": 3,
+                "From": "wiring_sup_3",
+                "Prod_amount": 8.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3C",
+                "Lateness": 3,
+                "From": "wiring_sup_3",
+                "Prod_amount": 7.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 4,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 4,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 4,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 4,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 60.0
+            }
+        ],
+        [
+            {
+                "Agent": "substrate_sup_1",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_2",
+                "Prod_amount": 520.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "chip_2",
+                "Lateness": 1,
+                "From": "chip_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "beam_sup_2",
+                "Product": "shaft_2",
+                "Lateness": 1,
+                "From": "shaft_sup_2",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "steering_sup_2",
+                "Product": "wheel_2",
+                "Lateness": 1,
+                "From": "wheel_sup_2",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "cross_car_beam_1",
+                "Lateness": 1,
+                "From": "beam_sup_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "infotainment_3C",
+                "Lateness": 1,
+                "From": "infortainment_sup_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 1,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 1,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "infotainment_3A",
+                "Lateness": 2,
+                "From": "infortainment_sup_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3C",
+                "Lateness": 2,
+                "From": "wiring_sup_3",
+                "Prod_amount": 7.0
+            },
+            {
+                "Agent": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 2,
+                "From": "cockpit_assy_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3A",
+                "Lateness": 3,
+                "From": "wiring_sup_3",
+                "Prod_amount": 8.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 3,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 4,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3B",
+                "Lateness": 5,
+                "From": "wiring_sup_3",
+                "Prod_amount": 13.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 6,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 6,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 40.0
+            }
+        ],
+        [
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "chip_2",
+                "Lateness": 1,
+                "From": "chip_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "wiring_sup_1",
+                "Product": "connector",
+                "Lateness": 1,
+                "From": "connector_sup_1",
+                "Prod_amount": 1025.0
+            },
+            {
+                "Agent": "wiring_sup_1",
+                "Product": "wire",
+                "Lateness": 1,
+                "From": "wire_sup_3",
+                "Prod_amount": 36.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "faceplate_1",
+                "Lateness": 1,
+                "From": "faceplate_sup_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "steering_sup_2",
+                "Product": "wheel_2",
+                "Lateness": 1,
+                "From": "wheel_sup_2",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "HVAC_2",
+                "Lateness": 1,
+                "From": "HVAC_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "airbag",
+                "Lateness": 1,
+                "From": "airbag_sup_1",
+                "Prod_amount": 320.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "cluster_2",
+                "Lateness": 1,
+                "From": "cluster_sup_3",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "infotainment_3A",
+                "Lateness": 1,
+                "From": "infortainment_sup_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "steering_column_3",
+                "Lateness": 1,
+                "From": "steering_sup_2",
+                "Prod_amount": 160.0
+            },
+            {
+                "Agent": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 1,
+                "From": "cockpit_assy_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3B",
+                "Lateness": 3,
+                "From": "wiring_sup_3",
+                "Prod_amount": 13.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3C",
+                "Lateness": 3,
+                "From": "wiring_sup_3",
+                "Prod_amount": 7.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3A",
+                "Lateness": 4,
+                "From": "wiring_sup_3",
+                "Prod_amount": 8.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 4,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 4,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 4,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 5,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            }
+        ],
+        [
+            {
+                "Agent": "bezel_sup_3",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_2",
+                "Prod_amount": 890.0
+            },
+            {
+                "Agent": "glovebox_sup_2",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_4",
+                "Prod_amount": 500.0
+            },
+            {
+                "Agent": "wiring_sup_4",
+                "Product": "connector",
+                "Lateness": 1,
+                "From": "connector_sup_2",
+                "Prod_amount": 51.0
+            },
+            {
+                "Agent": "wiring_sup_1",
+                "Product": "wire",
+                "Lateness": 1,
+                "From": "wire_sup_2",
+                "Prod_amount": 922.0
+            },
+            {
+                "Agent": "wiring_sup_3",
+                "Product": "wire",
+                "Lateness": 1,
+                "From": "wire_sup_2",
+                "Prod_amount": 314.0
+            },
+            {
+                "Agent": "wiring_sup_1",
+                "Product": "wire",
+                "Lateness": 1,
+                "From": "wire_sup_3",
+                "Prod_amount": 36.0
+            },
+            {
+                "Agent": "wiring_sup_3",
+                "Product": "wire",
+                "Lateness": 1,
+                "From": "wire_sup_3",
+                "Prod_amount": 152.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "chip_2",
+                "Lateness": 2,
+                "From": "chip_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "screen_3",
+                "Lateness": 1,
+                "From": "screen_sup_1",
+                "Prod_amount": 160.0
+            },
+            {
+                "Agent": "HVAC_sup_1",
+                "Product": "valve",
+                "Lateness": 1,
+                "From": "valve_sup_1",
+                "Prod_amount": 740.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "HVAC_2",
+                "Lateness": 1,
+                "From": "HVAC_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "airbag",
+                "Lateness": 1,
+                "From": "airbag_sup_1",
+                "Prod_amount": 320.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "cross_car_beam_2",
+                "Lateness": 1,
+                "From": "beam_sup_2",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "bezel_3",
+                "Lateness": 1,
+                "From": "bezel_sup_3",
+                "Prod_amount": 170.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "cluster_3",
+                "Lateness": 1,
+                "From": "cluster_sup_3",
+                "Prod_amount": 160.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "HVAC_1",
+                "Lateness": 2,
+                "From": "HVAC_sup_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "infotainment_3A",
+                "Lateness": 2,
+                "From": "infortainment_sup_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3B",
+                "Lateness": 2,
+                "From": "wiring_sup_3",
+                "Prod_amount": 13.0
+            },
+            {
+                "Agent": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3C",
+                "Lateness": 3,
+                "From": "wiring_sup_3",
+                "Prod_amount": 7.0
+            },
+            {
+                "Agent": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 3,
+                "From": "cockpit_assy_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 3,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 3,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3A",
+                "Lateness": 4,
+                "From": "wiring_sup_3",
+                "Prod_amount": 8.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 4,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 5,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            }
+        ],
+        [
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "chip_2",
+                "Lateness": 1,
+                "From": "chip_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "bezel_5",
+                "Lateness": 1,
+                "From": "bezel_sup_4",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "screen_3",
+                "Lateness": 1,
+                "From": "screen_sup_1",
+                "Prod_amount": 160.0
+            },
+            {
+                "Agent": "HVAC_sup_1",
+                "Product": "valve",
+                "Lateness": 1,
+                "From": "valve_sup_1",
+                "Prod_amount": 740.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "HVAC_1",
+                "Lateness": 1,
+                "From": "HVAC_sup_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "HVAC_2",
+                "Lateness": 1,
+                "From": "HVAC_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "bezel_3",
+                "Lateness": 1,
+                "From": "bezel_sup_3",
+                "Prod_amount": 170.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "infotainment_3B",
+                "Lateness": 1,
+                "From": "infortainment_sup_3",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "infotainment_3C",
+                "Lateness": 1,
+                "From": "infortainment_sup_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3B",
+                "Lateness": 3,
+                "From": "wiring_sup_3",
+                "Prod_amount": 13.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3A",
+                "Lateness": 3,
+                "From": "wiring_sup_3",
+                "Prod_amount": 8.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3C",
+                "Lateness": 3,
+                "From": "wiring_sup_3",
+                "Prod_amount": 7.0
+            },
+            {
+                "Agent": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 3,
+                "From": "cockpit_assy_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 4,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 4,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 4,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 4,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 60.0
+            }
+        ]
+    ],
+    "plastic_sup_5": [
+        [
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_2",
+                "Prod_amount": 3.0
+            },
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_4",
+                "Prod_amount": 13.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "chip_2",
+                "Lateness": 1,
+                "From": "chip_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "HVAC_sup_1",
+                "Product": "bezel_6",
+                "Lateness": 1,
+                "From": "bezel_sup_4",
+                "Prod_amount": 540.0
+            },
+            {
+                "Agent": "steering_sup_2",
+                "Product": "column",
+                "Lateness": 1,
+                "From": "column_sup_1",
+                "Prod_amount": 360.0
+            },
+            {
+                "Agent": "infortainment_sup_3",
+                "Product": "touch_screen_3A",
+                "Lateness": 1,
+                "From": "screen_sup_5",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "HVAC_sup_1",
+                "Product": "valve",
+                "Lateness": 1,
+                "From": "valve_sup_1",
+                "Prod_amount": 740.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "HVAC_2",
+                "Lateness": 1,
+                "From": "HVAC_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "airbag",
+                "Lateness": 1,
+                "From": "airbag_sup_1",
+                "Prod_amount": 320.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "infotainment_3A",
+                "Lateness": 2,
+                "From": "infortainment_sup_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 2,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 2,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 2,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 3,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            }
+        ],
+        [
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_2",
+                "Prod_amount": 3.0
+            },
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_4",
+                "Prod_amount": 13.0
+            },
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_5",
+                "Prod_amount": 350.0
+            },
+            {
+                "Agent": "HVAC_sup_1",
+                "Product": "bezel_6",
+                "Lateness": 1,
+                "From": "bezel_sup_4",
+                "Prod_amount": 540.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "bezel_5",
+                "Lateness": 1,
+                "From": "bezel_sup_4",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "chip_2",
+                "Lateness": 2,
+                "From": "chip_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "screen_3",
+                "Lateness": 1,
+                "From": "screen_sup_1",
+                "Prod_amount": 160.0
+            },
+            {
+                "Agent": "infortainment_sup_3",
+                "Product": "touch_screen_3A",
+                "Lateness": 1,
+                "From": "screen_sup_5",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "HVAC_1",
+                "Lateness": 1,
+                "From": "HVAC_sup_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "bezel_3",
+                "Lateness": 1,
+                "From": "bezel_sup_3",
+                "Prod_amount": 350.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "infotainment_3B",
+                "Lateness": 1,
+                "From": "infortainment_sup_3",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "substrate_2",
+                "Lateness": 1,
+                "From": "substrate_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3B",
+                "Lateness": 1,
+                "From": "wiring_sup_3",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "HVAC_2",
+                "Lateness": 2,
+                "From": "HVAC_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 2,
+                "From": "cockpit_assy_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 2,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 2,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 3,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 3,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 3,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 40.0
+            }
+        ],
+        [
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_2",
+                "Prod_amount": 3.0
+            },
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_4",
+                "Prod_amount": 13.0
+            },
+            {
+                "Agent": "wiring_sup_1",
+                "Product": "cover",
+                "Lateness": 1,
+                "From": "cover_sup_1",
+                "Prod_amount": 1000.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "touch_screen_2B",
+                "Lateness": 1,
+                "From": "screen_sup_3",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "HVAC_sup_1",
+                "Product": "bezel_6",
+                "Lateness": 1,
+                "From": "bezel_sup_4",
+                "Prod_amount": 540.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "chip_2",
+                "Lateness": 2,
+                "From": "chip_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "infortainment_sup_3",
+                "Product": "touch_screen_3C",
+                "Lateness": 1,
+                "From": "screen_sup_5",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "bezel_5",
+                "Lateness": 2,
+                "From": "bezel_sup_4",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "HVAC_1",
+                "Lateness": 1,
+                "From": "HVAC_sup_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "bezel_1",
+                "Lateness": 1,
+                "From": "bezel_sup_3",
+                "Prod_amount": 120.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "cluster_1",
+                "Lateness": 1,
+                "From": "cluster_sup_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "infotainment_3C",
+                "Lateness": 1,
+                "From": "infortainment_sup_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 1,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 1,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 1,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 2,
+                "From": "cockpit_assy_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 2,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 60.0
+            }
+        ],
+        [
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_2",
+                "Prod_amount": 3.0
+            },
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_4",
+                "Prod_amount": 13.0
+            },
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_5",
+                "Prod_amount": 350.0
+            },
+            {
+                "Agent": "substrate_sup_1",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_2",
+                "Prod_amount": 520.0
+            },
+            {
+                "Agent": "HVAC_sup_1",
+                "Product": "bezel_6",
+                "Lateness": 1,
+                "From": "bezel_sup_4",
+                "Prod_amount": 540.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "bezel_5",
+                "Lateness": 1,
+                "From": "bezel_sup_4",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "HVAC_1",
+                "Lateness": 1,
+                "From": "HVAC_sup_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "HVAC_2",
+                "Lateness": 1,
+                "From": "HVAC_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 2,
+                "From": "cockpit_assy_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 40.0
+            }
+        ],
+        [
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_2",
+                "Prod_amount": 3.0
+            },
+            {
+                "Agent": "bezel_sup_4",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_4",
+                "Prod_amount": 13.0
+            },
+            {
+                "Agent": "wiring_sup_3",
+                "Product": "wire",
+                "Lateness": 1,
+                "From": "wire_sup_1",
+                "Prod_amount": 1000.0
+            },
+            {
+                "Agent": "HVAC_sup_1",
+                "Product": "bezel_6",
+                "Lateness": 1,
+                "From": "bezel_sup_4",
+                "Prod_amount": 540.0
+            },
+            {
+                "Agent": "steering_sup_2",
+                "Product": "column",
+                "Lateness": 1,
+                "From": "column_sup_1",
+                "Prod_amount": 360.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "bezel_5",
+                "Lateness": 2,
+                "From": "bezel_sup_4",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "HVAC_1",
+                "Lateness": 1,
+                "From": "HVAC_sup_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "HVAC_2",
+                "Lateness": 1,
+                "From": "HVAC_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "cluster_1",
+                "Lateness": 1,
+                "From": "cluster_sup_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "infotainment_3C",
+                "Lateness": 1,
+                "From": "infortainment_sup_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "steering_column_1",
+                "Lateness": 1,
+                "From": "steering_sup_2",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 2,
+                "From": "cockpit_assy_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 2,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 60.0
+            }
+        ]
+    ],
+    "bezel_sup_5": [
+        [
+            {
+                "Agent": "substrate_sup_1",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_2",
+                "Prod_amount": 520.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "chip_2",
+                "Lateness": 2,
+                "From": "chip_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "screen_3",
+                "Lateness": 1,
+                "From": "screen_sup_1",
+                "Prod_amount": 160.0
+            },
+            {
+                "Agent": "beam_sup_1",
+                "Product": "shaft_1",
+                "Lateness": 1,
+                "From": "shaft_sup_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "cross_car_beam_1",
+                "Lateness": 1,
+                "From": "beam_sup_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "bezel_1",
+                "Lateness": 1,
+                "From": "bezel_sup_3",
+                "Prod_amount": 120.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "wiring_3B",
+                "Lateness": 1,
+                "From": "wiring_sup_3",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 1,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 1,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 2,
+                "From": "cockpit_assy_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 2,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 2,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 40.0
+            }
+        ],
+        [
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "touch_screen_2A",
+                "Lateness": 1,
+                "From": "screen_sup_3",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "chip_2",
+                "Lateness": 3,
+                "From": "chip_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "substrate_2",
+                "Lateness": 1,
+                "From": "substrate_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 1,
+                "From": "cockpit_assy_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 40.0
+            }
+        ],
+        [
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "chip_2",
+                "Lateness": 2,
+                "From": "chip_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "beam_sup_1",
+                "Product": "shaft_1",
+                "Lateness": 1,
+                "From": "shaft_sup_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "bezel_3",
+                "Lateness": 1,
+                "From": "bezel_sup_3",
+                "Prod_amount": 180.0
+            },
+            {
+                "Agent": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 1,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 1,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 1,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 2,
+                "From": "cockpit_assy_1",
+                "Prod_amount": 60.0
+            }
+        ],
+        [
+            {
+                "Agent": "airbag_sup_2",
+                "Product": "plastic",
+                "Lateness": 1,
+                "From": "plastic_sup_2",
+                "Prod_amount": 280.0
+            },
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "chip_2",
+                "Lateness": 1,
+                "From": "chip_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "steering_sup_2",
+                "Product": "column",
+                "Lateness": 1,
+                "From": "column_sup_1",
+                "Prod_amount": 360.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "airbag",
+                "Lateness": 1,
+                "From": "airbag_sup_1",
+                "Prod_amount": 120.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "airbag",
+                "Lateness": 1,
+                "From": "airbag_sup_1",
+                "Prod_amount": 320.0
+            },
+            {
+                "Agent": "cockpit_assy_2",
+                "Product": "bezel_3",
+                "Lateness": 1,
+                "From": "bezel_sup_3",
+                "Prod_amount": 350.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "bezel_3",
+                "Lateness": 1,
+                "From": "bezel_sup_3",
+                "Prod_amount": 170.0
+            },
+            {
+                "Agent": "cockpit_assy_3",
+                "Product": "infotainment_3C",
+                "Lateness": 1,
+                "From": "infortainment_sup_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "steering_column_1",
+                "Lateness": 2,
+                "From": "steering_sup_2",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 2,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 2,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 2,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 2,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 2,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 3,
+                "From": "cockpit_assy_1",
+                "Prod_amount": 60.0
+            }
+        ],
+        [
+            {
+                "Agent": "infortainment_sup_2",
+                "Product": "chip_2",
+                "Lateness": 1,
+                "From": "chip_sup_1",
+                "Prod_amount": 140.0
+            },
+            {
+                "Agent": "cluster_sup_3",
+                "Product": "screen_3",
+                "Lateness": 1,
+                "From": "screen_sup_1",
+                "Prod_amount": 160.0
+            },
+            {
+                "Agent": "cockpit_assy_1",
+                "Product": "bezel_3",
+                "Lateness": 1,
+                "From": "bezel_sup_3",
+                "Prod_amount": 180.0
+            },
+            {
+                "Agent": "Customer_1",
+                "Product": "cockpit_1",
+                "Lateness": 1,
+                "From": "cockpit_assy_1",
+                "Prod_amount": 60.0
+            },
+            {
+                "Agent": "Customer_2",
+                "Product": "cockpit_2A",
+                "Lateness": 1,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2B",
+                "Lateness": 1,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 70.0
+            },
+            {
+                "Agent": "Customer_3",
+                "Product": "cockpit_2A",
+                "Lateness": 1,
+                "From": "cockpit_assy_2",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3B",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_4",
+                "Product": "cockpit_3A",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 30.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3B",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 40.0
+            },
+            {
+                "Agent": "Customer_5",
+                "Product": "cockpit_3C",
+                "Lateness": 1,
+                "From": "cockpit_assy_3",
+                "Prod_amount": 60.0
+            }
+        ]
+    ]
+}

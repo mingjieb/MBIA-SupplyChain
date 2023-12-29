@@ -18,14 +18,17 @@ def __init__(self):
     self.link_list = list()
     self.occurred_communication
     self.product_structure
+    self.product_structure_2
 
 
 # Agent-based supply chain network initialization
 def initialize_agent_network(self):
     # Read xlsx file to create all the agents and add them to the network
     filename = 'initialization/TASE_Setup.xlsx'
+    # filename = 'initialization/RAL_test.xlsx'
     info = pd.read_excel(filename, sheet_name=None)
-    self.product_structure = info["ProductStructure"].set_index(['Product'])
+    self.product_structure = info["ProductStructure"].set_index(['Product', 'Needed'])
+    self.product_structure_2 = info["ProductStructure"].set_index(['Product'])
 
     agent_initialization(self, info)
 
@@ -39,20 +42,24 @@ def agent_initialization(self, info):
         "Customer": [],
         "Assembly": [],
         "TierSupplier": [],
-        "Transportation": []
+        "Transportation": [],
+        "Distributor": []
     }
 
     ag_set = set(info["Agent"]["AgentName"])
     for name in ag_set:
-        if "sup" in name:
+        if "sup" in name or "S" in name:
             ag = manufacturing_agent.ManufacturingAgent(name)
             self.agent_list["TierSupplier"].append(ag)
-        elif "assy" in name:
+        elif "assy" in name or "A" in name:
             ag = oem_agent.OEMAgent(name)
             self.agent_list["Assembly"].append(ag)
-        elif "Customer" in name:
+        elif "Customer" in name or "C" in name:
             ag = customer_agent.CustomerAgent(name)
             self.agent_list["Customer"].append(ag)
+        elif "D" in name:
+            ag = distributor_agent.DistributorAgent(name)
+            self.agent_list["Distributor"].append(ag)
 
     self.agent_list["Transportation"].append(transportation_agent.TransportationAgent("Transportation"))
 
@@ -114,8 +121,18 @@ def build_capability_model(self, info):
     # initialize production capability
     for idx in agent_product.index:
         ag = find_agent_by_name(self, idx[0])
+<<<<<<< Updated upstream
         if 'Customer' in ag.name:
             ag.demand[idx[1]] = agent_product.loc[idx, "Demand"][0]
+=======
+        # if ag.name == "HVAC_sup_2":
+        #     print(ag.name)
+        ag.depth = 4-agent_product.loc[idx, "Level"]
+        # if 'Customer' in ag.name or 'C' in ag.name: # case study switch
+        if 'Customer' in ag.name:
+            ag.demand[idx[1]] = agent_product.loc[idx, "Demand"]
+            ag.due_date[idx[1]] = agent_product.loc[idx, "Deadline"]
+>>>>>>> Stashed changes
         else:
             prod_char = {}
             prod_char["Cost"] = agent_product.loc[idx, 'ProductionCost'][0]
@@ -124,7 +141,11 @@ def build_capability_model(self, info):
             for need in product_structure.index:
                 if need[0] == idx[1]:
                     prod_char["Material"][need[1]] = product_structure.loc[need, "Amount"]
-                
+            try:
+                prod_char["LeadTime"] = agent_product.loc[idx, 'LeadTime']
+                prod_char["Sigma"] = agent_product.loc[idx, 'Sigma']
+                prod_char["TrustLevel"] = agent_product.loc[idx, 'TrustLevel']
+            except: pass
             ag.capability.add_capability("Production", idx[1], prod_char)
             ag.capability.add_capability("Inventory", idx[1], {'Cost': 0, 'Capacity': 0})
 

@@ -23,6 +23,13 @@ def assign_initial_flow(ag_network, file_name):
     tp = network.find_agent_by_name(ag_network, "Transportation")
     tp.flow = flows.copy()
 
+    try:
+        flows_time = {}
+        for fl in data['Flows']:
+            flows_time[(fl['Source'], fl['Dest'], fl['Product'])] = fl["Arr_time"]
+        tp.flow_time = flows_time.copy()
+    except: pass
+
     for key in tp.flow.keys():
         start = network.find_agent_by_name(ag_network, key[0])
         end = network.find_agent_by_name(ag_network, key[1])
@@ -33,12 +40,41 @@ def assign_initial_flow(ag_network, file_name):
 
     productions ={}
     agent_with_productions = []
+    nominal_prod_time = {}
     for prod in data['Productions']:
         ag = network.find_agent_by_name(ag_network, prod['Agent'])
         ag.state.update_prod_inv("production", prod['Product'], prod["Value"])
+        try:
+            ag.state.prod_time[prod['Product']] = int(prod["Prod_time"])
+        except: pass
+        if prod['Product'] in nominal_prod_time.keys():
+            nominal_prod_time[prod['Product']].append(int(prod["Prod_time"]))
+        else:
+            nominal_prod_time[prod['Product']] = [int(prod["Prod_time"])]
         productions[(prod['Agent'], prod['Product'])] = prod["Value"]
         if ag.name not in agent_with_productions:
             agent_with_productions.append(ag.name)
+<<<<<<< Updated upstream
+=======
+            ag.used = True
+
+    if 'OverProductions' in data.keys() or 'OverFlows' in data.keys():
+        over_flows = {}
+        for o_f in data["OverFlows"]:
+            if o_f["Value"] > 1e-5:
+                over_flows[(o_f['Source'], o_f['Dest'], o_f['Product'])] = o_f["Value"]
+        tp.over_flow = over_flows.copy()
+
+        for o_p in data['OverProductions']:
+            if o_p["Value"] > 1e-5:
+                ag = network.find_agent_by_name(ag_network, o_p['Agent'])
+                ag.state.update_over_prod("production", o_p['Product'], o_p["Value"])
+    
+    for ag_type in ag_network.agent_list.keys():
+        for ag in ag_network.agent_list[ag_type]:
+            for prod in ag.capability.characteristics["Production"].keys():
+                ag.capability.characteristics["Production"][prod]["NominalTime"] = max(nominal_prod_time[prod])
+>>>>>>> Stashed changes
 
     return flows, productions, agent_with_productions
 
@@ -50,8 +86,14 @@ def re_initilize_network(ag_network, file_name):
             # ag.communication_manager.clear_message()
             if ag.name == "Transportation":
                 ag.flow.clear()
+<<<<<<< Updated upstream
+=======
+                ag.over_flow.clear()
+                ag.flow_time.clear()
+>>>>>>> Stashed changes
             if "Customer" not in ag.name:
                 ag.demand.clear()
+                ag.due_date.clear()
     ag_network.occurred_communication = 0
     initial_flows, initial_productions, agent_with_productions = assign_initial_flow(ag_network, file_name)
 

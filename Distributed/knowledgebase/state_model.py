@@ -14,6 +14,12 @@ class StateModel():
         self.outflow = {}
         self.inventory = {}
         self.production = {}
+<<<<<<< Updated upstream
+=======
+        self.over_production = {}
+        self.prod_time = {}
+        self.lead_time = {}
+>>>>>>> Stashed changes
 
     def update_prod_inv(self, key, product, change):
         # if key == "inventory":
@@ -27,6 +33,9 @@ class StateModel():
                 self.production[product] = change
             if self.production[product] - 0 < 0.1:
                 self.production.pop(product)
+                try:
+                    self.prod_time.pop(product)
+                except:pass
 
     def update_flow(self, key, agent, product, change):
         if key == "inflow":
@@ -50,3 +59,9 @@ class StateModel():
         self.outflow.clear()
         self.inventory.clear()
         self.production.clear()
+<<<<<<< Updated upstream
+=======
+        self.over_production.clear()
+        self.prod_time.clear()
+        self.lead_time.clear()
+>>>>>>> Stashed changes
